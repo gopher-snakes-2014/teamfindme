@@ -43,6 +43,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'faker', github: 'stympy/faker'
+  gem 'rspec-rails'
 end
 
 gem 'foundation-rails'
