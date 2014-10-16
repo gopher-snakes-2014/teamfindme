@@ -3,7 +3,7 @@
 <a href="#" data-reveal-id="myModal">Click Me For A Modal</a>
 
 <div id="myModal" class="reveal-modal" data-reveal>
-   <%= form_for @user, url: users_path, :method=> :post, html: {class: "login"} do |f|%>
+   <%= form_for "session", url: users_path, :method=> :post, html: {class: "login"} do |f|%>
 
     <%= f.label :username  %>
     <%= f.email_field :username, class: "form-control"  %>
