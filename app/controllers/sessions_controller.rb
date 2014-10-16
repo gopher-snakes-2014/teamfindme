@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
 
   def new
-    # @new_session=Session.new
     @user = User.new
   end
 
@@ -15,12 +14,12 @@ class SessionsController < ApplicationController
 
     if @user && @user.password == params[:session][:password]
 
-      puts 'you are totes logged in. niiice.'
+      puts 'Login Successful'
       session[:current_user_id] = @user.id
       redirect_to questions_path
 
     else
-      flash[:notice] = "you fucking suck. you are dumb and forgot your dumb password. your 2nd grade teacher was right about you."
+      flash[:notice] = "Login Failed"
       redirect_to new_session_path
     end
 
