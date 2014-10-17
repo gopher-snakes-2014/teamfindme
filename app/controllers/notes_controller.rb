@@ -1,4 +1,4 @@
-class NotessController < ApplicationController
+class NotesController < ApplicationController
 
   def new
 
