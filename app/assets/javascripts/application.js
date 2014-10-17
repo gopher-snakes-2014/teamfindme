@@ -74,7 +74,7 @@ var map;
 
 function initialize() {
   var mapOptions = {
-    zoom: 18
+    zoom: 24
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
@@ -85,10 +85,12 @@ function initialize() {
       var pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
 
+      var contentString = '<div class="noteModal">Hello</div>';
+
       var infowindow = new google.maps.InfoWindow({
         map: map,
         position: pos,
-        content: 'Found You!',
+        content: contentString
       });
 
       map.setCenter(pos);
