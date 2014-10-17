@@ -39,12 +39,12 @@
       </div>
     </header>
 
-    <div id="map-canvas"></div>
 
+  <div id="map-canvas"></div>
     <%= yield %>
-
-    <script type="text/javascript" src="https://maps.googleapiscom/maps/api/js?key=AIzaSyC5EIot9mKiTWDrRSMggx8Sqw5EvZal80E"><script>
-    <script type="text/javascript" src="https://maps.googleapiscom/maps/api/js?libraries=places"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5EIot9mKiTWDrRSMggx8Sqw5EvZal80E"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
     <%= javascript_include_tag "application" %>
+
   </body>
 </html>
