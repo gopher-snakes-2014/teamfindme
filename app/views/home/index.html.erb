@@ -3,7 +3,7 @@
 <a href="#" data-reveal-id="myModal">Sign In</a>
 
 <div id="myModal" class="reveal-modal" data-reveal>
-   <%= form_for "session", url: users_path, :method=> :post, html: {class: "login"} do |f|%>
+ <%= form_for "session", url: users_path, :method=> :post, html: {class: "login"} do |f|%>
 
     <%= f.label :username  %>
     <%= f.email_field :username, class: "form-control"  %>
@@ -15,4 +15,5 @@
     <!-- Expand Class -->
     <a href="#" class="button expand"<%= f.submit "login", class: "submitButton" %>Log In</a>
     <% end %>
+
 </div>

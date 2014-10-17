@@ -30,8 +30,6 @@ class SessionsController < ApplicationController
   end
 
 
-  private
-
   def find_model
     @model = Sessions.find(params[:id]) if params[:id]
   end
