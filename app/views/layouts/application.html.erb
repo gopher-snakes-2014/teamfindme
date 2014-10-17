@@ -11,39 +11,40 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <header>
+      <div class="off-canvas-wrap" data-offcanvas>
+        <div class="inner-wrap">
+          <nav class="tab-bar">
+            <section class="left-small">
+              <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+            </section>
 
-  <div class="off-canvas-wrap" data-offcanvas>
-    <div class="inner-wrap">
-      <nav class="tab-bar">
-        <section class="left-small">
-          <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
-        </section>
+            <section class="middle tab-bar-section">
+              <h1 class="title">Find Me</h1>
+            </section>
+          </nav>
 
-        <section class="middle tab-bar-section">
-          <h1 class="title">Find Me</h1>
-        </section>
-      </nav>
+          <aside class="left-off-canvas-menu">
+            <ul class="off-canvas-list">
+              <li><label>Find Me</label></li>
+              <li><a href="#"><a href="#" data-reveal-id="myModalUp">Sign Up</a></a></li>
+              <li><a href="#"><a href="#" data-reveal-id="myModalIn">Sign In</a></a></li>
+              <li><a href="#">Sign Out</a></li>
+              <li><a href="#">View Profile</a></li>
+            </ul>
+          </aside>
 
-      <aside class="left-off-canvas-menu">
-        <ul class="off-canvas-list">
-          <li><label>Find Me</label></li>
-          <li><a href="#"><a href="#" data-reveal-id="myModalUp">Sign Up</a></a></li>
-          <li><a href="#"><a href="#" data-reveal-id="myModalIn">Sign In</a></a></li>
-          <li><a href="#">Sign Out</a></li>
-          <li><a href="#">View Profile</a></li>
-        </ul>
-      </aside>
+          <a class="exit-off-canvas"></a>
+        </div>
+      </div>
+    </header>
 
-    <a class="exit-off-canvas"></a>
+    <div id="map-canvas"></div>
 
-    </div>
-  </div>
-  <div id="map-canvas"></div>
     <%= yield %>
-    <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5EIot9mKiTWDrRSMggx8Sqw5EvZal80E">
-    </script>
-    <%= javascript_include_tag "application" %>
 
+    <script type="text/javascript" src="https://maps.googleapiscom/maps/api/js?key=AIzaSyC5EIot9mKiTWDrRSMggx8Sqw5EvZal80E"><script>
+    <script type="text/javascript" src="https://maps.googleapiscom/maps/api/js?libraries=places"></script>
+    <%= javascript_include_tag "application" %>
   </body>
 </html>

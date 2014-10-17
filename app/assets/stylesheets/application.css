@@ -15,7 +15,8 @@
  *= require foundation_and_overrides
 
  */
- #map-canvas {
+
+#map-canvas{
   height: 100%;
   margin: 0;
   padding: 0;
