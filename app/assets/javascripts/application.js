@@ -87,10 +87,14 @@ function initialize() {
 
       var contentString = '<div class="noteModal">Hello</div>';
 
-      var infowindow = new google.maps.InfoWindow({
-        map: map,
+      var marker = new google.maps.Marker({
         position: pos,
-        content: contentString
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', function() {
+        console.log("You clicked this thing");
+        console.log(this);
       });
 
       map.setCenter(pos);

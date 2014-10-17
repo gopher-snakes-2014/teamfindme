@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20141017222156) do
     t.string   "last_name"
     t.string   "email"
     t.string   "username"
-    t.string   "password_digest"
+    t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
