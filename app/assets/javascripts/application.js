@@ -16,7 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
-// $(function(){ $(document).foundation(); });
+$(function(){ $(document).foundation(); });
 
 // google maps - no longer needed with places!
 // function initialize() {
