@@ -3,9 +3,10 @@ $(function() {
   $("#signIn").on("click", function(e){
     e.preventDefault();
     $.ajax({
-      url: new_session_path,
-      type: 'get'
-    }).done(function(){
+      url: this.action,
+      type: this.method,
+      data: $(this).serialize()
+    }).done(function(data){
       console.log("successful")
     }).fail(function(){
       console.log("failed")
@@ -15,9 +16,10 @@ $(function() {
   $("#signinBtn").on("click", function(e){
     e.preventDefault();
     $.ajax({
-      url: sessions_path,
-      type: 'post'
-    }).done(function(){
+      url: this.action,
+      type: this.method,
+      data: $(this).serialize()
+    }).done(function(data){
       console.log("created new session for user")
     }).fail(function(){
       console.log("did not create new session for user")
@@ -27,9 +29,10 @@ $(function() {
   $("#signUp").on("click", function(e){
     e.preventDefault();
     $.ajax({
-      url: new_user_path,
-      type: 'get'
-    }).done(function(){
+      url: this.action,
+      type: this.method,
+      data: $(this).serialize()
+    }).done(function(data){
       console.log("successful")
     }).fail(function(){
       console.log("failed")
@@ -39,9 +42,10 @@ $(function() {
   $("#signupBtn").on("click", function(e){
     e.preventDefault();
     $.ajax({
-      url: users_path,
-      type: 'post'
-    }).done(function(){
+      url: this.action,
+      type: this.method,
+      data: $(this).serialize()
+    }).done(function(data){
       console.log("signed up")
     }).fail(function(){
       console.log("didn't sign up")
@@ -51,9 +55,10 @@ $(function() {
   $("#signOut").on("click", function(e){
     e.preventDefault();
     $.ajax({
-      url: session_path,
-      type: 'delete',
-    }).done(function(){
+      url: this.action,
+      type: this.method,
+      data: $(this).serialize()
+    }).done(function(data){
       console.log("successful")
     }).fail(function(){
       console.log("failed")
