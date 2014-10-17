@@ -4,6 +4,9 @@ teamfindme
 Team Name:
 - Find Me
 
+Description:
+- Attach a digital note to a real world location. Follow your friends, see new places. Sell to Facebook. Retire.
+
 Members:
 - Bahb 
 - Herine
@@ -25,6 +28,6 @@ MVP user stories:
 - user can read a note (lock by location only if possible)
 
 
-
+<img src="http://www.quickmeme.com/img/8d/8de521f76fc38b094f4a56ebdc0a6d307254db1377b8e8494bc4525728a5985b.jpg">
 
 
