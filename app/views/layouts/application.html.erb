@@ -11,38 +11,26 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <header>
-      <div class="off-canvas-wrap" data-offcanvas>
-        <div class="inner-wrap">
-          <nav class="tab-bar">
-            <section class="left-small">
-              <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
-            </section>
 
-            <section class="middle tab-bar-section">
-              <h1 class="title">Find Me</h1>
-            </section>
-          </nav>
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">Find Me</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
 
-          <aside class="left-off-canvas-menu">
-            <ul class="off-canvas-list">
-              <li><a id="signUp" href="#" data-reveal-id="myModalUp">Sign Up</a></li>
-              <li><a id="signIn" href="#" data-reveal-id="myModalIn">Sign In</a></li>
-              <li><a id="signOut" href="#">Sign Out</a></li>
-              <li><a id="viewProfile" href="#">View Profile</a></li>
-            </ul>
-          </aside>
+      <section class="top-bar-section">
+        <ul class="right">
+          <li><a id="signUp" href="#" data-reveal-id="myModalUp">Sign Up</a></li>
+          <li><a id="signIn" href="#" data-reveal-id="myModalIn">Sign In</a></li>
+          <li><a id="signOut" href="#">Sign Out</a></li>
+          <li><a id="viewProfile" href="#">View Profile</a></li>
+        </ul>
+      </section>
+    </nav>
 
-          <section class="main-section">
-          </section>
-
-          <a class="exit-off-canvas"></a>
-        </div>
-      </div>
-    </header>
-
-
-  <div id="map-canvas"></div>
+    <div id="map-canvas"></div>
     <%= yield %>
 
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
