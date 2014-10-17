@@ -22,3 +22,8 @@
   padding: 0;
 }
 
+.noteModal {
+  background-color: red;
+  width: 5000px;
+  height: 100%;
+}
