@@ -6,6 +6,7 @@ Team Name:
 
 Description:
 - Attach a digital note to a real world location. Follow your friends, see new places. Sell to Facebook. Retire.
+- http://findme-app.herokuapp.com/
 
 Members:
 - Bahb 
