@@ -1,0 +1,23 @@
+<div id="myModalUp" class="reveal-modal" data-reveal>
+  <%= form_for "session", url: users_path, :method=> :post, html: {class: "login"} do |f|%>
+    <%= f.label :first_name  %>
+    <%= f.text_field :first_name, class: "form-control"  %>
+    <br>
+    <%= f.label :last_name  %>
+    <%= f.text_field :last_name, class: "form-control"  %>
+    <br>
+    <%= f.label :email  %>
+    <%= f.text_field :email, class: "form-control"  %>
+    <br>
+    <%= f.label :username  %>
+    <%= f.text_field :username, class: "form-control"  %>
+    <br>
+    <%= f.label :password  %>
+    <%= f.email_field :password, class: "form-control"  %>
+    <br>
+
+
+    <!-- Expand Class -->
+    <a href="#" class="button expand"<%= f.submit "signup", class: "submitButton" %>Sign Up</a>
+    <% end %>
+</div>
