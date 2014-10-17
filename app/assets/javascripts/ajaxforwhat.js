@@ -51,7 +51,7 @@ $(function() {
   $("#signOut").on("click", function(e){
     e.preventDefault();
     $.ajax({
-      url: session_path
+      url: session_path,
       type: 'delete',
     }).done(function(){
       console.log("successful")
