@@ -6,9 +6,9 @@ class SessionsController < ApplicationController
 
   def create
 
-    @user_email = params[:session][:email]
+    @user_username = params[:session][:username]
 
-    @user = User.find_by(:email=>@user_email)
+    @user = User.find_by(:username=>@user_username)
 
     p params[:session][:password]
 
@@ -16,17 +16,14 @@ class SessionsController < ApplicationController
 
       puts 'Login Successful'
       session[:current_user_id] = @user.id
-      redirect_to questions_path
 
     else
       flash[:notice] = "Login Failed"
-      redirect_to new_session_path
     end
 
   end
   def destroy
     session[:current_user_id] = nil
-    redirect_to root_path
   end
 
 
