@@ -26,13 +26,15 @@
 
           <aside class="left-off-canvas-menu">
             <ul class="off-canvas-list">
-              <li><label>Find Me</label></li>
-              <li><a href="#"><a href="#" data-reveal-id="myModalUp">Sign Up</a></a></li>
-              <li><a href="#"><a href="#" data-reveal-id="myModalIn">Sign In</a></a></li>
+              <li><a href="#" data-reveal-id="myModalUp">Sign Up</a></li>
+              <li><a href="#" data-reveal-id="myModalIn">Sign In</a></li>
               <li><a href="#">Sign Out</a></li>
               <li><a href="#">View Profile</a></li>
             </ul>
           </aside>
+
+          <section class="main-section">
+          </section>
 
           <a class="exit-off-canvas"></a>
         </div>
@@ -43,7 +45,9 @@
   <div id="map-canvas"></div>
     <%= yield %>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5EIot9mKiTWDrRSMggx8Sqw5EvZal80E"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+    // <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script>
     <%= javascript_include_tag "application" %>
 
   </body>
