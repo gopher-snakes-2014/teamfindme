@@ -12,7 +12,7 @@ $(function() {
     })
   });
 
-  $("$signinBtn").on("click", function(e){
+  $("#signinBtn").on("click", function(e){
     e.preventDefault();
     $.ajax({
       url: sessions_path,
@@ -52,7 +52,7 @@ $(function() {
     e.preventDefault();
     $.ajax({
       url: session_path
-      type: 'delete'
+      type: 'delete',
     }).done(function(){
       console.log("successful")
     }).fail(function(){
