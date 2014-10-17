@@ -10,6 +10,7 @@
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
+  <body>
 
   <div class="off-canvas-wrap" data-offcanvas>
     <div class="inner-wrap">
@@ -37,7 +38,11 @@
 
     </div>
   </div>
+  <div id="map-canvas"></div>
     <%= yield %>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5EIot9mKiTWDrRSMggx8Sqw5EvZal80E">
+    </script>
     <%= javascript_include_tag "application" %>
 
   </body>
