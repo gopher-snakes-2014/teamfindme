@@ -85,7 +85,9 @@ function initialize() {
       var pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
 
-      var contentString = '<div class="noteModal">Hello</div>';
+      var contentString = document.createElement('button');
+        contentString.setAttribute('class', 'button tiny');
+        contentString.innerHTML = 'New Post';
 
       var infowindow = new google.maps.InfoWindow({
         map: map,
