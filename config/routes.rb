@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
-  resources :users do
-    resources :notes
-  end
+  resources :users
+  resources :notes
+  resources :locations
   resources :sessions
 
   # Example of regular route:
