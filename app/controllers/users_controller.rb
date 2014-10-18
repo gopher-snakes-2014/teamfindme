@@ -5,14 +5,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    p "USERS OARAMSASDJFLASKD"
-    p user_params
     @user = User.new(user_params)
-    @user.save!
-    session[:current_user_id] = @user.id
-
-    p @user
-    redirect_to root_path
+    if @user.save
+      session[:current_user_id] = @user.id
+      redirect_to root_path
+    else
+      p @user.errors.full_messages
+      flash[:error] = @user.errors.full_messages
+      redirect_to root_path
+    end
   end
 
   def user_params
