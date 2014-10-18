@@ -6,10 +6,7 @@ class NotesController < ApplicationController
   end
 
  def create
-   p params[:longitude]
-   p params[:latitude]
    new_note = Note.create(:longitude => params[:longitude], :latitude => params[:latitude])
-   p new_note
    redirect_to root_path
  end
 
