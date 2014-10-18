@@ -32,6 +32,8 @@ function initialize() {
       var pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
 
+      var contentString = "my posts";
+
       var marker = new google.maps.Marker({
         position: pos,
         map: map
