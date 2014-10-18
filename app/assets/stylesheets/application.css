@@ -22,8 +22,6 @@
   padding: 0;
 }
 
-.noteModal {
-  background-color: red;
-  width: 5000px;
-  height: 100%;
+.sub-nav {
+  margin: 0.45rem 0.6rem -2.475rem;
 }
