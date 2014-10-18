@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :notes
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
   uniqueness:  { case_sensitive: false }
-  validates :password_digest, presence: true
+  validates :password, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :username, presence: true, uniqueness: true
@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
     validates_presence_of :password, :on => :create
     validates_confirmation_of :password
-    validates_presence_of :password_digest
+    validates_presence_of :password
 
   end
 
