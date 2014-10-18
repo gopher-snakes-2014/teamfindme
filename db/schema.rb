@@ -16,17 +16,12 @@ ActiveRecord::Schema.define(version: 20141017222156) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "locations", force: true do |t|
-    t.string   "longitude"
-    t.string   "latitude"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "notes", force: true do |t|
     t.integer  "user_id"
     t.string   "picture_path"
     t.text     "comment"
+    t.string   "longitude"
+    t.string   "latitude"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "location_id"
@@ -37,7 +32,7 @@ ActiveRecord::Schema.define(version: 20141017222156) do
     t.string   "last_name"
     t.string   "email"
     t.string   "username"
-    t.string   "password"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
