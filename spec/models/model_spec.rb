@@ -7,7 +7,7 @@ describe User do
       last_name: "Bob",
       email: "bob@bob.bob",
       username: "bobob",
-      password_digest: "bob"
+      password: "bob"
       )
     expect(user).to be_valid
   end
@@ -17,7 +17,7 @@ describe User do
       last_name: "Bob",
       email: "bob@bob.bob",
       username: "bobob",
-      password_digest: "bob"
+      password: "bob"
       )
     expect(user).to_not be_valid
   end
@@ -27,7 +27,7 @@ describe User do
       last_name: "",
       email: "bob@bob.bob",
       username: "bobob",
-      password_digest: "bob"
+      password: "bob"
       )
     expect(user).to_not be_valid
   end
@@ -37,7 +37,7 @@ describe User do
     last_name: "Bob",
     email: "",
     username: "bobob",
-    password_digest: "bob"
+    password: "bob"
     )
    expect(user).to_not be_valid
  end
@@ -47,17 +47,17 @@ describe User do
     last_name: "Bob",
     email: "bob@bob.bob",
     username: "",
-    password_digest: "bob"
+    password: "bob"
     )
    expect(user).to_not be_valid
  end
- it "is not valid without a password_digest" do
+ it "is not valid without a password" do
    user = User.new(
     first_name: "Bob",
     last_name: "Bob",
     email: "bob@bob.bob",
     username: "bobob",
-    password_digest: ""
+    password: ""
     )
    expect(user).to_not be_valid
  end
