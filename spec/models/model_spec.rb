@@ -73,15 +73,15 @@ describe Note do
       )
     expect(note).to be_valid
   end
-  it "is not valid without a comment" do
-    note = Note.new(
-      comment: "",
-      picture_path: "asd/asd/asd",
-      longitude: "123456",
-      latitude: "78910"
-      )
-    expect(note).to_not be_valid
-  end
+  # it "is not valid without a comment" do
+  #   note = Note.new(
+  #     comment: "",
+  #     picture_path: "asd/asd/asd",
+  #     longitude: "123456",
+  #     latitude: "78910"
+  #     )
+  #   expect(note).to_not be_valid
+  # end
   it "is valid without a picture_path" do
     note = Note.new(
       comment: "blah",
