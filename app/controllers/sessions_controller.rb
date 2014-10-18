@@ -6,19 +6,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    p params
     @user_username = params[:session][:username]
-
     @user = User.find_by(:username=>@user_username)
-    @password = params[:session][:password_digest]
+    @password = params[:session][:password]
 
     if @user && @user.authenticate(@password)
-
-      puts 'Login Successful'
       session[:current_user_id] = @user.id
       redirect_to root_path
     else
-      p 'login unsuccessful'
       flash[:notice] = "Login Failed"
       redirect_to root_path
     end
@@ -26,7 +21,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:current_user_id] = nil
-    p 'session destroyed'
     redirect_to root_path
   end
 

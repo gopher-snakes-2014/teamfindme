@@ -33,7 +33,7 @@ describe SessionsController do
   end
   describe "sessions_path" do
     it "redirects to root path" do
-      post 'create',{session:{username:"bobob"}}, {session:{password_digest:"bob"}}
+      post 'create',{session:{username:"bobob"}}, {session:{password:"bob"}}
       expect(response).to redirect_to root_path
     end
   end

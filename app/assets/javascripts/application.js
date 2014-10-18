@@ -35,7 +35,7 @@ function initialize() {
 
     for (var i = 0; i < notes.length; i++) {
       marker = new google.maps.Marker({
-            position: new google.maps.LatLng(notes[i].longitude, notes[i].latitude),
+            position: new google.maps.LatLng(notes[i].longitude, notes[i].userLatitude),
             icon: icon,
             animation: google.maps.Animation.DROP,
             map: map
