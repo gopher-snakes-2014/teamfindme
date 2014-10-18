@@ -28,14 +28,13 @@ function initialize() {
   loadPins(); //ajax in ajaxforwhat.js
 
   place_pins = function(notes) {
-
     var icon = {
       url: "http://i.imgur.com/ZIpm27k.png"
     };
 
     for (var i = 0; i < notes.length; i++) {
       marker = new google.maps.Marker({
-            position: new google.maps.LatLng(notes[i].longitude, notes[i].userLatitude),
+            position: new google.maps.LatLng(notes[i].longitude, notes[i].latitude),
             icon: icon,
             animation: google.maps.Animation.DROP,
             map: map
