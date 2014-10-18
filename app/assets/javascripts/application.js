@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
+
 $(function(){ $(document).foundation(); });
 var map;
 
@@ -23,27 +24,62 @@ function initialize() {
   var mapOptions = {
     zoom: 24
   };
+
+  loadPins(); //ajax in ajaxforwhat.js
+
+  place_pins = function(notes) {
+
+    var icon = {
+      url: "http://i.imgur.com/ZIpm27k.png"
+    };
+
+    for (var i = 0; i < notes.length; i++) {
+      marker = new google.maps.Marker({
+            position: new google.maps.LatLng(notes[i].longitude, notes[i].latitude),
+            icon: icon,
+            animation: google.maps.Animation.DROP,
+            map: map
+          });
+    }
+  };
+
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
-
-  // Try HTML5 geolocation
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
 
-      var contentString = "my posts";
-
-      var marker = new google.maps.Marker({
+      var currentLocation = new google.maps.Marker({
         position: pos,
+        animation: google.maps.Animation.DROP,
         map: map
       });
 
-      google.maps.event.addListener(marker, 'click', function() {
+      var icon = {
+        url: "http://i.imgur.com/ZIpm27k.png"
+      };
 
+      var contentString = "my posts";
 
-        var userLongitude = this.position.k;
-        var userLatitude = this.position.B;
+        $("#leaveANote").on('click', function() {
+          var noteMarker = new google.maps.Marker({
+            position: pos,
+            icon: icon,
+            animation: google.maps.Animation.DROP,
+            map: map
+          });
+
+          google.maps.event.addListener(noteMarker, 'click', function(e) {
+            e.preventDefault();
+            // go to notes controller
+            // find note by location
+            // return here with note
+            $("#myModalNote").foundation('reveal', 'open');
+          });
+
+        var userLongitude = noteMarker.position.k;
+        var userLatitude = noteMarker.position.B;
         $.ajax({
           url: '/notes',
           type: 'POST',
@@ -57,10 +93,11 @@ function initialize() {
       handleNoGeolocation(true);
     });
   } else {
-    // Browser doesn't support Geolocation
     handleNoGeolocation(false);
   }
 }
+
+
 
 function handleNoGeolocation(errorFlag) {
   if (errorFlag) {
