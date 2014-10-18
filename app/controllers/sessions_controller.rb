@@ -15,14 +15,14 @@ class SessionsController < ApplicationController
 
       puts 'Login Successful'
       session[:current_user_id] = @user.id
-
+      redirect_to root_path
     else
       p 'login unsuccessful'
       flash[:notice] = "Login Failed"
+      redirect_to root_path
     end
-    redirect_to root_path
-
   end
+
   def destroy
     session[:current_user_id] = nil
     p 'session destroyed'

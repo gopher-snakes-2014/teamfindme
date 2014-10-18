@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+  <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "vendor/modernizr" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
 
-    <nav class="top-bar" data-topbar role="navigation">
-      <ul class="title-area">
-        <li class="name">
-          <h1><a href="#">Find Me</a></h1>
-        </li>
-        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="#">Find Me</a></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <ul class="right">
+        <% if session[:current_user_id] == nil %>
+        <li><a id="signUp" href="#" data-reveal-id="myModalUp">Sign Up</a></li>
+        <li><a id="signIn" href="#" data-reveal-id="myModalIn">Sign In</a></li>
+        <% else %>
+        <li><%= link_to 'Sign Out', sessions_path, :method => :delete %></li>
+        <li><a id="viewProfile" href="#">View Profile</a></li>
+        <% end %>
       </ul>
+    </section>
+  </nav>
 
-      <section class="top-bar-section">
-        <ul class="right">
-          <% if session[:current_user_id] == nil %>
-            <li><a id="signUp" href="#" data-reveal-id="myModalUp">Sign Up</a></li>
-            <li><a id="signIn" href="#" data-reveal-id="myModalIn">Sign In</a></li>
-          <% else %>
-            <li><a id="signOut" href="/signout">Sign Out</a></li>
-            <li><a id="viewProfile" href="#">View Profile</a></li>
-          <% end %>
-        </ul>
-      </section>
-    </nav>
+  <div id="map-canvas"></div>
+  <%= yield %>
 
-    <div id="map-canvas"></div>
-    <%= yield %>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+  <%= javascript_include_tag "application" %>
 
-    <%= javascript_include_tag "application" %>
-
-  </body>
+</body>
 </html>

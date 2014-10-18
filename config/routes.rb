@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
-  get '/signout', to: 'sessions#destroy'
+  post '/signout', to: 'sessions#destroy'
   get '/signin', to: 'sessions#create'
   get '/signup', to: 'users#create'
   resources :users

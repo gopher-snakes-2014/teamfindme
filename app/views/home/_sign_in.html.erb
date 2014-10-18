@@ -1,5 +1,5 @@
 <div id="myModalIn" class="reveal-modal" data-reveal>
- <%= form_for "session", remote: true, url: '/signin', :method=> :get, html: {class: "signin"} do |f|%>
+ <%= form_for "session", remote: true, url: sessions_path, :method=> :post, html: {class: "signin"} do |f|%>
     <%= f.label :username  %>
     <%= f.text_field :username, class: "form-control"  %>
     <br>
