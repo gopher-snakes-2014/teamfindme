@@ -40,6 +40,8 @@ function initialize() {
       });
 
       google.maps.event.addListener(marker, 'click', function() {
+
+
         var userLongitude = this.position.k;
         var userLatitude = this.position.B;
         $.ajax({
