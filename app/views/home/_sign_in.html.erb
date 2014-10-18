@@ -1,12 +1,11 @@
 <div id="myModalIn" class="reveal-modal" data-reveal>
- <%= form_for "session", url: sessions_path, :method=> :post, html: {class: "login"} do |f|%>
+ <%= form_for "session", remote: true, url: sessions_path, :method=> :post, html: {class: "signin"} do |f|%>
     <%= f.label :username  %>
-    <%= f.email_field :username, class: "form-control"  %>
+    <%= f.text_field :username, class: "form-control"  %>
     <br>
     <%= f.label :password  %>
-    <%= f.password_field :password, class: "form-control" %>
+    <%= f.password_field :password_digest, class: "form-control" %>
     <br>
-    <!-- Expand Class -->
-    <a id="signinBtn" href="#" class="button expand"<%= f.submit "login", class: "submitButton" %>Log In</a>
+    <%= f.submit "sign in", class: "submitButton" %>
     <% end %>
 </div>
