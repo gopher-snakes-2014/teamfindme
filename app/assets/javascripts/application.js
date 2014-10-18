@@ -39,8 +39,18 @@ function initialize() {
             animation: google.maps.Animation.DROP,
             map: map
           });
+
+      google.maps.event.addListener(marker, 'click', function() {
+        console.log("you clicked a marker");
+        // go to notes controller
+        // find note by location
+        // return here with note
+        $("#myModalNote").foundation('reveal', 'open');
+      });
     }
   };
+
+
 
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
@@ -71,10 +81,11 @@ function initialize() {
 
           google.maps.event.addListener(noteMarker, 'click', function(e) {
             e.preventDefault();
+            console.log("you clicked a marker");
             // go to notes controller
             // find note by location
             // return here with note
-            $("#myModalNote").foundation('reveal', 'open');
+            // $("#myModalNote").foundation('reveal', 'open');
           });
 
         var userLongitude = noteMarker.position.k;
