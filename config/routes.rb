@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   resources :users
   resources :notes
-  resources :locations
   resources :sessions
 
   # Example of regular route:

@@ -25,3 +25,12 @@
 .sub-nav {
   margin: 0.45rem 0.6rem -2.475rem;
 }
+
+/*PARALLAX*/
+#home {
+background: url(home-bg.jpg) 50% 0 repeat fixed; min-height: 1000px;
+}
+
+#about {
+background: url(about-bg.jpg) 50% 0 no-repeat min-height: 1000px;
+}
