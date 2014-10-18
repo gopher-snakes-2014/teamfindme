@@ -33,8 +33,13 @@
     </section>
   </nav>
 
-  <div id="map-canvas"></div>
-  <%= yield %>
+    <dl class="sub-nav">
+      <dd><a href="#">Leave a note</a></dd>
+      <dd><a href="#">Read all of the notes</a></dd>
+    </dl>
+
+    <div id="map-canvas"></div>
+    <%= yield %>
 
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
