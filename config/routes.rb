@@ -4,10 +4,14 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
+  # get "/notes/find_all", to: 'notes#find_all'
+
   resources :users
   resources :notes
   resource :sessions
   root 'home#index'
+
+
 
 
   # Example of regular route:

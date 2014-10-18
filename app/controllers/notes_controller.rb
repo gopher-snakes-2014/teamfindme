@@ -19,7 +19,9 @@ class NotesController < ApplicationController
   end
 
   def show
-
+    @notes = Note.all
+    p @notes
+    render :json => @notes
   end
 
   def destroy
@@ -28,6 +30,14 @@ class NotesController < ApplicationController
 
   def note_params
     params.require(:note).permit(:picture_path, :comment)
+  end
+
+  def find_all
+    content_type :json
+    @notes = Note.all
+    p @notes
+    @notes.to_json
+    # format.json { render json: @notes }
   end
 
 end
