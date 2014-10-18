@@ -11,7 +11,6 @@ class UsersController < ApplicationController
       session[:current_user_id] = @user.id
       redirect_to root_path
     else
-      p @user.errors.full_messages
       flash[:error] = @user.errors.full_messages
       redirect_to root_path
     end
