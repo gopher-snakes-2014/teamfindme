@@ -2,6 +2,7 @@ class NotesController < ApplicationController
 
   def new
     @note = Note.new
+    render nothing: true
   end
 
  def create
