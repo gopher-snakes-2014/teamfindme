@@ -9,8 +9,6 @@ class SessionsController < ApplicationController
     @user_username = params[:session][:username]
     @user = User.find_by(:username=>@user_username)
     @password = params[:session][:password]
-    p @password
-    p @user.authenticate(@password)
 
     if @user && @user.authenticate(@password)
       session[:current_user_id] = @user.id
