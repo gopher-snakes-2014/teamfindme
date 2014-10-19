@@ -1,0 +1,24 @@
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <div class="logo">
+      <%= image_tag "logo.png", class: "logo" %>
+    </div>
+  </ul>
+
+  <section class="top-bar-section">
+    <ul class="right">
+      <% if session[:current_user_id] == nil %>
+        <li><a id="signUp" href="#" data-reveal-id="myModalUp">Sign Up</a></li>
+        <li><a id="signIn" href="#" data-reveal-id="myModalIn">Sign In</a></li>
+      <% else %>
+        <li><%= link_to 'Sign Out', sessions_path, :method => :delete %></li>
+        <li><a id="viewProfile" href="#">View Profile</a></li>
+      <% end %>
+    </ul>
+  </section>
+</nav>
+
+<dl class="sub-nav">
+  <a href="#" class="button large" id="leaveANote">Leave a note</a>
+  <a href="#" class="button large" data-reveal-id="myModalAll" id="seeAllNotes">Read all of the notes</a>
+</dl>
