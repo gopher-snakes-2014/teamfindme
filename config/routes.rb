@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
-  # get "/notes/find_all", to: 'notes#find_all'
+  get "/notes/find_all", to: 'notes#find_all'
 
   resources :users
   resources :notes

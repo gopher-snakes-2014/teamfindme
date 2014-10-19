@@ -1,8 +1,7 @@
 <div id="myModalAll" class="reveal-modal" data-reveal>
-<% @note = Note.all %>
-<% @note.each do |note| %>
-<h4><%= @note.comment  %></h4>
-<img src="<% @note.picture_path %>">
-<% end %>
+  <% @note = Note.all %>
+  <% @note.each do |note| %>
+  <h4> <%= note.comment  %> </h4>
+  <% end %>
     <a class="close-reveal-modal">&#215;</a>
 </div>
