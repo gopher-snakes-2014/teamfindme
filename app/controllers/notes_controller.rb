@@ -5,13 +5,18 @@ class NotesController < ApplicationController
     render nothing: true
   end
 
- def create
-   @new_note = Note.create(:longitude => params[:longitude], :latitude => params[:latitude])
-   redirect_to root_path
- end
+  def create
+    p "TEST"
+     p params
+    @new_note = Note.create(:image => params[:note][:image], :comment => params[:note][:comment])
+    render :json => @new_note
+  end
 
   def update
-
+    @note = Note.find(params[:note_id])
+    @note.update_attributes(longitude: params[:longitude], latitude: params[:latitude])
+    @note.save
+    redirect_to root_path
   end
 
   def edit
@@ -40,4 +45,10 @@ class NotesController < ApplicationController
     # format.json { render json: @notes }
   end
 
-end
+  def reroute
+    @new_note = { comment: params[:note][:comment],
+      image: params[:note][:comment] }
+      @new_note.to_json
+    end
+
+  end

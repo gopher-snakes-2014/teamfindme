@@ -34,30 +34,24 @@ function initialize() {
 
     for (var i = 0; i < notes.length; i++) {
       marker = new google.maps.Marker({
-            position: new google.maps.LatLng(notes[i].longitude, notes[i].latitude),
-            icon: icon,
-            animation: google.maps.Animation.DROP,
-            map: map
-          });
+        position: new google.maps.LatLng(notes[i].longitude, notes[i].latitude),
+        icon: icon,
+        animation: google.maps.Animation.DROP,
+        map: map
+      });
 
       google.maps.event.addListener(marker, 'click', function() {
-        console.log("you clicked a marker");
-        // go to notes controller
-        // find note by location
-        // return here with note
         $("#myModalNote").foundation('reveal', 'open');
       });
     }
   };
 
-
-
   map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
+    mapOptions);
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = new google.maps.LatLng(position.coords.latitude,
-                                       position.coords.longitude);
+       position.coords.longitude);
 
       var currentLocation = new google.maps.Marker({
         position: pos,
@@ -71,7 +65,23 @@ function initialize() {
 
       var contentString = "my posts";
 
-        $("#leaveANote").on('click', function() {
+      $("#leaveANote").on('click', function() {
+        $("#myModalNote").foundation('reveal', 'open');
+        $('#noteForm').on('submit', function(e) {
+          var that = this;
+          console.log($(that).serialize());
+
+          e.preventDefault();
+          $.ajax({
+            url: '/notes',
+            type: 'post',
+            data: $(that).serialize()
+          }).done(function(data){
+            setCoordinates(data.id);
+          });
+        });
+        var setCoordinates = function(noteId) {
+
           var noteMarker = new google.maps.Marker({
             position: pos,
             icon: icon,
@@ -79,32 +89,55 @@ function initialize() {
             map: map
           });
 
-          google.maps.event.addListener(noteMarker, 'click', function(e) {
-            e.preventDefault();
-            console.log("you clicked a marker");
-            // go to notes controller
-            // find note by location
-            // return here with note
-            // $("#myModalNote").foundation('reveal', 'open');
+          var userLongitude = noteMarker.position.k;
+          var userLatitude = noteMarker.position.B;
+
+          $.ajax({
+            url: '/notes/update',
+            type: 'post',
+            data: {longitude: userLongitude, latitude: userLatitude, note_id: noteId}
+          })
+          .done(function() {
+            console.log("success");
+          })
+          .fail(function() {
+            console.log("error");
+          })
+          .always(function() {
+            console.log("complete");
           });
 
-        var userLongitude = noteMarker.position.k;
-        var userLatitude = noteMarker.position.B;
-        $.ajax({
-          url: '/notes',
-          type: 'POST',
-          data: {longitude: userLongitude, latitude: userLatitude}
-        }).done(function() {
-          console.log("success");
-        });
-      });
-      map.setCenter(pos);
-    }, function() {
-      handleNoGeolocation(true);
-    });
-  } else {
-    handleNoGeolocation(false);
-  }
+        }
+
+      // $("#noteSubmit").on('click',function(e){
+      //   e.preventDefault();
+      //   console.log("hi")
+      //   // console.log($("#noteForm").forms.2.form.2.value)
+      // });
+
+
+
+
+
+        // google.maps.event.addListener(noteMarker, 'click', function(e) {
+        //   e.preventDefault();
+        //   console.log("you clicked a marker");
+        //     // go to notes controller
+        //     // find note by location
+        //     // return here with note
+        //     // $("#myModalNote").foundation('reveal', 'open');
+        //   });
+
+
+
+});
+map.setCenter(pos);
+}, function() {
+  handleNoGeolocation(true);
+});
+} else {
+  handleNoGeolocation(false);
+}
 }
 
 
