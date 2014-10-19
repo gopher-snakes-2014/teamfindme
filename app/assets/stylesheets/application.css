@@ -15,20 +15,24 @@
  *= require foundation_and_overrides
 
  */
+body {
+  background-color:#ECF5FD;
+}
 
 #map-canvas{
-  height: 79%;
-  margin: 4% 4%;
+  height: 69%;
+  margin: 0 7%;
   padding: 0;
 }
 
 .sub-nav {
-  margin: 1.05rem 0.6rem -2.475rem;
+  margin: 0 0 0 5.6em;
+  width: 69.3em;
 }
 
 .logo {
-  margin: -4% 0 0 -3%;
-  height: 166%;
+  margin: -0.6em 0 0 2em;
+  height: 5.1em;
 }
 
 #signup {
@@ -37,4 +41,46 @@
 
 #signin {
   color: #d6d1d1;
+}
+
+.top-bar {
+  padding: 0.5em 5em 0 0;
+  height: 4em;
+  background: #202931;
+}
+
+a#signUp {
+  background-color: #202931;
+  color: #ECF5FD;
+  font-size: 1.3em;
+}
+
+a#signIn {
+  background-color: #202931;
+  color: #ECF5FD;
+  font-size: 1.3em;
+}
+
+a#leaveANote {
+  background-color: #9ECEF6;
+  color: #3F5262;
+  width: 48.4%;
+  font-size: 1em;
+}
+
+a#seeAllNotes {
+  background-color: #9ECEF6;
+  color: #3F5262;
+  width: 50.4%;
+  font-size: 1em;
+}
+
+.reveal-modal {
+  background-color:#ECF5FD;
+  color: #ECF5FD;
+}
+
+.expand{
+  background-color: #9ECEF6;
+  color: #3F5262;
 }
