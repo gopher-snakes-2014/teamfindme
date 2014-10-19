@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-feature 'Welcome page' do
-  scenario "User goes to root page" do
-    visit root_path
-    expect(page).to have_content 'Find Me'
-  end
-end
+# feature 'Welcome page' do
+#   scenario "User goes to root page" do
+#     visit root_path
+#     expect(page).to have_content 'Find Me'
+#   end
+# end
 
 # feature 'Log In' do
 #   scenario "User can Log In" do
