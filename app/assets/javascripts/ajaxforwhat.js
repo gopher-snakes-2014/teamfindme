@@ -83,6 +83,24 @@ var loadPins = function () {
     });
   };
 
+  // var setCoordinates = function(id) {
+  //   $.ajax({
+  //     url: '/notes/update',
+  //     type: 'get',
+  //     data: {longitude: userLongitude, latitude: userLatitude, id: id},
+  //   })
+  //   .done(function() {
+  //     console.log("success");
+  //   })
+  //   .fail(function() {
+  //     console.log("error");
+  //   })
+  //   .always(function() {
+  //     console.log("complete");
+  //   });
+
+  // }
+
 
 
 

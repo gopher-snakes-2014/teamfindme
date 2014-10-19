@@ -18,7 +18,10 @@ ActiveRecord::Schema.define(version: 20141018194511) do
 
   create_table "notes", force: true do |t|
     t.integer  "user_id"
-    t.string   "picture_path"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.text     "comment"
     t.string   "longitude"
     t.string   "latitude"

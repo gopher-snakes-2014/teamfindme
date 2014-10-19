@@ -43,16 +43,10 @@ function initialize() {
       });
 
       google.maps.event.addListener(marker, 'click', function() {
-        console.log("you clicked a marker");
-        // go to notes controller
-        // find note by location
-        // return here with note
         $("#myModalNote").foundation('reveal', 'open');
       });
     }
   };
-
-
 
   map = new google.maps.Map(document.getElementById('map-canvas'),
     mapOptions);
@@ -74,36 +68,76 @@ function initialize() {
       var contentString = "my posts";
 
       $("#leaveANote").on('click', function() {
-        var noteMarker = new google.maps.Marker({
-          position: pos,
-          icon: icon,
-          animation: google.maps.Animation.DROP,
-          map: map
-        });
+        $("#myModalNote").foundation('reveal', 'open');
+        $('#noteForm').on('submit', function(e) {
+          var that = this;
+          console.log($(that).serialize());
 
-        google.maps.event.addListener(noteMarker, 'click', function(e) {
           e.preventDefault();
-          console.log("you clicked a marker");
-            // go to notes controller
-            // find note by location
-            // return here with note
-            // $("#myModalNote").foundation('reveal', 'open');
+          $.ajax({
+            url: '/notes',
+            type: 'post',
+            data: $(that).serialize()
+          }).done(function(data){
+            setCoordinates(data.id);
+          });
+        });
+        var setCoordinates = function(noteId) {
+
+          var noteMarker = new google.maps.Marker({
+            position: pos,
+            icon: icon,
+            animation: google.maps.Animation.DROP,
+            map: map
           });
 
-        var userLongitude = noteMarker.position.k;
-        var userLatitude = noteMarker.position.B;
-        $.ajax({
-          url: '/notes',
-          type: 'POST',
-          data: {longitude: userLongitude, latitude: userLatitude}
-        }).done(function() {
-          console.log("success");
-        });
-      });
-      map.setCenter(pos);
-    }, function() {
-      handleNoGeolocation(true);
-    });
+          var userLongitude = noteMarker.position.k;
+          var userLatitude = noteMarker.position.B;
+
+          $.ajax({
+            url: '/notes/update',
+            type: 'post',
+            data: {longitude: userLongitude, latitude: userLatitude, note_id: noteId}
+          })
+          .done(function() {
+            console.log("success");
+          })
+          .fail(function() {
+            console.log("error");
+          })
+          .always(function() {
+            console.log("complete");
+          });
+
+        }
+
+      // $("#noteSubmit").on('click',function(e){
+      //   e.preventDefault();
+      //   console.log("hi")
+      //   // console.log($("#noteForm").forms.2.form.2.value)
+      // });
+
+
+
+
+
+        // google.maps.event.addListener(noteMarker, 'click', function(e) {
+        //   e.preventDefault();
+        //   console.log("you clicked a marker");
+        //     // go to notes controller
+        //     // find note by location
+        //     // return here with note
+        //     // $("#myModalNote").foundation('reveal', 'open');
+        //   });
+
+
+
+});
+map.setCenter(pos);
+}, function() {
+  handleNoGeolocation(true);
+});
+
 } else {
   handleNoGeolocation(false);
 }
