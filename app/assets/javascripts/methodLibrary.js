@@ -9,5 +9,10 @@ $(function() {
     console.log('done')
   });
 
+  $('#seeAllNotes').on('click', function(){
+    loadPins();
+  })
+
+
 
 });

@@ -25,7 +25,12 @@ function initialize() {
     zoom: 24
   };
 
+  var append_info = function(notes){
+    for (var i = 0; i < notes.length; i++)
+      $("#myModalAll").text("hello" )
+  };
   loadPins(); //ajax in ajaxforwhat.js
+
 
   place_pins = function(notes) {
     var icon = {
@@ -34,11 +39,11 @@ function initialize() {
 
     for (var i = 0; i < notes.length; i++) {
       marker = new google.maps.Marker({
-            position: new google.maps.LatLng(notes[i].longitude, notes[i].latitude),
-            icon: icon,
-            animation: google.maps.Animation.DROP,
-            map: map
-          });
+        position: new google.maps.LatLng(notes[i].longitude, notes[i].latitude),
+        icon: icon,
+        animation: google.maps.Animation.DROP,
+        map: map
+      });
 
       google.maps.event.addListener(marker, 'click', function() {
         console.log("you clicked a marker");
@@ -53,11 +58,11 @@ function initialize() {
 
 
   map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
+    mapOptions);
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = new google.maps.LatLng(position.coords.latitude,
-                                       position.coords.longitude);
+       position.coords.longitude);
 
       var currentLocation = new google.maps.Marker({
         position: pos,
@@ -71,17 +76,17 @@ function initialize() {
 
       var contentString = "my posts";
 
-        $("#leaveANote").on('click', function() {
-          var noteMarker = new google.maps.Marker({
-            position: pos,
-            icon: icon,
-            animation: google.maps.Animation.DROP,
-            map: map
-          });
+      $("#leaveANote").on('click', function() {
+        var noteMarker = new google.maps.Marker({
+          position: pos,
+          icon: icon,
+          animation: google.maps.Animation.DROP,
+          map: map
+        });
 
-          google.maps.event.addListener(noteMarker, 'click', function(e) {
-            e.preventDefault();
-            console.log("you clicked a marker");
+        google.maps.event.addListener(noteMarker, 'click', function(e) {
+          e.preventDefault();
+          console.log("you clicked a marker");
             // go to notes controller
             // find note by location
             // return here with note
@@ -102,9 +107,9 @@ function initialize() {
     }, function() {
       handleNoGeolocation(true);
     });
-  } else {
-    handleNoGeolocation(false);
-  }
+} else {
+  handleNoGeolocation(false);
+}
 }
 
 

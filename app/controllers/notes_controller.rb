@@ -33,11 +33,7 @@ class NotesController < ApplicationController
   end
 
   def find_all
-    content_type :json
-    @notes = Note.all
-    p @notes
-    @notes.to_json
-    # format.json { render json: @notes }
+   @note = Note.all
   end
 
 end
