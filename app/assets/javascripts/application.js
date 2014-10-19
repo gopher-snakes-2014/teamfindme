@@ -53,7 +53,9 @@ function initialize() {
 //=======================
 
           function addInfoWindow(marker, note) {
-            var info = note.comment;
+
+            var info = "<h5>Note</h5>" + note.comment + "<h5>Image</h5>";
+
 
             var infoWindow = new google.maps.InfoWindow({
                 content: info
@@ -116,6 +118,8 @@ function initialize() {
             animation: google.maps.Animation.DROP,
             map: map
           });
+
+          addInfoWindow(noteMarker, noteId);
 
           var userLongitude = noteMarker.position.k;
           var userLatitude = noteMarker.position.B;
