@@ -25,7 +25,9 @@ function initialize() {
     zoom: 24
   };
 
+
   loadPins(); //ajax in ajaxforwhat.js
+
 
   place_pins = function(notes) {
     var icon = {
@@ -135,6 +137,7 @@ map.setCenter(pos);
 }, function() {
   handleNoGeolocation(true);
 });
+
 } else {
   handleNoGeolocation(false);
 }

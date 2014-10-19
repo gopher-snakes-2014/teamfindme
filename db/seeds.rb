@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+30.times do
+  Note.create(comment: "Hi there", longitude: rand(1...10000), latitude: rand(1...10000))
+end
