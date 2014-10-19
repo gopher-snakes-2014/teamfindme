@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   resources :users
   resources :notes
   resource :sessions
-  root 'home#index'
+  root 'notes#index'
 
 end

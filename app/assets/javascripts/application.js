@@ -16,8 +16,8 @@
 //= require turbolinks
 //= require_tree .
 
-
 $(function(){ $(document).foundation(); });
+
 var map;
 
 var mapStyle =
@@ -35,32 +35,29 @@ function initialize() {
     };
 
     for (var i = 0; i < notes.length; i++) {
-      marker = new google.maps.Marker({
+      current_marker = new google.maps.Marker({
         position: new google.maps.LatLng(notes[i].longitude, notes[i].latitude),
         icon: icon,
         animation: google.maps.Animation.DROP,
         map: map
       });
 
-      addInfoWindow(marker, notes[i]); // where should this go?
+      addInfoWindow(current_marker, notes[i]);
     }
   };
 
-//=======================
 
-          function addInfoWindow(marker, note) {
-            var info = "<h5>Note</h5>" + note.comment + "<h5>Image</h5>";
+  function addInfoWindow(marker, note) {
+    var info = "<h5>Note</h5>" + note.comment;
 
+    var infoWindow = new google.maps.InfoWindow({
+      content: info
+    });
 
-            var infoWindow = new google.maps.InfoWindow({
-                content: info
-            });
-
-            google.maps.event.addListener(marker, 'click', function () {
-                infoWindow.open(map, marker);
-            });
-        }
-//========================
+    google.maps.event.addListener(marker, 'click', function () {
+      infoWindow.open(map, marker);
+    });
+  }
 
   map = new google.maps.Map(document.getElementById('map-canvas'),
     mapOptions);
@@ -96,13 +93,13 @@ function initialize() {
       });
 
       var circle = new google.maps.Circle({
-          center: pos,
-          radius: 10,
-          fillColor: "#00EEEE",
-          fillOpacity: 0.5,
-          strokeOpacity: 0.0,
-          strokeWeight: 0,
-          map: map
+        center: pos,
+        radius: 10,
+        fillColor: "#00EEEE",
+        fillOpacity: 0.5,
+        strokeOpacity: 0.0,
+        strokeWeight: 0,
+        map: map
       });
 
       var icon = {
@@ -113,6 +110,7 @@ function initialize() {
 
       $("#leaveANote").on('click', function() {
         $("#myModalNote").foundation('reveal', 'open');
+<<<<<<< HEAD
 //===========================================
     $('#noteSubmit').click(function() {
       $("#noteForm").ajaxForm({
@@ -125,6 +123,17 @@ function initialize() {
 //===========================================
 
         var setCoordinates = function(noteId) {
+=======
+
+        $('#noteSubmit').click(function() {
+          $("#noteForm").ajaxForm({
+            success: setCoordinates
+          }).submit(function(){
+            return false;
+          });
+        });
+        var setCoordinates = function(note) {
+>>>>>>> 9ebe49e529b9fe574117debd3e2519044d0d6042
           var noteMarker = new google.maps.Marker({
             position: pos,
             icon: icon,
@@ -132,20 +141,15 @@ function initialize() {
             map: map
           });
 
-          addInfoWindow(noteMarker, noteId);
+          addInfoWindow(noteMarker, note);
 
           var userLongitude = noteMarker.position.k;
           var userLatitude = noteMarker.position.B;
 
-
-
-
-// ========================================
           $.ajax({
-            url: "/notes/"+ noteId.id +"/edit" ,
+            url: "/notes/"+ note.id +"/edit" ,
             type: 'get',
-// ========================================
-            data: {longitude: userLongitude, latitude: userLatitude, note_id: noteId.id}
+            data: {longitude: userLongitude, latitude: userLatitude, note_id: note.id}
           })
           .success(function() {
             $("#myModalNote").foundation('reveal', 'close');
@@ -160,7 +164,11 @@ function initialize() {
 
         };
 
+<<<<<<< HEAD
     }); // ends "#leaveANote"
+=======
+      });
+>>>>>>> 9ebe49e529b9fe574117debd3e2519044d0d6042
 
 map.setCenter(pos);
 }, function() {
