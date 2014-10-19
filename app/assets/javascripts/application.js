@@ -25,6 +25,14 @@ function initialize() {
     zoom: 24
   };
 
+  filterIndex = function(notes) {
+    for (var i = 0; i < notes.length; i++)
+      note = notes[i];
+      $('#myModalAll').append("<h4>" + notes.comment + "</h4>")
+      $('#myModalAll').append("<% note = Note.find("+note.id+") %>")
+      $('$myModalAll').append("<%= image_tag note.image.url %>")
+  }
+
   place_pins = function(notes) {
     var icon = {
       url: "http://i.imgur.com/ZIpm27k.png"
@@ -79,7 +87,8 @@ function initialize() {
         data: {longitudeMax: longitudeMax, longitudeMin: longitudeMin, latitudeMax: latitudeMax, latitudeMin: latitudeMin },
       })
       .done(function(data) {
-        place_pins(data)
+        place_pins(data);
+        filterIndex(data);
         console.log("success")
         console.log(data);
       })
