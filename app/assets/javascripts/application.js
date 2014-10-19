@@ -25,9 +25,7 @@ function initialize() {
     zoom: 24
   };
 
-
   // loadPins(); //ajax in ajaxforwhat.js
-
 
   place_pins = function(notes) {
     var icon = {
@@ -77,6 +75,28 @@ function initialize() {
         position: pos,
         animation: google.maps.Animation.DROP,
         map: map
+      });
+
+      var longitudeMax = currentLocation.position.k + 0.000085;
+      var longitudeMin = currentLocation.position.k - 0.000085;
+      var latitudeMax = currentLocation.position.B + 0.000085;
+      var latitudeMin = currentLocation.position.B - 0.000085;
+
+      $.ajax({
+        url: '/notes/radius_search',
+        type: 'get',
+        data: {longitudeMax: longitudeMax, longitudeMin: longitudeMin, latitudeMax: latitudeMax, latitudeMin: latitudeMin },
+      })
+      .done(function(data) {
+        place_pins(data)
+        console.log("success")
+        console.log(data);
+      })
+      .fail(function() {
+        console.log("error");
+      })
+      .always(function() {
+        console.log("complete");
       });
 
       var circle = new google.maps.Circle({
@@ -132,27 +152,7 @@ function initialize() {
           var userLongitude = noteMarker.position.k;
           var userLatitude = noteMarker.position.B;
 
-          var longitudeMax = noteMarker.position.k + 0.00005;
-          var longitudeMin = noteMarker.position.k - 0.00005;
-          var latitudeMax = noteMarker.position.B + 0.00005;
-          var latitudeMin = noteMarker.position.B - 0.00005;
 
-          $.ajax({
-            url: '/notes/radius_search',
-            type: 'get',
-            data: {longitudeMax: longitudeMax, longitudeMin: longitudeMin, latitudeMax: latitudeMax, latitudeMin: latitudeMin },
-          })
-          .done(function(data) {
-            place_pins(data)
-            console.log("success")
-            console.log(data);
-          })
-          .fail(function() {
-            console.log("error");
-          })
-          .always(function() {
-            console.log("complete");
-          });
 
 
 // ========================================
