@@ -11,10 +11,6 @@ class NotesController < ApplicationController
   end
 
   def update
-    # @note = Note.find(params[:note_id])
-    # @note.update_attributes(longitude: params[:longitude], latitude: params[:latitude])
-    # @note.save
-    # redirect_to root_path
   end
 # ====================================
   def edit
