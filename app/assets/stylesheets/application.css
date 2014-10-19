@@ -23,14 +23,18 @@
 }
 
 .sub-nav {
-  margin: 0.45rem 0.6rem -2.475rem;
+  margin: 1.05rem 0.6rem -2.475rem;
 }
 
-/*PARALLAX*/
-/*#home {
-background: url(home-bg.jpg) 50% 0 repeat fixed; min-height: 1000px;
+.logo {
+  margin: -4% 0 0 -3%;
+  height: 166%;
 }
 
-#about {
-background: url(about-bg.jpg) 50% 0 no-repeat min-height: 1000px;
-}*/
+#signup {
+  color: #d6d1d1;
+}
+
+#signin {
+  color: #d6d1d1;
+}
