@@ -2,7 +2,7 @@
   <% @note = Note.all %>
   <% @note.each do |note| %>
   <h4> <%= note.comment  %> </h4>
-  <%= note.image.url  %>
+  <%= image_tag note.image.url  %>
   <% end %>
     <a class="close-reveal-modal">&#215;</a>
 </div>

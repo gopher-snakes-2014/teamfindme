@@ -74,7 +74,6 @@ var loadPins = function () {
     // dataType: "json",
   }).done(function(data){
     place_pins(data);
-    append_info(data);
       // place_locations(data);
     }).fail(function(error){
       console.log(error);
