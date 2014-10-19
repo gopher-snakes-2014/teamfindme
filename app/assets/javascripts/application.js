@@ -100,19 +100,19 @@ function initialize() {
             map: map
           });
 //=======================
-          addInfoWindow(noteMarker, noteId)
+        //   addInfoWindow(noteMarker, noteId)
 
-          function addInfoWindow(marker, message) {
-            var info = message;
+        //   function addInfoWindow(marker, message) {
+        //     var info = message;
 
-            var infoWindow = new google.maps.InfoWindow({
-                content: message
-            });
+        //     var infoWindow = new google.maps.InfoWindow({
+        //         content: message
+        //     });
 
-            google.maps.event.addListener(marker, 'click', function () {
-                infoWindow.open(map, marker);
-            });
-        }
+        //     google.maps.event.addListener(marker, 'click', function () {
+        //         infoWindow.open(map, marker);
+        //     });
+        // }
 //========================
 
           var userLongitude = noteMarker.position.k;
