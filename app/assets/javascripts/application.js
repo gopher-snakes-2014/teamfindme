@@ -42,11 +42,30 @@ function initialize() {
         map: map
       });
 
-      google.maps.event.addListener(marker, 'click', function() {
-        $("#myModalNote").foundation('reveal', 'open');
-      });
+      addInfoWindow(marker, notes[i]); // where should this go?
+
+      // google.maps.event.addListener(marker, 'click', function() {
+      //   $("#myModalNote").foundation('reveal', 'open');
+      // });
     }
   };
+
+//=======================
+
+          function addInfoWindow(marker, note) {
+
+            var info = "<h5>Note</h5>" + note.comment + "<h5>Image</h5>";
+
+
+            var infoWindow = new google.maps.InfoWindow({
+                content: info
+            });
+
+            google.maps.event.addListener(marker, 'click', function () {
+                infoWindow.open(map, marker);
+            });
+        }
+//========================
 
   map = new google.maps.Map(document.getElementById('map-canvas'),
     mapOptions);
@@ -99,21 +118,8 @@ function initialize() {
             animation: google.maps.Animation.DROP,
             map: map
           });
-//=======================
-        //   addInfoWindow(noteMarker, noteId)
 
-        //   function addInfoWindow(marker, message) {
-        //     var info = message;
-
-        //     var infoWindow = new google.maps.InfoWindow({
-        //         content: message
-        //     });
-
-        //     google.maps.event.addListener(marker, 'click', function () {
-        //         infoWindow.open(map, marker);
-        //     });
-        // }
-//========================
+          addInfoWindow(noteMarker, noteId);
 
           var userLongitude = noteMarker.position.k;
           var userLatitude = noteMarker.position.B;
