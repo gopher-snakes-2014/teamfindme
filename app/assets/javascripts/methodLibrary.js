@@ -12,7 +12,4 @@ $(function() {
   $('#seeAllNotes').on('click', function(){
     loadPins();
   })
-
-
-
 });
