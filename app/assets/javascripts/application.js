@@ -53,7 +53,6 @@ function initialize() {
 //=======================
 
           function addInfoWindow(marker, note) {
-
             var info = "<h5>Note</h5>" + note.comment + "<h5>Image</h5>";
 
 
