@@ -26,7 +26,7 @@ function initialize() {
   };
 
 
-  loadPins(); //ajax in ajaxforwhat.js
+  // loadPins(); //ajax in ajaxforwhat.js
 
 
   place_pins = function(notes) {
@@ -80,12 +80,21 @@ function initialize() {
         map: map
       });
 
+      var circle = new google.maps.Circle({
+          center: pos,
+          radius: 10,
+          fillColor: "#00EEEE",
+          fillOpacity: 0.5,
+          strokeOpacity: 0.0,
+          strokeWeight: 0,
+          map: map
+      });
+
       var icon = {
         url: "http://i.imgur.com/ZIpm27k.png"
       };
 
       var contentString = "my posts";
-
 
       $("#leaveANote").on('click', function() {
         $("#myModalNote").foundation('reveal', 'open');
@@ -95,7 +104,7 @@ function initialize() {
       $("#noteForm").ajaxForm({
         success: setCoordinates
       }).submit(function(){
-        return false
+        return false;
       });
       // e.preventDefault();
     });
@@ -123,6 +132,30 @@ function initialize() {
 
           var userLongitude = noteMarker.position.k;
           var userLatitude = noteMarker.position.B;
+
+          var longitudeMax = noteMarker.position.k + 0.00005;
+          var longitudeMin = noteMarker.position.k - 0.00005;
+          var latitudeMax = noteMarker.position.B + 0.00005;
+          var latitudeMin = noteMarker.position.B - 0.00005;
+
+          $.ajax({
+            url: '/notes/radius_search',
+            type: 'get',
+            data: {longitudeMax: longitudeMax, longitudeMin: longitudeMin, latitudeMax: latitudeMax, latitudeMin: latitudeMin },
+          })
+          .done(function(data) {
+            place_pins(data)
+            console.log("success")
+            console.log(data);
+          })
+          .fail(function() {
+            console.log("error");
+          })
+          .always(function() {
+            console.log("complete");
+          });
+
+
 // ========================================
           $.ajax({
             url: "/notes/"+ noteId.id +"/edit" ,

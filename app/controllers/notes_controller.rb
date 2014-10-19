@@ -26,7 +26,18 @@ class NotesController < ApplicationController
 #====================================
   def show
     @notes = Note.all
-    render :json => @notes
+    @notes_in_range = @notes.where("longitude <= #{params[:longitudeMax]} AND longitude >= #{params[:longitudeMin]} AND latitude <= #{params[:latitudeMax]} AND latitude >= #{params[:latitudeMin]}")
+    render :json => @notes_in_range
+  end
+
+  def radius_search
+    @notes = Note.all
+    p "+++++++++++++++++++++++++++++++++++++++++++++++++"
+    p params
+    @notes_in_range = @notes.where("longitude <= #{params[:longitudeMax]} AND longitude >= #{params[:longitudeMin]} AND latitude <= #{params[:latitudeMax]} AND latitude >= #{params[:latitudeMin]}")
+    p "+++++++++++++++++++++++++++++++++++++++++++++++++"
+    p @notes_in_range
+    render :json => @notes_in_range
   end
 
   def destroy
