@@ -110,20 +110,6 @@ function initialize() {
 
       $("#leaveANote").on('click', function() {
         $("#myModalNote").foundation('reveal', 'open');
-<<<<<<< HEAD
-//===========================================
-    $('#noteSubmit').click(function() {
-      $("#noteForm").ajaxForm({
-        success: setCoordinates
-      }).submit(function(){
-        return false;
-      });
-
-    });
-//===========================================
-
-        var setCoordinates = function(noteId) {
-=======
 
         $('#noteSubmit').click(function() {
           $("#noteForm").ajaxForm({
@@ -133,7 +119,6 @@ function initialize() {
           });
         });
         var setCoordinates = function(note) {
->>>>>>> 9ebe49e529b9fe574117debd3e2519044d0d6042
           var noteMarker = new google.maps.Marker({
             position: pos,
             icon: icon,
@@ -164,11 +149,7 @@ function initialize() {
 
         };
 
-<<<<<<< HEAD
-    }); // ends "#leaveANote"
-=======
-      });
->>>>>>> 9ebe49e529b9fe574117debd3e2519044d0d6042
+     }); // ends "#leaveANote"
 
 map.setCenter(pos);
 }, function() {
