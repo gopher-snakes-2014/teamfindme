@@ -16,12 +16,12 @@ describe NotesController do
       expect(response).to have_http_status(200)
     end
   end
-  describe "notes_path" do
-    it "redirects to root_path" do
-      post 'create'
-      expect(response).to redirect_to root_path
-    end
-  end
+  # describe "notes_path" do
+  #   it "redirects to root_path" do
+  #     post 'create'
+  #     expect(response).to redirect_to root_path
+  #   end
+  # end
 end
 
 describe SessionsController do

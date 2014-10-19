@@ -67,39 +67,65 @@ function initialize() {
 
       var contentString = "my posts";
 
+
       $("#leaveANote").on('click', function() {
         $("#myModalNote").foundation('reveal', 'open');
-        $('#noteForm').on('submit', function(e) {
-          var that = this;
-          console.log($(that).serialize());
-
-          e.preventDefault();
-          $.ajax({
-            url: '/notes',
-            type: 'post',
-            data: $(that).serialize()
-          }).done(function(data){
-            setCoordinates(data.id);
-          });
-        });
+//===========================================
+    $('#noteSubmit').click(function() {
+      // alert("hi");
+      $("#noteForm").ajaxForm({
+        success: setCoordinates
+      }).submit(function(){
+        return false
+      });
+      // e.preventDefault();
+    });
+//===========================================
+        // $('#noteForm').on('submit', function(e) {
+        //   var that = this;
+        //   e.preventDefault();
+        //   $.ajax({
+        //     url: '/notes',
+        //     type: 'post',
+        //     data: $(that).serialize()
+        //   }).done(function(data){
+        //     setCoordinates(data.id);
+        //   });
+        // });
         var setCoordinates = function(noteId) {
-
           var noteMarker = new google.maps.Marker({
             position: pos,
             icon: icon,
             animation: google.maps.Animation.DROP,
             map: map
           });
+//=======================
+          addInfoWindow(noteMarker, noteId)
+
+          function addInfoWindow(marker, message) {
+            var info = message;
+
+            var infoWindow = new google.maps.InfoWindow({
+                content: message
+            });
+
+            google.maps.event.addListener(marker, 'click', function () {
+                infoWindow.open(map, marker);
+            });
+        }
+//========================
 
           var userLongitude = noteMarker.position.k;
           var userLatitude = noteMarker.position.B;
-
+// ========================================
           $.ajax({
-            url: '/notes/update',
-            type: 'post',
-            data: {longitude: userLongitude, latitude: userLatitude, note_id: noteId}
+            url: "/notes/"+ noteId.id +"/edit" ,
+            type: 'get',
+// ========================================
+            data: {longitude: userLongitude, latitude: userLatitude, note_id: noteId.id}
           })
-          .done(function() {
+          .success(function() {
+            $("#myModalNote").foundation('reveal', 'close');
             console.log("success");
           })
           .fail(function() {
@@ -109,7 +135,7 @@ function initialize() {
             console.log("complete");
           });
 
-        }
+        };
 
       // $("#noteSubmit").on('click',function(e){
       //   e.preventDefault();
@@ -130,9 +156,8 @@ function initialize() {
         //     // $("#myModalNote").foundation('reveal', 'open');
         //   });
 
+    }); // ends "#leaveANote"
 
-
-});
 map.setCenter(pos);
 }, function() {
   handleNoGeolocation(true);
