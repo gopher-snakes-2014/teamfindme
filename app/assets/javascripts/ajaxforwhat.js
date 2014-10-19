@@ -67,11 +67,6 @@
 //     })
 //   });
 
-var append_info = function(notes){
-    for (var i = 0; i < notes.length; i++)
-      $("#myModalAll").append("<h4>"+notes.comment+"</h4><br>" )
-  };
-
 var loadPins = function () {
   $.ajax({
     url: "/notes/1",

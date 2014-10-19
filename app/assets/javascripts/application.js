@@ -25,10 +25,7 @@ function initialize() {
     zoom: 24
   };
 
-  var append_info = function(notes){
-    for (var i = 0; i < notes.length; i++)
-      $("#myModalAll").text("hello" )
-  };
+
   loadPins(); //ajax in ajaxforwhat.js
 
 
