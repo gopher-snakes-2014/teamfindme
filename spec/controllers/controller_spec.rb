@@ -1,15 +1,13 @@
 require 'rails_helper'
 
-describe HomeController do
+describe NotesController do
   describe "GET '/'" do
     it "shows a homepage" do
       get 'index'
       expect(response).to have_http_status(200)
     end
   end
-end
 
-describe NotesController do
   describe "new_note_path" do
     it "successfully hits the route" do
       get 'new'
