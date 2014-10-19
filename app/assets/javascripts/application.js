@@ -25,9 +25,7 @@ function initialize() {
     zoom: 24
   };
 
-
-  loadPins(); //ajax in ajaxforwhat.js
-
+  // loadPins(); //ajax in ajaxforwhat.js
 
   place_pins = function(notes) {
     var icon = {
@@ -79,12 +77,43 @@ function initialize() {
         map: map
       });
 
+      var longitudeMax = currentLocation.position.k + 0.000085;
+      var longitudeMin = currentLocation.position.k - 0.000085;
+      var latitudeMax = currentLocation.position.B + 0.000085;
+      var latitudeMin = currentLocation.position.B - 0.000085;
+
+      $.ajax({
+        url: '/notes/radius_search',
+        type: 'get',
+        data: {longitudeMax: longitudeMax, longitudeMin: longitudeMin, latitudeMax: latitudeMax, latitudeMin: latitudeMin },
+      })
+      .done(function(data) {
+        place_pins(data)
+        console.log("success")
+        console.log(data);
+      })
+      .fail(function() {
+        console.log("error");
+      })
+      .always(function() {
+        console.log("complete");
+      });
+
+      var circle = new google.maps.Circle({
+          center: pos,
+          radius: 10,
+          fillColor: "#00EEEE",
+          fillOpacity: 0.5,
+          strokeOpacity: 0.0,
+          strokeWeight: 0,
+          map: map
+      });
+
       var icon = {
         url: "http://i.imgur.com/ZIpm27k.png"
       };
 
       var contentString = "my posts";
-
 
       $("#leaveANote").on('click', function() {
         $("#myModalNote").foundation('reveal', 'open');
@@ -94,7 +123,7 @@ function initialize() {
       $("#noteForm").ajaxForm({
         success: setCoordinates
       }).submit(function(){
-        return false
+        return false;
       });
       // e.preventDefault();
     });
@@ -122,6 +151,10 @@ function initialize() {
 
           var userLongitude = noteMarker.position.k;
           var userLatitude = noteMarker.position.B;
+
+
+
+
 // ========================================
           $.ajax({
             url: "/notes/"+ noteId.id +"/edit" ,

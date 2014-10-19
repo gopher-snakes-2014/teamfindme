@@ -4,8 +4,8 @@ class CreateNotes < ActiveRecord::Migration
       t.references :user
       t.attachment :image
       t.text :comment
-      t.string :longitude
-      t.string :latitude
+      t.float :longitude
+      t.float :latitude
       t.timestamps
     end
   end
