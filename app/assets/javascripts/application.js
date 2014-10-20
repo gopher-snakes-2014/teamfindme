@@ -32,7 +32,7 @@ function initialize() {
   filterAll = function(notes, url) {
     for (var i = 0; i < notes.length; i++) {
       $('#myModalAll').append("<h4>" + notes[i].comment + "</h4>");
-      $('#myModalAll').append("<img src=" + url + ">");
+      $('#myModalAll').append("<img src=" + url[i] + ">");
     };
   };
 
