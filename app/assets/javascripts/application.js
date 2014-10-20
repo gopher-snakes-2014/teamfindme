@@ -36,7 +36,7 @@ function initialize() {
     };
   };
 
-  place_pins = function(notes) {
+  place_pins = function(notes, url) {
     var icon = {
       url: "http://i.imgur.com/ZIpm27k.png"
     };
@@ -49,14 +49,13 @@ function initialize() {
         map: map
       });
 
-      addInfoWindow(current_marker, notes[i]);
+      addInfoWindow(current_marker, notes[i], url[i]);
     }
-    console.log("i ran")
   };
 
 
-  function addInfoWindow(marker, note) {
-    var info = "<h5>Note</h5>" + note.comment;
+  function addInfoWindow(marker, note, url) {
+    var info = "<h5>Note</h5>" + note.comment + "<br><img src=" + url + ">";
 
     var infoWindow = new google.maps.InfoWindow({
       content: info
@@ -91,7 +90,7 @@ function initialize() {
         data: {longitudeMax: longitudeMax, longitudeMin: longitudeMin, latitudeMax: latitudeMax, latitudeMin: latitudeMin },
       })
       .done(function(data) {
-        place_pins(data);
+        place_pins(data[0], data[1]);
         filterAll(data[0], data[1]);
       })
       .fail(function() {
