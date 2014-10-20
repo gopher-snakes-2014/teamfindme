@@ -79,9 +79,9 @@ Rails.application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => ENV['findmeimages'],
-      :access_key_id => ENV['AKIAJ6OO5KTQ2CYI4HYA'],
-      :secret_access_key => ENV['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']
+     :bucket => ENV['AWS_ASSETS_BUCKET'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
 end

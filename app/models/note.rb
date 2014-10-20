@@ -1,14 +1,16 @@
 class Note < ActiveRecord::Base
   belongs_to :user
   has_attached_file :image,
-                    :storage => :s3,
-                    :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
-
+            :s3_protocol => "https",
+            :s3_host_name => "s3-us-west-2.amazonaws.com",
+            :style => { :medium => "300x300>", :thumb => "100x100>" },
+            :storage => :s3,
+            :bucket  => ENV['AWS_ASSETS_BUCKET'],
+            :s3_credentials => {
+                    :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+                    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+                }
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   validates :comment, presence: true
-
-  def s3_credentials
-    {:bucket => "findmeimages", :access_key_id => "AKIAJ6OO5KTQ2CYI4HYA", :secret_access_key => "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"}
-  end
 
 end
