@@ -6,7 +6,7 @@
     <%= f.label :image  %>
     <%= f.file_field :image, class: "form-control" %>
     <br>
-    <a href="#"><%= f.submit :Submit, id: "noteSubmit",class: "button expand" %>
+    <a href="#"onClick="window.location.reload()"><%= f.submit :Submit, id: "noteSubmit",class: "button expand" %>
   <% end %>
   <a class="close-reveal-modal">&#215;</a>
 </div>
