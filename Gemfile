@@ -30,6 +30,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'paperclip', '~> 4.2'
 
 gem "geocoder"
+gem "aws-sdk"
 
 # Use unicorn as the app server
 # gem 'unicorn'
