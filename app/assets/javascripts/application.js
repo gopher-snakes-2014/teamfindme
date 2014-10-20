@@ -29,6 +29,13 @@ function initialize() {
     styles: mapStyle
   };
 
+  filterAll = function(notes, url) {
+    for (var i = 0; i < notes.length; i++) {
+      $('#myModalAll').append("<h4>" + notes[i].comment + "</h4>");
+      $('#myModalAll').append("<img src=" + url + ">");
+    };
+  };
+
   place_pins = function(notes) {
     var icon = {
       url: "http://i.imgur.com/ZIpm27k.png"
@@ -44,6 +51,7 @@ function initialize() {
 
       addInfoWindow(current_marker, notes[i]);
     }
+    console.log("i ran")
   };
 
 
@@ -84,7 +92,7 @@ function initialize() {
       })
       .done(function(data) {
         place_pins(data);
-        console.log("success");
+        filterAll(data[0], data[1]);
       })
       .fail(function() {
         console.log("error");
