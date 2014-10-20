@@ -15,64 +15,33 @@
  *= require foundation_and_overrides
 
  */
+
 body {
   background-color:#ECF5FD;
 }
 
-#map-canvas{
-  height: 69%;
-  margin: 0 7%;
-  padding: 0;
-}
-
-.sub-nav {
-  margin: 0 0 0 5.6em;
-  width: 69.3em;
-}
-
-.logo {
-  margin: -0.6em 0 0 2em;
-  height: 5.1em;
-}
-
-#signup {
-  color: #d6d1d1;
-}
-
-#signin {
-  color: #d6d1d1;
-}
-
-.top-bar {
-  padding: 0.5em 5em 0 0;
-  height: 4em;
+nav {
   background: #202931;
 }
 
-a#signUp {
+h1{
+ color: #ECF5FD;
+}
+
+.nav-button {
   background-color: #202931;
   color: #ECF5FD;
-  font-size: 1.3em;
 }
 
-a#signIn {
-  background-color: #202931;
-  color: #ECF5FD;
-  font-size: 1.3em;
-}
-
-a#leaveANote {
+.sub-nav-button {
   background-color: #9ECEF6;
   color: #3F5262;
-  width: 48.4%;
-  font-size: 1em;
 }
 
-a#seeAllNotes {
-  background-color: #9ECEF6;
-  color: #3F5262;
-  width: 50.4%;
-  font-size: 1em;
+#map-canvas{
+  height: 76%;
+  margin: 0 12% 0 11%;
+  padding: 0;
 }
 
 .reveal-modal {
@@ -80,7 +49,20 @@ a#seeAllNotes {
   color: #ECF5FD;
 }
 
-.expand{
+.expand {
   background-color: #9ECEF6;
   color: #3F5262;
+}
+
+img {
+  height: 24px;
+  margin-top: 4%;
+}
+
+ul.button-group.right {
+  margin-bottom: -19px;
+}
+
+.sub-nav {
+  margin-bottom: 0.125rem;
 }
