@@ -2,9 +2,11 @@
   <%= form_for "note", :url => notes_path, :html => { :multipart => true } do |form| %>
     <%= form.label :comment  %>
     <%= form.text_field :comment, class: "form-control"  %>
+    <br>
     <%= form.label :image  %>
     <%= form.file_field :image %>
-    <a href="#"><%= form.submit class: "button expand" %></a>
+    <br>
+    <a href="#"><%= form.submit :Submit class: "button expand" %></a>
   <% end %>
   <a class="close-reveal-modal">&#215;</a>
 </div>
