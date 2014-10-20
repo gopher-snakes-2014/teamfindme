@@ -31,6 +31,8 @@ gem 'paperclip', '~> 4.2'
 
 gem "geocoder"
 
+gem 'slick_rails'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

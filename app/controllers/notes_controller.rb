@@ -44,6 +44,8 @@ class NotesController < ApplicationController
   end
 
   def destroy
+    Note.find(params[:id]).destroy
+    redirect_to :back
   end
 
   def note_params
