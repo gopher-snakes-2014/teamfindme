@@ -29,14 +29,15 @@ function initialize() {
     styles: mapStyle
   };
 
-  filterAll = function(notes, url) {
+  filterAll = function(notes, url, username) {
     for (var i = 0; i < notes.length; i++) {
       $('#myModalAll').append("<h4>" + notes[i].comment + "</h4>");
       $('#myModalAll').append("<img src=" + url[i] + ">");
+      $('#myModalALl').append("<h3>" + username[i] + "</h3>")
     };
   };
 
-  place_pins = function(notes, url) {
+  place_pins = function(notes, url, username) {
     var icon = {
       url: "http://i.imgur.com/ZIpm27k.png"
     };
@@ -49,13 +50,13 @@ function initialize() {
         map: map
       });
 
-      addInfoWindow(current_marker, notes[i], url[i]);
+      addInfoWindow(current_marker, notes[i], url[i], username[i]);
     }
   };
 
 
-  function addInfoWindow(marker, note, url) {
-    var info = "<h5>Note</h5>" + note.comment + "<br><img src=" + url + ">";
+  function addInfoWindow(marker, note, url, username) {
+    var info = "<h5>"+ username +"</h5>" + note.comment + "<br><img src=" + url + ">";
 
     var infoWindow = new google.maps.InfoWindow({
       content: info
@@ -90,8 +91,9 @@ function initialize() {
         data: {longitudeMax: longitudeMax, longitudeMin: longitudeMin, latitudeMax: latitudeMax, latitudeMin: latitudeMin },
       })
       .done(function(data) {
-        place_pins(data[0], data[1]);
-        filterAll(data[0], data[1]);
+        console.log(data)
+        place_pins(data[0], data[1], data[2]);
+        filterAll(data[0], data[1], data[2]);
       })
       .fail(function() {
         console.log("error");

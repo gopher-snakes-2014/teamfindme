@@ -10,6 +10,7 @@ class NotesController < ApplicationController
   end
 
   def create
+    p session[:current_user_id]
     @new_note = Note.create(user_id: session[:current_user_id], :image => params[:note][:image], :comment => params[:note][:comment])
     render :json => @new_note
   end
@@ -32,10 +33,14 @@ class NotesController < ApplicationController
 
   def radius_search
     @url = []
+    @user = []
+    @username = []
     @notes = Note.all
     @notes_in_range = @notes.where("longitude <= #{params[:longitudeMax]} AND longitude >= #{params[:longitudeMin]} AND latitude <= #{params[:latitudeMax]} AND latitude >= #{params[:latitudeMin]}")
     @notes_in_range.each {|note| @url << note.image.url }
-    render :json => [@notes_in_range, @url]
+    @notes_in_range.each {|note| @user << User.find(note.user_id) }
+    @user.each {|user| @username << user.username }
+    render :json => [@notes_in_range, @url, @username]
   end
 
   def destroy
@@ -47,6 +52,6 @@ class NotesController < ApplicationController
 
   def find_all
    @note = Note.all
-  end
+ end
 
-  end
+end
