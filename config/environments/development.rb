@@ -32,6 +32,15 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['findmeimages'],
+      :access_key_id => ENV['AKIAJ6OO5KTQ2CYI4HYA'],
+      :secret_access_key => ENV['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']
+    }
+  }
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end
