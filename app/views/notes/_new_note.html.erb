@@ -1,0 +1,12 @@
+<div id="myModalNote" class="reveal-modal" data-reveal>
+ <%= form_for "note", :html => {:id => "noteForm"}, url: notes_path, :method => :post do |f|%>
+    <%= f.label :note  %>
+    <%= f.text_field :comment, class: "form-control"  %>
+    <br>
+    <%= f.label :image  %>
+    <%= f.file_field :image, class: "form-control" %>
+    <br>
+    <a href="#"><%= f.submit :Submit, id: "noteSubmit",class: "button expand" %>
+  <% end %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
