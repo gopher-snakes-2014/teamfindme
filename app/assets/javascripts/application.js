@@ -25,9 +25,8 @@ var mapStyle =
 
 function initialize() {
   var mapOptions = {
-    zoom: 20,
-    styles: mapStyle,
-    scrollwheel: false
+    zoom: 18,
+    styles: mapStyle
   };
 
   filterAll = function(notes, url, username) {
@@ -93,10 +92,10 @@ function initialize() {
         map: map
       });
 
-      var longitudeMax = currentLocation.position.k + 0.000088;
-      var longitudeMin = currentLocation.position.k - 0.000088;
-      var latitudeMax = currentLocation.position.B + 0.000088;
-      var latitudeMin = currentLocation.position.B - 0.000088;
+      var longitudeMax = currentLocation.position.k + 0.000085;
+      var longitudeMin = currentLocation.position.k - 0.000085;
+      var latitudeMax = currentLocation.position.B + 0.000085;
+      var latitudeMin = currentLocation.position.B - 0.000085;
 
       $.ajax({
         url: '/notes/radius_search',

@@ -36,17 +36,15 @@ h1{
 .sub-nav-button {
   background-color: #9ECEF6;
   color: #3F5262;
-  font-family: 'Montserrat', sans-serif;
-  text-transform: capitalize;
 }
 
 #map-canvas{
-  height: 60%;
+  height: 76%;
+  margin: 0 12% 0 11%;
   padding: 0;
   font-size: 1em;
   font-family: 'Montserrat', sans-serif;
   text-transform: capitalize;
-
 }
 
 .reveal-modal {
