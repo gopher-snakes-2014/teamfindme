@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20141018194511) do
     t.float    "latitude"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "location_id"
   end
 
   create_table "users", force: true do |t|
