@@ -10,18 +10,18 @@ class NotesController < ApplicationController
   end
 
   def create
-    p session[:current_user_id]
     @new_note = Note.create(user_id: session[:current_user_id], :image => params[:note][:image], :comment => params[:note][:comment])
-    render :json => @new_note
+    @url = @new_note.image.url
+    @username = @new_note.user.username
+    render :json => [@new_note, @url, @username]
   end
 
   def update
   end
 
   def edit
-    @note = Note.find(params[:note_id])
+    @note = Note.find(params[:id])
     @note.update_attributes(longitude: params[:longitude], latitude: params[:latitude])
-    @note.save
     redirect_to root_path
   end
 
@@ -33,13 +33,13 @@ class NotesController < ApplicationController
 
   def radius_search
     @url = []
-    @user = []
     @username = []
-    @notes = Note.all
-    @notes_in_range = @notes.where("longitude <= #{params[:longitudeMax]} AND longitude >= #{params[:longitudeMin]} AND latitude <= #{params[:latitudeMax]} AND latitude >= #{params[:latitudeMin]}")
-    @notes_in_range.each {|note| @url << note.image.url }
-    @notes_in_range.each {|note| @user << User.find(note.user_id) }
-    @user.each {|user| @username << user.username }
+    @notes_in_range = Note.where("longitude <= #{params[:longitudeMax]} AND longitude >= #{params[:longitudeMin]} AND latitude <= #{params[:latitudeMax]} AND latitude >= #{params[:latitudeMin]}")
+    @notes_in_range.each do |note|
+      @url << note.image.url
+      @username << note.user.username
+    end
+
     render :json => [@notes_in_range, @url, @username]
   end
 

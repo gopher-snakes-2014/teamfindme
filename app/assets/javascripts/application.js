@@ -56,7 +56,7 @@ function initialize() {
 
 
   function addInfoWindow(marker, note, url, username) {
-    var info = "<h5>"+ username +"</h5>" + note.comment + "<br><img src=" + url + ">";
+    var info = "<h6>"+ username +"</h6>" + note.comment + "<br><img src=" + url + ">";
 
     var infoWindow = new google.maps.InfoWindow({
       content: info
@@ -92,6 +92,7 @@ function initialize() {
       })
       .done(function(data) {
         console.log(data)
+        console.log(data[0])
         place_pins(data[0], data[1], data[2]);
         filterAll(data[0], data[1], data[2]);
       })
@@ -125,9 +126,10 @@ function initialize() {
           $("#noteForm").ajaxForm({
             success: setCoordinates
           }).submit(function(){
-            return false;
+            // return false;
           });
         });
+
         var setCoordinates = function(note) {
           var noteMarker = new google.maps.Marker({
             position: pos,
@@ -136,17 +138,18 @@ function initialize() {
             map: map
           });
 
-          addInfoWindow(noteMarker, note);
+          addInfoWindow(noteMarker, note[0], note[1], note[2]);
 
           var userLongitude = noteMarker.position.k;
           var userLatitude = noteMarker.position.B;
 
           $.ajax({
-            url: "/notes/"+ note.id +"/edit" ,
-            type: 'get',
-            data: {longitude: userLongitude, latitude: userLatitude, note_id: note.id}
+            url: "/notes/"+ note[0].id +"/edit" ,
+            type: 'GET',
+            data: {longitude: userLongitude, latitude: userLatitude}
           })
           .success(function() {
+            $("#noteForm")[0].reset();
             $("#myModalNote").foundation('reveal', 'close');
             console.log("success");
           })
