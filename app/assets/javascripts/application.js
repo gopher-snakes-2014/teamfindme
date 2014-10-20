@@ -16,16 +16,25 @@
 //= require turbolinks
 //= require_tree .
 
-
 $(function(){ $(document).foundation(); });
+
 var map;
+
+var mapStyle =
+[{"featureType":"water","stylers":[{"color":"#19a0d8"}]},{"featureType":"administrative","elementType":"labels.text.stroke","stylers":[{"color":"#ffffff"},{"weight":6}]},{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#e85113"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#efe9e4"},{"lightness":-40}]},{"featureType":"road.arterial","elementType":"geometry.stroke","stylers":[{"color":"#efe9e4"},{"lightness":-20}]},{"featureType":"road","elementType":"labels.text.stroke","stylers":[{"lightness":100}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"lightness":-100}]},{"featureType":"road.highway","elementType":"labels.icon"},{"featureType":"landscape","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"landscape","stylers":[{"lightness":20},{"color":"#efe9e4"}]},{"featureType":"landscape.man_made","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"labels.text.stroke","stylers":[{"lightness":100}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"lightness":-100}]},{"featureType":"poi","elementType":"labels.text.fill","stylers":[{"hue":"#11ff00"}]},{"featureType":"poi","elementType":"labels.text.stroke","stylers":[{"lightness":100}]},{"featureType":"poi","elementType":"labels.icon","stylers":[{"hue":"#4cff00"},{"saturation":58}]},{"featureType":"poi","elementType":"geometry","stylers":[{"visibility":"on"},{"color":"#f0e4d3"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#efe9e4"},{"lightness":-25}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#efe9e4"},{"lightness":-10}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"simplified"}]}];
 
 function initialize() {
   var mapOptions = {
-    zoom: 24
+    zoom: 18,
+    styles: mapStyle
   };
 
-  // loadPins(); //ajax in ajaxforwhat.js
+  filterAll = function(notes, url) {
+    for (var i = 0; i < notes.length; i++) {
+      $('#myModalAll').append("<h4>" + notes[i].comment + "</h4>");
+      $('#myModalAll').append("<img src=" + url + ">");
+    };
+  };
 
   place_pins = function(notes) {
     var icon = {
@@ -33,36 +42,30 @@ function initialize() {
     };
 
     for (var i = 0; i < notes.length; i++) {
-      marker = new google.maps.Marker({
+      current_marker = new google.maps.Marker({
         position: new google.maps.LatLng(notes[i].longitude, notes[i].latitude),
         icon: icon,
         animation: google.maps.Animation.DROP,
         map: map
       });
 
-      addInfoWindow(marker, notes[i]); // where should this go?
-
-      // google.maps.event.addListener(marker, 'click', function() {
-      //   $("#myModalNote").foundation('reveal', 'open');
-      // });
+      addInfoWindow(current_marker, notes[i]);
     }
+    console.log("i ran")
   };
 
-//=======================
 
-          function addInfoWindow(marker, note) {
-            var info = "<h5>Note</h5>" + note.comment + "<h5>Image</h5>";
+  function addInfoWindow(marker, note) {
+    var info = "<h5>Note</h5>" + note.comment;
 
+    var infoWindow = new google.maps.InfoWindow({
+      content: info
+    });
 
-            var infoWindow = new google.maps.InfoWindow({
-                content: info
-            });
-
-            google.maps.event.addListener(marker, 'click', function () {
-                infoWindow.open(map, marker);
-            });
-        }
-//========================
+    google.maps.event.addListener(marker, 'click', function () {
+      infoWindow.open(map, marker);
+    });
+  }
 
   map = new google.maps.Map(document.getElementById('map-canvas'),
     mapOptions);
@@ -88,9 +91,8 @@ function initialize() {
         data: {longitudeMax: longitudeMax, longitudeMin: longitudeMin, latitudeMax: latitudeMax, latitudeMin: latitudeMin },
       })
       .done(function(data) {
-        place_pins(data)
-        console.log("success")
-        console.log(data);
+        place_pins(data);
+        filterAll(data[0], data[1]);
       })
       .fail(function() {
         console.log("error");
@@ -100,13 +102,13 @@ function initialize() {
       });
 
       var circle = new google.maps.Circle({
-          center: pos,
-          radius: 10,
-          fillColor: "#00EEEE",
-          fillOpacity: 0.5,
-          strokeOpacity: 0.0,
-          strokeWeight: 0,
-          map: map
+        center: pos,
+        radius: 10,
+        fillColor: "#00EEEE",
+        fillOpacity: 0.5,
+        strokeOpacity: 0.0,
+        strokeWeight: 0,
+        map: map
       });
 
       var icon = {
@@ -117,29 +119,15 @@ function initialize() {
 
       $("#leaveANote").on('click', function() {
         $("#myModalNote").foundation('reveal', 'open');
-//===========================================
-    $('#noteSubmit').click(function() {
-      // alert("hi");
-      $("#noteForm").ajaxForm({
-        success: setCoordinates
-      }).submit(function(){
-        return false;
-      });
-      // e.preventDefault();
-    });
-//===========================================
-        // $('#noteForm').on('submit', function(e) {
-        //   var that = this;
-        //   e.preventDefault();
-        //   $.ajax({
-        //     url: '/notes',
-        //     type: 'post',
-        //     data: $(that).serialize()
-        //   }).done(function(data){
-        //     setCoordinates(data.id);
-        //   });
-        // });
-        var setCoordinates = function(noteId) {
+
+        $('#noteSubmit').click(function() {
+          $("#noteForm").ajaxForm({
+            success: setCoordinates
+          }).submit(function(){
+            return false;
+          });
+        });
+        var setCoordinates = function(note) {
           var noteMarker = new google.maps.Marker({
             position: pos,
             icon: icon,
@@ -147,20 +135,15 @@ function initialize() {
             map: map
           });
 
-          addInfoWindow(noteMarker, noteId);
+          addInfoWindow(noteMarker, note);
 
           var userLongitude = noteMarker.position.k;
           var userLatitude = noteMarker.position.B;
 
-
-
-
-// ========================================
           $.ajax({
-            url: "/notes/"+ noteId.id +"/edit" ,
+            url: "/notes/"+ note.id +"/edit" ,
             type: 'get',
-// ========================================
-            data: {longitude: userLongitude, latitude: userLatitude, note_id: noteId.id}
+            data: {longitude: userLongitude, latitude: userLatitude, note_id: note.id}
           })
           .success(function() {
             $("#myModalNote").foundation('reveal', 'close');
@@ -175,26 +158,7 @@ function initialize() {
 
         };
 
-      // $("#noteSubmit").on('click',function(e){
-      //   e.preventDefault();
-      //   console.log("hi")
-      //   // console.log($("#noteForm").forms.2.form.2.value)
-      // });
-
-
-
-
-
-        // google.maps.event.addListener(noteMarker, 'click', function(e) {
-        //   e.preventDefault();
-        //   console.log("you clicked a marker");
-        //     // go to notes controller
-        //     // find note by location
-        //     // return here with note
-        //     // $("#myModalNote").foundation('reveal', 'open');
-        //   });
-
-    }); // ends "#leaveANote"
+      });
 
 map.setCenter(pos);
 }, function() {
