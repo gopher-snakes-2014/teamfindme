@@ -33,8 +33,8 @@ function initialize() {
     for (var i = 0; i < notes.length; i++) {
       $('#myModalAll').append("<h4>" + notes[i].comment + "</h4>");
       $('#myModalAll').append("<img src=" + url[i] + ">");
-      $('#myModalALl').append("<h3>" + username[i] + "</h3>")
-    };
+      $('#myModalALl').append("<h3>" + username[i] + "</h3>");
+    }
   };
 
   place_pins = function(notes, url, username) {
@@ -91,8 +91,6 @@ function initialize() {
         data: {longitudeMax: longitudeMax, longitudeMin: longitudeMin, latitudeMax: latitudeMax, latitudeMin: latitudeMin },
       })
       .done(function(data) {
-        console.log(data)
-        console.log(data[0])
         place_pins(data[0], data[1], data[2]);
         filterAll(data[0], data[1], data[2]);
       })
