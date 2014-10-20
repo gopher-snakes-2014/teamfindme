@@ -1,0 +1,19 @@
+.user-info{
+  background-color: #3F4062;
+  height: 19%;
+  width: 100%;
+}
+
+.profile-pic{
+  float: left;
+  background-color: red;
+  height: 57%;
+  width: 10%;
+  margin: 3%;
+}
+
+.user-name{
+  float:left;
+  background-color: green;
+  margin: 3%;
+}

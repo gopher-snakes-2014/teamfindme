@@ -26,21 +26,26 @@ var mapStyle =
 
 function initialize() {
   var mapOptions = {
-    zoom: 18,
-    styles: mapStyle
+    zoom: 20,
+    styles: mapStyle,
+    scrollwheel: false
   };
 
   filterAll = function(notes, url, username) {
     for (var i = 0; i < notes.length; i++) {
       $('#myModalAll').append("<h4>" + notes[i].comment + "</h4>");
       $('#myModalAll').append("<img src=" + url[i] + ">");
-      $('#myModalALl').append("<h3>" + username[i] + "</h3>")
-    };
+      $('#myModalALl').append("<h3>" + username[i] + "</h3>");
+    }
   };
 
-  place_pins = function(notes, url, username) {
+  place_pins = function(notes, url, username, notes_out) {
     var icon = {
       url: "http://i.imgur.com/ZIpm27k.png"
+    };
+
+    var icon_out = {
+      url: "http://i.imgur.com/0opmhTG.png"
     };
 
     for (var i = 0; i < notes.length; i++) {
@@ -50,8 +55,16 @@ function initialize() {
         animation: google.maps.Animation.DROP,
         map: map
       });
-
       addInfoWindow(current_marker, notes[i], url[i], username[i]);
+    }
+
+    for (var j = 0; j < notes_out.length; j++) {
+      outside_marker = new google.maps.Marker({
+        position: new google.maps.LatLng(notes_out[j].longitude, notes_out[j].latitude),
+        icon: icon_out,
+        animation: google.maps.Animation.DROP,
+        map: map
+      });
     }
   };
 
@@ -81,10 +94,10 @@ function initialize() {
         map: map
       });
 
-      var longitudeMax = currentLocation.position.k + 0.000085;
-      var longitudeMin = currentLocation.position.k - 0.000085;
-      var latitudeMax = currentLocation.position.B + 0.000085;
-      var latitudeMin = currentLocation.position.B - 0.000085;
+      var longitudeMax = currentLocation.position.k + 0.000088;
+      var longitudeMin = currentLocation.position.k - 0.000088;
+      var latitudeMax = currentLocation.position.B + 0.000088;
+      var latitudeMin = currentLocation.position.B - 0.000088;
 
       $.ajax({
         url: '/notes/radius_search',
@@ -92,9 +105,8 @@ function initialize() {
         data: {longitudeMax: longitudeMax, longitudeMin: longitudeMin, latitudeMax: latitudeMax, latitudeMin: latitudeMin },
       })
       .done(function(data) {
-        console.log(data)
-        console.log(data[0])
-        place_pins(data[0], data[1], data[2]);
+        place_pins(data[0], data[1], data[2], data[3]);
+        console.log(data[3]);
         filterAll(data[0], data[1], data[2]);
       })
       .fail(function() {
@@ -106,7 +118,7 @@ function initialize() {
 
       var circle = new google.maps.Circle({
         center: pos,
-        radius: 10,
+        radius: 9,
         fillColor: "#00EEEE",
         fillOpacity: 0.5,
         strokeOpacity: 0.0,
