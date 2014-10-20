@@ -37,9 +37,13 @@ function initialize() {
     }
   };
 
-  place_pins = function(notes, url, username) {
+  place_pins = function(notes, url, username, notes_out) {
     var icon = {
       url: "http://i.imgur.com/ZIpm27k.png"
+    };
+
+    var icon_out = {
+      url: "http://i.imgur.com/0opmhTG.png"
     };
 
     for (var i = 0; i < notes.length; i++) {
@@ -49,8 +53,16 @@ function initialize() {
         animation: google.maps.Animation.DROP,
         map: map
       });
-
       addInfoWindow(current_marker, notes[i], url[i], username[i]);
+    }
+
+    for (var j = 0; j < notes_out.length; j++) {
+      outside_marker = new google.maps.Marker({
+        position: new google.maps.LatLng(notes_out[j].longitude, notes_out[j].latitude),
+        icon: icon_out,
+        animation: google.maps.Animation.DROP,
+        map: map
+      });
     }
   };
 
@@ -91,7 +103,8 @@ function initialize() {
         data: {longitudeMax: longitudeMax, longitudeMin: longitudeMin, latitudeMax: latitudeMax, latitudeMin: latitudeMin },
       })
       .done(function(data) {
-        place_pins(data[0], data[1], data[2]);
+        place_pins(data[0], data[1], data[2], data[3]);
+        console.log(data[3]);
         filterAll(data[0], data[1], data[2]);
       })
       .fail(function() {
@@ -103,7 +116,7 @@ function initialize() {
 
       var circle = new google.maps.Circle({
         center: pos,
-        radius: 10,
+        radius: 9,
         fillColor: "#00EEEE",
         fillOpacity: 0.5,
         strokeOpacity: 0.0,

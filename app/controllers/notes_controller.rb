@@ -34,13 +34,14 @@ class NotesController < ApplicationController
   def radius_search
     @url = []
     @username = []
+
     @notes_in_range = Note.where("longitude <= #{params[:longitudeMax]} AND longitude >= #{params[:longitudeMin]} AND latitude <= #{params[:latitudeMax]} AND latitude >= #{params[:latitudeMin]}")
+    @notes_out_of_range = Note.all - @notes_in_range
     @notes_in_range.each do |note|
       @url << note.image.url
       @username << note.user.username
     end
-
-    render :json => [@notes_in_range, @url, @username]
+    render :json => [@notes_in_range, @url, @username, @notes_out_of_range]
   end
 
   def destroy
