@@ -29,13 +29,12 @@ function initialize() {
     styles: mapStyle
   };
 
-  filterIndex = function(notes) {
-    for (var i = 0; i < notes.length; i++)
-      note = notes[i];
-      $('#myModalAll').append("<h4>" + notes.comment + "</h4>")
-      $('#myModalAll').append("<% note = Note.find("+note.id+") %>")
-      $('$myModalAll').append("<%= image_tag note.image.url %>")
-  }
+  filterAll = function(notes, url) {
+    for (var i = 0; i < notes.length; i++) {
+      $('#myModalAll').append("<h4>" + notes[i].comment + "</h4>");
+      $('#myModalAll').append("<img src=" + url + ">");
+    };
+  };
 
   place_pins = function(notes) {
     var icon = {
@@ -52,6 +51,7 @@ function initialize() {
 
       addInfoWindow(current_marker, notes[i]);
     }
+    console.log("i ran")
   };
 
 
@@ -92,7 +92,7 @@ function initialize() {
       })
       .done(function(data) {
         place_pins(data);
-        filterIndex(data);
+        filterAll(data[0], data[1]);
       })
       .fail(function() {
         console.log("error");
