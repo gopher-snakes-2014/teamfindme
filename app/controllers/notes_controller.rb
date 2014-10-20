@@ -47,11 +47,11 @@ class NotesController < ApplicationController
   end
 
   def note_params
-    params.require(:note).permit(:picture_path, :comment)
+    params.require(:note).permit(:image, :comment)
   end
 
   def find_all
    @note = Note.all
- end
+  end
 
 end
