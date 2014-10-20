@@ -83,9 +83,8 @@ function initialize() {
         data: {longitudeMax: longitudeMax, longitudeMin: longitudeMin, latitudeMax: latitudeMax, latitudeMin: latitudeMin },
       })
       .done(function(data) {
-        place_pins(data)
-        console.log("success")
-        console.log(data);
+        place_pins(data);
+        console.log("success");
       })
       .fail(function() {
         console.log("error");

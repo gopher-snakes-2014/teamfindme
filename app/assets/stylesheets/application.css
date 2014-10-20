@@ -66,6 +66,8 @@ a#leaveANote {
   color: #3F5262;
   width: 48.4%;
   font-size: 1em;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: capitalize;
 }
 
 a#seeAllNotes {
@@ -73,6 +75,8 @@ a#seeAllNotes {
   color: #3F5262;
   width: 50.4%;
   font-size: 1em;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: capitalize;
 }
 
 .reveal-modal {
