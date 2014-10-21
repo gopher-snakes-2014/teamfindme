@@ -1,7 +1,9 @@
 class NotesController < ApplicationController
 
   def index
-
+    @note = Note.new
+    @user = User.new
+    render "index"
   end
 
   def new
@@ -10,29 +12,24 @@ class NotesController < ApplicationController
   end
 
   def create
-    @new_note = Note.create(user_id: session[:current_user_id], :image => params[:note][:image], :comment => params[:note][:comment])
-    @url = @new_note.image.url
-    @username = @new_note.user.username
-    render :json => [@new_note, @url, @username]
+    user = current_user
+    new_note = user.notes.create(note_params)
+    url = new_note.image.url
+    username = new_note.user.username
+    render :json => [new_note, url, username]
   end
 
   def update
+    @note = Note.find(params[:id])
+    @note.update_attributes(longitude: params[:longitude], latitude: params[:latitude])
+    render nothing:true
   end
 
   def edit
-    @note = Note.find(params[:id])
-    @note.update_attributes(longitude: params[:longitude], latitude: params[:latitude])
-    redirect_to root_path
   end
 
   def show
-    @notes = Note.all
-    @notes_in_range = @notes.where("longitude <= #{params[:longitudeMax]} AND longitude >= #{params[:longitudeMin]} AND latitude <= #{params[:latitudeMax]} AND latitude >= #{params[:latitudeMin]}")
-    render :json => @notes_in_range
-  end
-
-  def radius_search
-    @url = []
+   @url = []
     @username = []
 
     @notes_in_range = Note.where("longitude <= #{params[:longitudeMax]} AND longitude >= #{params[:longitudeMin]} AND latitude <= #{params[:latitudeMax]} AND latitude >= #{params[:latitudeMin]}")
@@ -43,6 +40,7 @@ class NotesController < ApplicationController
     end
     render :json => [@notes_in_range, @url, @username, @notes_out_of_range]
   end
+
 
   def destroy
     Note.find(params[:id]).destroy

@@ -1,9 +1,8 @@
 <%= render "shared/nav" %>
 <%= render "shared/map" %>
-<%= render "about" %>
-<%= render "sign_up" %>
+<%= render "sign_up", locals: {user: @user} %>
 <%= render "sign_in" %>
-<%= render "new_note" %>
+<%= render "new_note", locals: {note: @note} %>
 <%= render "show_all"  %>
 
 <% if flash[:error] %>
