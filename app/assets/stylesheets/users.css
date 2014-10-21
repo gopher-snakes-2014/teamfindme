@@ -6,14 +6,19 @@
 
 .profile-pic{
   float: left;
-  background-color: red;
-  height: 57%;
+  height: 100%;
   width: 10%;
-  margin: 3%;
+  margin: 2.2% 8%;
 }
 
 .user-name{
   float:left;
-  background-color: green;
-  margin: 3%;
+  font-size: 1.5em;
 }
+
+.profile-pic img {
+  border-radius: 50%;
+  height: 62%;
+}
+
+.
