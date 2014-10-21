@@ -1,7 +1,7 @@
 class Note < ActiveRecord::Base
   belongs_to :user
   has_attached_file :image,
-            :default_url => "http://png-3.findicons.com/files/icons/329/simple/128/search.png",
+            :default_url => "http://findicons.com/files/icons/575/pleasant/128/search.png",
             :s3_protocol => "https",
             :s3_host_name => "s3-us-west-2.amazonaws.com",
             :style => { :medium => "300x300>", :thumb => "100x100>" },
@@ -26,11 +26,20 @@ class Note < ActiveRecord::Base
   def self.username_url(notes)
     url = []
     username = []
+    voters = []
+    user_id = []
     notes.each do |note|
       url << note.image.url
       username << note.user.username
+      user_id << note.user_id
+      voters << note.voters
     end
-    url_username = [url, username]
+    url_username = [url, username, voters, user_id]
+  end
+
+  def self.add_vote(noteID, userID)
+    note = Note.find(noteID)
+    note.update_attributes(voters: note.voters<<userID)
   end
 
 end
