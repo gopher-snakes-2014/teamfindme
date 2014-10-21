@@ -34,7 +34,8 @@ class NotesController < ApplicationController
     info = Note.username_url(notes)
     url = info[0]
     username = info[1]
-    render :json => [notes, url, username, out_of_range]
+    voters = info[2]
+    render :json => [notes, url, username, out_of_range, voters]
   end
 
 

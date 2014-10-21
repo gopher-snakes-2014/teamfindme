@@ -26,11 +26,13 @@ class Note < ActiveRecord::Base
   def self.username_url(notes)
     url = []
     username = []
+    voters = []
     notes.each do |note|
       url << note.image.url
       username << note.user.username
+      voters << note.voters
     end
-    url_username = [url, username]
+    url_username = [url, username, voters]
   end
 
 end
