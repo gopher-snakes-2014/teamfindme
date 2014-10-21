@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   def index
+    @user = User.find(session[:current_user_id])
+    @notes = @user.notes
   end
 
   def new

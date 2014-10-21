@@ -1,1 +1,14 @@
-Lorizzle away dolor dang amizzle, consectetuer fo . Nullam sapien velizzle, my shizz volutpizzle, suscipit away, fizzle vizzle, mammasay mammasa mamma oo sa. Pellentesque tortor. Shizzle my nizzle crocodizzle erizzle. Brizzle at dolor dapibizzle fizzle tempus bling bling. Maurizzle go to hizzle nibh izzle its fo rizzle. Da bomb in tortor. Owned mah nizzle rhoncus nisi. In hizzle cool platea dictumst. Pizzle dapibizzle. Boofron fo shizzle mah nizzle fo rizzle, mah home g-dizzle pizzle, pretizzle ma nizzle, mattizzle sheezy, eleifend mofo, nunc. Gangster da bomb. Integizzle ma nizzle velit sizzle ma nizzle.
+<div class="carousel">
+  <div class="center">
+    <% @notes.each do |note| %>
+    <div>
+      <div class="note_styling">
+        <h5><%= note.comment %></h5>
+        <%= image_tag note.image.url %>
+        <%= link_to 'Delete', note, method: :delete %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+

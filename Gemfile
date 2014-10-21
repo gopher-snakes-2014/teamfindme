@@ -34,6 +34,8 @@ gem 'dotenv-rails', group: [:development]
 
 gem "geocoder"
 
+gem 'slick_rails'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
