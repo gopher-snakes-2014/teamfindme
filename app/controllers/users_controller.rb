@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def index
     @user = current_user
-    notes = user.notes
+    @notes = @user.notes
   end
 
   def new
