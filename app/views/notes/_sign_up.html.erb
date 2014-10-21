@@ -1,4 +1,5 @@
 <div id="myModalUp" class="reveal-modal" data-reveal>
+    <!-- CR use form_for @user and locals -->
   <%= form_for "user", url: users_path, :method=> :post, html: {class: "signup"} do |f|%>
     <%= f.label :first_name  %>
     <%= f.text_field :first_name, class: "form-control"  %>

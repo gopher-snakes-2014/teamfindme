@@ -1,5 +1,6 @@
 <div class="row">
   <dl class="sub-nav">
+    <!-- CR don't access sessions from the view - use current_user helper method -->
     <% if session[:current_user_id] != nil %>
     <div class="large-6 columns">
       <a href="#" class="sub-nav-button button expand" id="leaveANote">Leave a note</a>

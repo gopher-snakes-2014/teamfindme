@@ -16,6 +16,14 @@
 //= require turbolinks
 //= require_tree .
 
+// CR the manifest file is for manifest !  NO JS HERE!!!!
+
+// CR - Build objects:  Maps and Notes  The Maps model is a wrapper around Google api
+
+// CR move jquery.form to vendor folder
+
+
+
 $(function(){ $(document).foundation(); });
 
 var map;
@@ -30,13 +38,6 @@ function initialize() {
     scrollwheel: false
   };
 
-  filterAll = function(notes, url, username) {
-    for (var i = 0; i < notes.length; i++) {
-      $('#myModalAll').append("<h4>" + notes[i].comment + "</h4>");
-      $('#myModalAll').append("<img src=" + url[i] + ">");
-      $('#myModalALl').append("<h3>" + username[i] + "</h3>");
-    }
-  };
 
   place_pins = function(notes, url, username, notes_out) {
     var icon = {
@@ -83,38 +84,10 @@ function initialize() {
   map = new google.maps.Map(document.getElementById('map-canvas'),
     mapOptions);
   if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = new google.maps.LatLng(position.coords.latitude,
-       position.coords.longitude);
 
-      var currentLocation = new google.maps.Marker({
-        position: pos,
-        animation: google.maps.Animation.DROP,
-        map: map
-      });
-
-      var longitudeMax = currentLocation.position.k + 0.000088;
-      var longitudeMin = currentLocation.position.k - 0.000088;
-      var latitudeMax = currentLocation.position.B + 0.000088;
-      var latitudeMin = currentLocation.position.B - 0.000088;
-
-      $.ajax({
-        url: '/notes/radius_search',
-        type: 'get',
-        data: {longitudeMax: longitudeMax, longitudeMin: longitudeMin, latitudeMax: latitudeMax, latitudeMin: latitudeMin },
-      })
-      .done(function(data) {
-        place_pins(data[0], data[1], data[2], data[3]);
-        console.log(data[3]);
-        filterAll(data[0], data[1], data[2]);
-      })
-      .fail(function() {
-        console.log("error");
-      })
-      .always(function() {
-        console.log("complete");
-      });
-
+// CR I would expect to see this broken into two methods like
+    // CR  Map.setpin()
+    // CR Note.create()
       var circle = new google.maps.Circle({
         center: pos,
         radius: 9,
@@ -134,6 +107,7 @@ function initialize() {
       $("#leaveANote").on('click', function() {
         $("#myModalNote").foundation('reveal', 'open');
 
+// CR this should be .on('submit') for the form
         $('#noteSubmit').click(function() {
           $("#noteForm").ajaxForm({
             success: setCoordinates
