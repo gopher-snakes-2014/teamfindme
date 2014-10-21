@@ -1,4 +1,4 @@
-/*
+/*/*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -17,7 +17,7 @@
 
  */
 
-body {
+/*body {
   background-color:#DCD5C8;
   width: 100%;
 }
@@ -90,4 +90,4 @@ ul.button-group.right {
 
 .note_styling {
   border: 1em solid #ECF5FD;
-}
+}*/
