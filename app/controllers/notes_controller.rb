@@ -20,8 +20,8 @@ class NotesController < ApplicationController
   end
 
   def update
-    @note = Note.find(params[:id])
-    @note.update_attributes(longitude: params[:longitude], latitude: params[:latitude])
+    note = Note.find(params[:id])
+    note.update_attributes(longitude: params[:longitude], latitude: params[:latitude])
     render nothing:true
   end
 
@@ -29,16 +29,12 @@ class NotesController < ApplicationController
   end
 
   def show
-   @url = []
-    @username = []
-
-    @notes_in_range = Note.where("longitude <= #{params[:longitudeMax]} AND longitude >= #{params[:longitudeMin]} AND latitude <= #{params[:latitudeMax]} AND latitude >= #{params[:latitudeMin]}")
-    @notes_out_of_range = Note.all - @notes_in_range
-    @notes_in_range.each do |note|
-      @url << note.image.url
-      @username << note.user.username
-    end
-    render :json => [@notes_in_range, @url, @username, @notes_out_of_range]
+    notes = Note.notes_in_range(params)
+    out_of_range = Note.notes_out_of_range(notes)
+    info = Note.username_url(notes)
+    url = info[0]
+    username = info[1]
+    render :json => [notes, url, username, out_of_range]
   end
 
 
@@ -52,7 +48,7 @@ class NotesController < ApplicationController
   end
 
   def find_all
-   @note = Note.all
+    note = Note.all
   end
 
 end

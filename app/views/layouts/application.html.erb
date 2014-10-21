@@ -16,10 +16,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
   <%= yield %>
 
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
 
   <%= javascript_include_tag "application" %>
