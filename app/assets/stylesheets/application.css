@@ -72,6 +72,19 @@ ul.button-group.right {
   margin-bottom: -19px;
 }
 
+label {
+  text-align: center;
+  background-color: white;
+  width: 30%;
+  margin-left: 35%;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: capitalize;
+}
+
+input {
+  text-align: center;
+}
+
 .sub-nav {
   margin: 0;
   padding: 0;
