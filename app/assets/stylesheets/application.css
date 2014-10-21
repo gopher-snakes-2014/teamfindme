@@ -49,7 +49,7 @@ h1{
   font-size: 1em;
   font-family: 'Montserrat', sans-serif;
   text-transform: capitalize;
-
+  z-index: -1;
 }
 
 .reveal-modal {
@@ -96,12 +96,14 @@ input {
 .large-6 {
   padding-left: 2px;
   padding-right: 2px;
+  width: 50%;
 }
 
 .carousel {
   text-align: center;
-  width: 90%;
-  margin: 0 auto;
+  width: 100%;
+  margin: -5em 0;
+  background-color: #DCD5C8;
 }
 
 .note_styling {
