@@ -82,12 +82,15 @@ ul.button-group.right {
   padding-right: 2px;
 }
 
-.carousel {
-  text-align: center;
-  width: 90%;
-  margin: 0 auto;
-}
+
 
 .note_styling {
   border: 1em solid #ECF5FD;
+}
+
+@media only screen{
+  .large-6 {
+    width: 50%;
+    float: right;
+  }
 }
