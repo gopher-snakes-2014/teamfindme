@@ -35,6 +35,7 @@ function initialize() {
       $('#myModalAll').append("<h4>" + notes[i].comment + "</h4>");
       $('#myModalAll').append("<img src=" + url[i] + ">");
       $('#myModalALl').append("<h3>" + username[i] + "</h3>");
+      $('#myModalAll').append("<hr>");
     }
   };
 
