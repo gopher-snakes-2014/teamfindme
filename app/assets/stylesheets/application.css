@@ -40,6 +40,8 @@ h1{
   color: #3F5262;
   font-family: 'Montserrat', sans-serif;
   text-transform: capitalize;
+  widows: 100%;
+  margin-top: 2rem;
 }
 
 #map-canvas{
