@@ -23,3 +23,19 @@ h1 {
   font-size: 1em;
   margin: 0.97em 0;
 }
+
+p {
+  font-size: 0.8em;
+  margin: 0;
+}
+
+.note_styling {
+  height: 12em;
+}
+
+.slick-slide img {
+  height: 6.1em;
+  margin: 2.4em 3.3em;
+  z-index: -1;
+  position: absolute;
+}
