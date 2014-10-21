@@ -49,14 +49,28 @@ h1{
   font-size: 1em;
   font-family: 'Montserrat', sans-serif;
   text-transform: capitalize;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
 
+.about {
+  color: white;
+}
+
+.aboutHeader {
+  background-color: black;
+}
+
+#myModalAbout {
+  background-color: black;
 }
 
 .reveal-modal {
-  background-color:#ECF5FD;
+  /*background-color:#ECF5FD;*/
+  background-color: black;
   color: #ECF5FD;
   position: fixed;
-  height: 500px;
+  max-height: 700px;
   overflow: auto;
 }
 

@@ -26,8 +26,9 @@ var mapStyle =
 
 function initialize() {
   var mapOptions = {
-    zoom: 18,
-    styles: mapStyle
+    zoom: 20,
+    styles: mapStyle,
+    disableDefaultUI:true
   };
 
   filterAll = function(notes, url, username) {
