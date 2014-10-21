@@ -1,0 +1,17 @@
+#map-canvas{
+  height: 60%;
+  padding: 0;
+  font-size: 1em;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: capitalize;
+  z-index: -1;
+}
+
+.gm-style img {
+  max-width: none;
+}
+
+.gm-style label {
+  width: auto;
+  display: inline;
+}
