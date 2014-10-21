@@ -6,6 +6,7 @@
     <div class="large-9 columns">
       <ul class="button-group right">
         <% if session[:current_user_id] == nil %>
+        <li><a href="#" class="nav-button button [tiny small large]" id="about" data-reveal-id="myModalAbout">About</a></li>
         <li><a href="#" class="nav-button button [tiny small large]" id="signUp" data-reveal-id="myModalUp">Sign Up</a></li>
         <li><a href="#" class="nav-button button [tiny small large]" id="signIn" data-reveal-id="myModalIn">Sign In</a></li>
         <% else %>
