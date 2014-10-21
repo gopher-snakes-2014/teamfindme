@@ -26,3 +26,9 @@
   z-index: -1;
 }
 
+.carousel {
+  text-align: center;
+  width: 100%;
+  margin-top: -10em;
+  background-color: #DCD5C8;
+}
