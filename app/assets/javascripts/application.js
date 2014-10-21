@@ -32,6 +32,7 @@ function initialize() {
 
   filterAll = function(notes, url, username) {
     for (var i = 0; i < notes.length; i++) {
+      console.log(notes)
       $('#myModalAll').append("<h4>" + notes[i].comment + "</h4>");
       $('#myModalAll').append("<img src=" + url[i] + ">");
       $('#myModalALl').append("<h3>" + username[i] + "</h3>");
@@ -104,9 +105,8 @@ function initialize() {
         data: {longitudeMax: longitudeMax, longitudeMin: longitudeMin, latitudeMax: latitudeMax, latitudeMin: latitudeMin },
       })
       .done(function(data) {
-        place_pins(data[0], data[1], data[2], data[3]);
-        console.log(data[3]);
         filterAll(data[0], data[1], data[2]);
+        place_pins(data[0], data[1], data[2], data[3]);
       })
       .fail(function() {
         console.log("error");

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def index
-    @user = User.find(session[:current_user_id])
-    @notes = @user.notes
+    @user = current_user
+    notes = user.notes
   end
 
   def new
@@ -10,12 +10,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      session[:current_user_id] = @user.id
+    user = User.new(user_params)
+    if user.save
+      session[:current_user_id] = user.id
       redirect_to root_path
     else
-      flash[:error] = @user.errors.full_messages
+      flash[:error] = user.errors.full_messages
       redirect_to root_path
     end
   end
