@@ -39,3 +39,10 @@ p {
   z-index: -1;
   position: absolute;
 }
+
+.carousel {
+  text-align: center;
+  width: 100%;
+  margin: -9em 0;
+  background-color: #DCD5C8;
+}
