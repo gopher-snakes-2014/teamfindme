@@ -27,12 +27,19 @@ class Note < ActiveRecord::Base
     url = []
     username = []
     voters = []
+    user_id = []
     notes.each do |note|
       url << note.image.url
       username << note.user.username
+      user_id << note.user_id
       voters << note.voters
     end
-    url_username = [url, username, voters]
+    url_username = [url, username, voters, user_id]
+  end
+
+  def self.add_vote(noteID, userID)
+    note = Note.find(noteID)
+    note.update_attributes(voters: note.voters<<userID)
   end
 
 end
