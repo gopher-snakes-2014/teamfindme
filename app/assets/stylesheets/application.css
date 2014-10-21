@@ -18,7 +18,7 @@
  */
 
 body {
-  background-color:#ECF5FD;
+  background-color:#DCD5C8;
   width: 100%;
 }
 
@@ -40,6 +40,7 @@ h1{
   color: #3F5262;
   font-family: 'Montserrat', sans-serif;
   text-transform: capitalize;
+  margin-bottom: 0;
 }
 
 #map-canvas{
@@ -62,7 +63,6 @@ h1{
 }
 
 
-img {
 .large-3 img {
   height: 24px;
   margin-top: 4%;
@@ -73,7 +73,13 @@ ul.button-group.right {
 }
 
 .sub-nav {
-  margin-bottom: 0.125rem;
+  margin: 0;
+  padding: 0;
+}
+
+.large-6 {
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 .carousel {
