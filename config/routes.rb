@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   get "/notes/find_all", to: 'notes#find_all'
   get '/notes/radius_search', to: 'notes#radius_search'
 
