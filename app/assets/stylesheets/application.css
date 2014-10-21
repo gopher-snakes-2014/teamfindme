@@ -99,12 +99,7 @@ input {
   width: 50%;
 }
 
-.carousel {
-  text-align: center;
-  width: 100%;
-  margin: -5em 0;
-  background-color: #DCD5C8;
-}
+
 
 .note_styling {
   border: 1em solid #ECF5FD;
