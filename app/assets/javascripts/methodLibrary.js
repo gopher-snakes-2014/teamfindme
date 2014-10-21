@@ -1,3 +1,5 @@
+// CR what does this do? You have two document ready's in your js
+
 $(function() {
   $(".signin").on("submit", function(){
     $("#myModalIn").foundation('reveal', 'close')

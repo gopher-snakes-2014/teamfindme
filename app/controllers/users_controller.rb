@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  # CR remove unused routes
   def index
   end
 

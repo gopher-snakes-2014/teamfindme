@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+# CR use shoulda-matchers
+
 describe User do
   it "is valid with valid credentials" do
     user = User.new(
