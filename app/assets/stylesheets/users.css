@@ -1,24 +1,28 @@
 .user-info{
   background-color: #3F4062;
-  height: 19%;
+  height: 6em;
   width: 100%;
 }
 
 .profile-pic{
   float: left;
   height: 100%;
-  width: 10%;
-  margin: 2.2% 8%;
+  margin: 1.4em;
 }
 
 .user-name{
   float:left;
-  font-size: 1.5em;
+  font-size: 1em;
 }
 
 .profile-pic img {
   border-radius: 50%;
-  height: 62%;
+  height: 3.1em;
 }
 
-.
+.profile-map {
+  width: 100%;
+  top: -3.5em;
+  z-index: -1;
+}
+
