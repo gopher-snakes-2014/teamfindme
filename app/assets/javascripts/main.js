@@ -20,7 +20,6 @@ $( document ).ready(function() {
   setSlickCarousel('.center');
 
   $('body').on('click', 'form.like', function(e){
-    var that = this
     var note = $(this).children()[0].value
     var user = $(this).children()[1].value
     e.preventDefault();
@@ -29,11 +28,11 @@ $( document ).ready(function() {
       type: 'get',
       data: {noteId: note, userId: user}
     }).done(function(data){
-      debugger
+      $('.likesrc').attr('src', '/assets/liked.png')
+      $('.like').attr('class', 'liked')
     })
   })
   $('body').on('click', 'form.liked', function(e){
-    var that = this
     var note = $(this).children()[0].value
     var user = $(this).children()[1].value
     e.preventDefault();
@@ -42,7 +41,8 @@ $( document ).ready(function() {
       type: 'get',
       data: {noteId: note, userId: user}
     }).done(function(data){
-      debugger
+      $('.likedsrc').attr('src', '/assets/like.png')
+      $('.liked').attr('class', 'like')
     })
   })
 
