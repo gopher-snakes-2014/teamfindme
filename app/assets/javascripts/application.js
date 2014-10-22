@@ -157,7 +157,7 @@ function initialize() {
           var userLatitude = noteMarker.position.B;
 
           $.ajax({
-            url: "/notes/"+ note[0].id +"/" ,
+            url: "/notes/" + note[0].id,
             type: 'PUT',
             data: {longitude: userLongitude, latitude: userLatitude}
           })

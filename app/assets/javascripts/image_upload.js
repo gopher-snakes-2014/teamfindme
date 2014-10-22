@@ -6,11 +6,11 @@ $(function() {
     reader.onload = function(file) {
       var img = new Image();
       img.src = file.target.result;
-      $('#target').html(img).fadeIn("slow", function() {
-    // Animation complete
-      });
+      $('#target').html(img);
     };
     reader.readAsDataURL(image);
     console.log(files);
-  });
+  }).fadeIn("slow", function() {
+    // Animation complete
+      });
 });

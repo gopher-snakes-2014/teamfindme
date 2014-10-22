@@ -4,7 +4,7 @@
   font-size: 1em;
   font-family: 'Montserrat', sans-serif;
   text-transform: capitalize;
-  z-index: -1;
+  /*z-index: -1;*/
 }
 
 .gm-style img {
