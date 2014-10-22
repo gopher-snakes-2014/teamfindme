@@ -30,10 +30,20 @@ h1{
   color: white;
 }
 
-/*.nav-button {
-  width: 40%;
-  float: right;
-}*/
+.logo {
+  height: 1.5em;
+  margin-bottom: 0.5em;
+
+}
+
+.gm-style {
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+}
+
+li.toggle-topbar.menu-icon {
+  padding-right: 1em;
+}
 
 .aboutHeader {
   background-color: black;
@@ -121,6 +131,10 @@ hr {
 nav {
   background: #202931;
 }
+
+/*ul.title-area {
+  padding-bottom: 2em;
+}*/
 
 .nav-button {
   background-color: #202931;
