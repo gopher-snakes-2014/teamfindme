@@ -1,5 +1,15 @@
 <%= render "shared/nav" %>
 <%= render "shared/sub_nav" %>
+<% if flash[:error] %>
+<div data-alert class="alert-box alert">
+    <div class="error">
+      <% flash[:error].each do |error| %>
+      <p><%= error %></p>
+      <% end %>
+    </div>
+  <a href="#" class="close">&times;</a>
+  </div>
+<% end %>
 <%= render "shared/map" %>
 <%= render "shared/about" %>
 <%= render "sign_up", locals: {user: @user} %>
