@@ -749,3 +749,6 @@ p {
   margin: -9em 0;
   background-color: #DCD5C8;
 }
+.new-image img {
+  height: 12em;
+}
