@@ -19,6 +19,33 @@ $( document ).ready(function() {
 
   setSlickCarousel('.center');
 
+  $('body').on('click', 'form.like', function(e){
+    var that = this
+    var note = $(this).children()[0].value
+    var user = $(this).children()[1].value
+    e.preventDefault();
+    $.ajax({
+      url: '/vote/add',
+      type: 'get',
+      data: {noteId: note, userId: user}
+    }).done(function(data){
+      debugger
+    })
+  })
+  $('body').on('click', 'form.liked', function(e){
+    var that = this
+    var note = $(this).children()[0].value
+    var user = $(this).children()[1].value
+    e.preventDefault();
+    $.ajax({
+      url: '/vote/remove',
+      type: 'get',
+      data: {noteId: note, userId: user}
+    }).done(function(data){
+      debugger
+    })
+  })
+
 }); // end document ready
 
 

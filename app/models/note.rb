@@ -31,15 +31,25 @@ class Note < ActiveRecord::Base
     notes.each do |note|
       url << note.image.url
       username << note.user.username
-      user_id << note.user_id
       voters << note.voters
     end
-    url_username = [url, username, voters, user_id]
+    url_username = [url, username, voters]
   end
 
-  def self.add_vote(noteID, userID)
+  def self.add_voter(noteID, userID)
     note = Note.find(noteID)
-    note.update_attributes(voters: note.voters<<userID)
+    unless note.voters.include?(userID)
+      new_voters = note.voters<<userID
+      note.update_columns(voters: new_voters)
+    end
+  end
+
+  def self.remove_voter(noteID, userID)
+    note = Note.find(noteID)
+    if note.voters.include?(userID)
+      new_voters = note.voters.delete(userID)
+      note.update_columns(voters: new_voters)
+    end
   end
 
 end

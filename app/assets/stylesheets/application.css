@@ -51,7 +51,7 @@ h1{
 }
 
 .reveal-modal {
-  background-color: black;
+  background-color: white;
   color: #ECF5FD;
   position: fixed;
   max-height: 700px;

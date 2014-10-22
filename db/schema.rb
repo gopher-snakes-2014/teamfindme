@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20141021200729) do
     t.float    "latitude"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "voters",             default: [], array: true
+    t.string   "voters",             default: [], array: true
   end
 
   create_table "users", force: true do |t|
