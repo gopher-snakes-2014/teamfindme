@@ -17,144 +17,132 @@
 //= require slick/slick
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
 
-var map;
 
-var mapStyle =
-[{"featureType":"water","stylers":[{"color":"#19a0d8"}]},{"featureType":"administrative","elementType":"labels.text.stroke","stylers":[{"color":"#ffffff"},{"weight":6}]},{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#e85113"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#efe9e4"},{"lightness":-40}]},{"featureType":"road.arterial","elementType":"geometry.stroke","stylers":[{"color":"#efe9e4"},{"lightness":-20}]},{"featureType":"road","elementType":"labels.text.stroke","stylers":[{"lightness":100}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"lightness":-100}]},{"featureType":"road.highway","elementType":"labels.icon"},{"featureType":"landscape","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"landscape","stylers":[{"lightness":20},{"color":"#efe9e4"}]},{"featureType":"landscape.man_made","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"labels.text.stroke","stylers":[{"lightness":100}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"lightness":-100}]},{"featureType":"poi","elementType":"labels.text.fill","stylers":[{"hue":"#11ff00"}]},{"featureType":"poi","elementType":"labels.text.stroke","stylers":[{"lightness":100}]},{"featureType":"poi","elementType":"labels.icon","stylers":[{"hue":"#4cff00"},{"saturation":58}]},{"featureType":"poi","elementType":"geometry","stylers":[{"visibility":"on"},{"color":"#f0e4d3"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#efe9e4"},{"lightness":-25}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#efe9e4"},{"lightness":-10}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"simplified"}]}];
+function initialize(noteWidget) {
+  var map = new google.maps.Map(document.getElementById('map-canvas'),
+    mapOptions);
 
-function initialize() {
-  var mapOptions = {
-    zoom: 20,
-    styles: mapStyle,
-    disableDefaultUI:true
-  };
+// MAP STUFFFFFFFFF ============================
 
-  filterAll = function(notes, url, username) {
-    for (var i = 0; i < notes.length; i++) {
-      $('#myModalAll').append("<h4>" + notes[i].comment + "</h4>");
-      $('#myModalAll').append("<img src=" + url[i] + ">");
-      $('#myModalALl').append("<h3>" + username[i] + "</h3>");
-      $('#myModalAll').append("<hr>");
+  function placeInMarkers(inNotes, imageUrls, noteUsernames) {
+
+    for (var i = 0; i < inNotes.length; i++) {
+      current_marker = setExistingMarker(inNotes[i], inIcon) //global icon
+      addInfoWindow(current_marker, inNotes[i], imageUrls[i], noteUsernames[i]);
     }
   };
 
-  place_pins = function(notes, url, username, notes_out) {
-    var icon = {
-      url: "http://i.imgur.com/ZIpm27k.png"
-    };
-
-    var icon_out = {
-      url: "http://i.imgur.com/0opmhTG.png"
-    };
-
-    for (var i = 0; i < notes.length; i++) {
-      current_marker = new google.maps.Marker({
-        position: new google.maps.LatLng(notes[i].longitude, notes[i].latitude),
-        icon: icon,
-        animation: google.maps.Animation.DROP,
-        map: map
-      });
-      addInfoWindow(current_marker, notes[i], url[i], username[i]);
-    }
-
-    for (var j = 0; j < notes_out.length; j++) {
-      outside_marker = new google.maps.Marker({
-        position: new google.maps.LatLng(notes_out[j].longitude, notes_out[j].latitude),
-        icon: icon_out,
-        animation: google.maps.Animation.DROP,
-        map: map
-      });
-    }
-  };
-
-
-  function addInfoWindow(marker, note, url, username) {
-    var info = "<h6>"+ username +"</h6>" + note.comment + "<br><img src=" + url + ">";
-
-    var infoWindow = new google.maps.InfoWindow({
-      content: info
+  function setExistingMarker(note, icon) {
+    return new google.maps.Marker({
+      position: new google.maps.LatLng(note.longitude, note.latitude),
+      icon: icon, //extract into a model att?
+      animation: google.maps.Animation.DROP, //extract into a model attr
+      map: map //global map object
     });
+  };
+
+
+  function placeOutMarkers(outNotes) {
+    for (var j = 0; j < outNotes.length; j++) {
+      setExistingMarker(outNotes[j], outIcon) //global icon
+    }
+  };
+
+
+  function addInfoWindow(marker, note, imageUrl, username) {
+    var info = infoWindowTemplate(note.comment, imageUrl, username);
+
+    var infoWindow = newInfoWindow(info);
 
     google.maps.event.addListener(marker, 'click', function () {
-      infoWindow.open(map, marker);
+      infoWindow.open(map, marker); //global map object
     });
   }
 
-  map = new google.maps.Map(document.getElementById('map-canvas'),
-    mapOptions);
-  if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = new google.maps.LatLng(position.coords.latitude,
-       position.coords.longitude);
+function newInfoWindow(info) {
+  return new google.maps.InfoWindow({
+      content: info
+    })
+};
 
-      var currentLocation = new google.maps.Marker({
+function infoWindowTemplate(comment, imageUrl, username) {
+  return "<h6>"+ username +"</h6>" + comment + "<br><img src=" + imageUrl + ">";
+};
+
+function setUserMarker(pos) {
+  return new google.maps.Marker({
         position: pos,
         animation: google.maps.Animation.DROP,
-        map: map
+        map: map //global map object
       });
+};
 
-      var longitudeMax = currentLocation.position.k + 0.000085;
-      var longitudeMin = currentLocation.position.k - 0.000085;
-      var latitudeMax = currentLocation.position.B + 0.000085;
-      var latitudeMin = currentLocation.position.B - 0.000085;
 
-      $.ajax({
-        url: '/notes/1',
-        type: 'get',
-        data: {longitudeMax: longitudeMax, longitudeMin: longitudeMin, latitudeMax: latitudeMax, latitudeMin: latitudeMin },
-      })
-      .done(function(data) {
-        filterAll(data[0], data[1], data[2]);
-        place_pins(data[0], data[1], data[2], data[3]);
-      })
-      .fail(function() {
-        console.log("error");
-      })
-      .always(function() {
-        console.log("complete");
-      });
-
-      var circle = new google.maps.Circle({
+function setCircleRadius(pos) {
+  return new google.maps.Circle({
         center: pos,
         radius: 9,
         fillColor: "#00EEEE",
         fillOpacity: 0.5,
         strokeOpacity: 0.0,
         strokeWeight: 0,
-        map: map
+        map: map //global map object
       });
+};
 
-      var icon = {
-        url: "http://i.imgur.com/ZIpm27k.png"
-      };
+// GEO NAV PARTY ==============
 
-      var contentString = "my posts";
+if(navigator.geolocation) {
 
-      $("#leaveANote").on('click', function() {
-        $("#myModalNote").foundation('reveal', 'open');
+  navigator.geolocation.getCurrentPosition(function(position) {
 
-        $('#noteSubmit').click(function() {
+    var pos = new google.maps.LatLng(position.coords.latitude,
+     position.coords.longitude);
+
+    var currentLocation = setUserMarker(pos)
+    var circle = setCircleRadius(pos)
+
+    var longitudeMax = currentLocation.position.k + 0.000088;
+    var longitudeMin = currentLocation.position.k - 0.000088;
+    var latitudeMax = currentLocation.position.B + 0.000088;
+    var latitudeMin = currentLocation.position.B - 0.000088;
+
+
+    $.ajax({
+      url: '/notes/1',
+      type: 'get',
+      data: {longitudeMax: longitudeMax, longitudeMin: longitudeMin, latitudeMax: latitudeMax, latitudeMin: latitudeMin },
+    })
+    .success(function(data) {
+      placeInMarkers(data[0], data[1], data[2]);
+      placeOutMarkers(data[3]);
+      noteWidget.addReadableNotes(data[0], data[1], data[2]);
+    })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+    });
+
+
+      $("#leaveANote").on('click', function() { //controller binding event
+
+        $("#myModalNote").foundation('reveal', 'open'); //view thingy
+
+        $('#noteSubmit').click(function() { // controller binding event
+
           $("#noteForm").ajaxForm({
-            success: setCoordinates
+            success: setNewMarker
           }).submit(function(){
-            // return false;
           });
+
         });
 
-        var setCoordinates = function(note) {
-          var noteMarker = new google.maps.Marker({
-            position: pos,
-            icon: icon,
-            animation: google.maps.Animation.DROP,
-            map: map
-          });
-
-          addInfoWindow(noteMarker, note[0], note[1], note[2]);
-
-          var userLongitude = noteMarker.position.k;
-          var userLatitude = noteMarker.position.B;
+        function updateNoteLocation(note, marker) {
+          var userLongitude = marker.position.k;
+          var userLatitude = marker.position.B;
 
           $.ajax({
             url: "/notes/" + note[0].id,
@@ -164,70 +152,38 @@ function initialize() {
           .success(function() {
             $("#noteForm")[0].reset();
             $("#myModalNote").foundation('reveal', 'close');
+            addInfoWindow(marker, note[0], note[1], note[2]);
             console.log("success");
           })
           .fail(function() {
             console.log("error");
-          })
-          .always(function() {
-            console.log("complete");
+          }); //end ajax request
+
+        } //end updateNoteLocation function
+
+
+        var setNewMarker = function(note) {
+          var noteMarker = new google.maps.Marker({
+            position: pos,
+            icon: inIcon,
+            animation: google.maps.Animation.DROP,
+            map: map
           });
 
-        };
+          updateNoteLocation(note, noteMarker);
 
-      });
+        }; //end createNewMarker
+
+      }); // leave note on click function
 
 map.setCenter(pos);
-}, function() {
+}, function() { // end get current position
   handleNoGeolocation(true);
 });
 
-} else {
+} else { //end of if nav geo
   handleNoGeolocation(false);
-}
-}
+} //end else
 
+} // end initalize function
 
-
-function handleNoGeolocation(errorFlag) {
-  if (errorFlag) {
-    var content = 'Error: The Geolocation service failed.';
-  } else {
-    var content = 'Error: Your browser doesn\'t support geolocation.';
-  }
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
-
-$(document).ready(function(){
-
-$('.center').slick({
-  centerMode: true,
-  centerPadding: '60px',
-  slidesToShow: 3,
-  responsive: [
-    {
-      breakpoint: 768,
-      settings: {
-        arrows: false,
-        centerMode: true,
-        centerPadding: '40px',
-        slidesToShow: 3
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        arrows: false,
-        centerMode: true,
-        centerPadding: '40px',
-        slidesToShow: 1
-      }
-    }
-  ]
-});
-
-
-
-
-});
