@@ -18,42 +18,44 @@
  */
 
 body {
-  background-color:#ECF5FD;
+  background-color:#DCD5C8;
   width: 100%;
-}
-
-nav {
-  background: #202931;
 }
 
 h1{
  color: #ECF5FD;
 }
 
-.nav-button {
-  background-color: #202931;
-  color: #ECF5FD;
+.about {
+  color: white;
 }
 
-.sub-nav-button {
-  background-color: #9ECEF6;
-  color: #3F5262;
-  font-family: 'Montserrat', sans-serif;
-  text-transform: capitalize;
+.aboutHeader {
+  background-color: black;
 }
 
-#map-canvas{
-  height: 60%;
-  padding: 0;
-  font-size: 1em;
-  font-family: 'Montserrat', sans-serif;
-  text-transform: capitalize;
+#target {
+  text-align: center;
+  border-top: 2px white;
+  border-bottom: 2px white;
+}
 
+#note_image {
+  text-align: center;
+}
+
+
+#myModalAbout {
+  background-color: black;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .reveal-modal {
-  background-color:#ECF5FD;
+  background-color: black;
   color: #ECF5FD;
+  position: fixed;
+  max-height: 700px;
+  overflow: auto;
 }
 
 .expand {
@@ -61,27 +63,29 @@ h1{
   color: #3F5262;
 }
 
-
-img {
-.large-3 img {
-  height: 24px;
-  margin-top: 4%;
-}
-
-ul.button-group.right {
-  margin-bottom: -19px;
-}
-
-.sub-nav {
-  margin-bottom: 0.125rem;
-}
-
-.carousel {
+label {
   text-align: center;
-  width: 90%;
-  margin: 0 auto;
+  background-color: white;
+  width: 30%;
+  margin-left: 35%;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: capitalize;
+}
+
+input {
+  text-align: center;
 }
 
 .note_styling {
   border: 1em solid #ECF5FD;
+}
+
+hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
 }

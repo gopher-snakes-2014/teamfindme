@@ -11,26 +11,26 @@ describe User do
       )
     expect(user).to be_valid
   end
-  it "is not valid without a first_name" do
-    user = User.new(
-      first_name: "",
-      last_name: "Bob",
-      email: "bob@bob.bob",
-      username: "bobob",
-      password: "bob"
-      )
-    expect(user).to_not be_valid
-  end
-  it "is not valid without a last_name" do
-    user = User.new(
-      first_name: "Bob",
-      last_name: "",
-      email: "bob@bob.bob",
-      username: "bobob",
-      password: "bob"
-      )
-    expect(user).to_not be_valid
-  end
+  # it "is not valid without a first_name" do
+  #   user = User.new(
+  #     first_name: "",
+  #     last_name: "Bob",
+  #     email: "bob@bob.bob",
+  #     username: "bobob",
+  #     password: "bob"
+  #     )
+  #   expect(user).to_not be_valid
+  # end
+  # it "is not valid without a last_name" do
+  #   user = User.new(
+  #     first_name: "Bob",
+  #     last_name: "",
+  #     email: "bob@bob.bob",
+  #     username: "bobob",
+  #     password: "bob"
+  #     )
+  #   expect(user).to_not be_valid
+  # end
   it "is not valid without an email" do
    user = User.new(
     first_name: "Bob",

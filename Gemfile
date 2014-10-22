@@ -44,6 +44,7 @@ gem 'slick_rails'
 
 # Use debugger
 gem 'debugger', group: [:development, :test]
+gem 'jasmine-rails',group: [:development, :test, :production]
 
 group :test do
   gem 'capybara'

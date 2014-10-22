@@ -12,14 +12,14 @@
     <link rel="shortcut icon" href="http://webdesign.tutsplus.com/wp-content/themes/tuts/images/theme/webdesigntuts/favicon.ico" />
     <link rel="apple-touch-icon" href="http://webdesign.tutsplus.com/wp-content/themes/tuts/images/theme/webdesigntuts/apple-touch-icon.png" />
 
-  <%= stylesheet_link_tag  "application" %>
+  <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
   <%= yield %>
 
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
 
   <%= javascript_include_tag "application" %>

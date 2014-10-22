@@ -1,19 +1,13 @@
-<div id="myModalUp" class="reveal-modal" data-reveal>
-  <%= form_for "user", url: users_path, :method=> :post, html: {class: "signup"} do |f|%>
-    <%= f.label :first_name  %>
-    <%= f.text_field :first_name, class: "form-control"  %>
-    <br>
-    <%= f.label :last_name  %>
-    <%= f.text_field :last_name, class: "form-control"  %>
+<div id="myModalUp" class="reveal-modal small" data-reveal>
+  <%= form_for @user, url: users_path, :method=> :post, html: {class: "signup"} do |f|%>
+    <%= f.label :username  %>
+    <%= f.text_field :username, class: "form-control", placeholder: "Choose a Username" %>
     <br>
     <%= f.label :email  %>
-    <%= f.email_field :email, class: "form-control"  %>
-    <br>
-    <%= f.label :username  %>
-    <%= f.text_field :username, class: "form-control"  %>
+    <%= f.email_field :email, class: "form-control", placeholder: "Enter your Email" %>
     <br>
     <%= f.label :password  %>
-    <%= f.password_field :password, class: "form-control"  %>
+    <%= f.password_field :password, class: "form-control", placeholder: "Create a Password" %>
     <br>
     <a href="#"><%= f.submit :SignUp, class: "button expand" %></a>
   <% end %>
