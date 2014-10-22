@@ -1,17 +1,5 @@
 function initialize(noteWidget) {
 
-
-
-
-
-
-
-
-
-
-
-
-
 }; // end initialize function
 
 

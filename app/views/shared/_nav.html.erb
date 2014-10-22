@@ -1,10 +1,12 @@
-<nav>
-  <div class="row">
-    <div class="large-3 columns">
-      <a href="/" target="_top"><%= image_tag "logo.png", class: "logo" %></a>
-    </div>
-    <div class="large-9 columns">
-      <ul class="button-group right">
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="/" target="_top"><%= image_tag "logo.png", class: "logo" %></a></h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="#"></a></li>
+  </ul>
+    <section class="top-bar-section">
+      <ul class="right">
         <% if session[:current_user_id] == nil %>
         <li><a href="#" class="nav-button button [tiny small large]" id="about" data-reveal-id="myModalAbout">About</a></li>
         <li><a href="#" class="nav-button button [tiny small large]" id="signUp" data-reveal-id="myModalUp">Sign Up</a></li>
@@ -15,8 +17,9 @@
         <li><a href="#"><%= link_to :Profile, users_path, :method => :get, class: "nav-button button [tiny small large]", id: "viewProfile"%></a></li>
         <% end %>
       </ul>
-    </div>
-  </div>
+      </section>
+    </ul>
+
 </nav>
 <div class="row">
   <dl class="sub-nav">
