@@ -3,6 +3,11 @@ class NotesController < ApplicationController
   def index
     @note = Note.new
     @user = User.new
+
+    if params[:filter]
+      session[:filter] = params[:filter]
+    end
+
     render "index"
   end
 
@@ -29,14 +34,24 @@ class NotesController < ApplicationController
   end
 
   def show
-    notes = Note.notes_in_range(params)
-    out_of_range = Note.notes_out_of_range(notes)
+
+    if session[:filter] == "mostLiked"
+      searchType = "liked"
+    elsif session[:filter] == "showAll" || session[:filter].nil?
+      searchType = "all"
+    else
+      searchType = "recent"
+    end
+
+    notes = Note.notes_in_range(params, searchType)
+    out_of_range = Note.notes_out_of_range(notes, searchType, params)
     info = Note.username_url(notes)
     url = info[0]
     username = info[1]
     voters = info[2]
     userId = session[:current_user_id]
     render :json => [notes, url, username, out_of_range, voters, userId]
+
   end
 
 
