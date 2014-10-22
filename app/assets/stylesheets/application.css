@@ -22,9 +22,9 @@ body {
   width: 100%;
 }
 
-h1{
+/*h1{
  color: #ECF5FD;
-}
+}*/
 
 .about {
   color: white;
@@ -64,6 +64,15 @@ li.toggle-topbar.menu-icon {
   font-family: 'Montserrat', sans-serif;
 }
 
+#myModalAll {
+  text-align: center;
+  color: white;
+}
+
+#myModalAll img {
+  border: 2px white;
+}
+
 .reveal-modal {
   background-color: white;
   color: #ECF5FD;
@@ -72,6 +81,10 @@ li.toggle-topbar.menu-icon {
 .expand {
   background-color: #9ECEF6;
   color: #3F5262;
+}
+
+.like {
+  background-color: white;
 }
 
 label {
@@ -693,11 +706,15 @@ table {
 /*============================== Users CSS =============================*/
 
 .user-info{
-  background-color: #3F4062;
-  width: 20em;
-  height: 100%;
+  /*background-color: #3F4062;*/
+  background-color: white;
+  width: 40%;
+  height: 80%;
   float: right;
   border-top: 3px solid black;
+  border-bottom: 3px solid black;
+  border-left: 3px solid black;
+  overflow: auto;
 }
 
 .profile-pic{
@@ -705,9 +722,10 @@ table {
   margin: 1em;
 }
 
-.user-name{
+.user-name {
   float:left;
-  font-size: 1.5em;
+  font-size: 1em;
+  color: black;
 }
 
 .profile-pic img {
@@ -715,10 +733,10 @@ table {
   height: 3em;
 }
 
-h1 {
+/*h1 {
   font-size: 1em;
   margin: 0.97em 0;
-}
+}*/
 
 p {
   font-size: 0.8em;

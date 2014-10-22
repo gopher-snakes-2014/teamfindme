@@ -4,16 +4,13 @@ var Note = function() {
 
 Note.prototype = {
   addReadableNotes: function(notes, urls, usernames, userId) {
-    console.log(userId)
     for (var i = 0; i < notes.length; i++) {
       this.appendModalNote(notes[i], urls[i], usernames[i], userId);
     }
   },
 
   appendModalNote: function(notes, url, username, userId) {
-    var voters = notes.voters
-    console.log(userId)
-    console.log(voters)
+    var voters = notes.voters;
     if (userId === null) {
       $(this.myModalAll).append(
         this.makeNoteTemplateNoLog(notes, url, username)
@@ -36,7 +33,7 @@ Note.prototype = {
     return "<form class=liked><input type=hidden value="+note.id+"><input type=hidden value="+userId+"><a href=#><img src=/assets/liked.png style=float:right></form><h4>" + note.comment + "</h4> <img src=" + url + "><h3>" + username + "</h3>";
   },
   makeNoteTemplateNoLog: function(note, url, username){
-    return "<h4>" + note.comment + "</h4> <img src=" + url + "><h3>" + username + "</h3>";
+    return "<h4 class='noteComment'>" + note.comment + "</h4> <img src=" + url + "><h3>" + username + "</h3>";
   }
 
 
