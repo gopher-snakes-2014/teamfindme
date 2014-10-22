@@ -1,17 +1,5 @@
 function initialize(noteWidget) {
 
-
-
-
-
-
-
-
-
-
-
-
-
 }; // end initialize function
 
 
@@ -32,7 +20,8 @@ var mapStyle =
 var mapOptions = {
   zoom: 20,
   styles: mapStyle,
-  scrollwheel: false
+  scrollwheel: false,
+  disableDefaultUI: true
 };
 
 var inIcon = {

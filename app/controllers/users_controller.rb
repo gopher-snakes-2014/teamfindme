@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       session[:current_user_id] = user.id
+      session[:filter] = "showAll"
       redirect_to root_path
     else
       flash[:error] = user.errors.full_messages

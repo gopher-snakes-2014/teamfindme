@@ -49,7 +49,7 @@ class NotesController < ApplicationController
     url = info[0]
     username = info[1]
     voters = info[2]
-    userId = info[3]
+    userId = session[:current_user_id]
     render :json => [notes, url, username, out_of_range, voters, userId]
 
   end
@@ -61,7 +61,21 @@ class NotesController < ApplicationController
   end
 
   def note_params
-    params.require(:note).permit(:image, :comment)
+    params.require(:note).permit(:image, :comment, :voters)
+  end
+
+  def add_vote
+    noteId = params[:noteId]
+    userId = params[:userId]
+    Note.add_voter(noteId, userId)
+    render nothing: true
+  end
+
+  def remove_vote
+    noteId = params[:noteId]
+    userId = params[:userId]
+    Note.remove_voter(noteId, userId)
+    render nothing:true
   end
 
 end

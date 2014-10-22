@@ -28,10 +28,10 @@ function initialize(noteWidget) {
   function placeInMarkers(inNotes, imageUrls, noteUsernames) {
 
     for (var i = 0; i < inNotes.length; i++) {
-      current_marker = setExistingMarker(inNotes[i], inIcon) //global icon
+      current_marker = setExistingMarker(inNotes[i], inIcon); //global icon
       addInfoWindow(current_marker, inNotes[i], imageUrls[i], noteUsernames[i]);
     }
-  };
+  }
 
   function setExistingMarker(note, icon) {
     return new google.maps.Marker({
@@ -40,14 +40,14 @@ function initialize(noteWidget) {
       animation: google.maps.Animation.DROP, //extract into a model attr
       map: map //global map object
     });
-  };
+  }
 
 
   function placeOutMarkers(outNotes) {
     for (var j = 0; j < outNotes.length; j++) {
-      setExistingMarker(outNotes[j], outIcon) //global icon
+      setExistingMarker(outNotes[j], outIcon); //global icon
     }
-  };
+  }
 
 
   function addInfoWindow(marker, note, imageUrl, username) {
@@ -63,12 +63,12 @@ function initialize(noteWidget) {
 function newInfoWindow(info) {
   return new google.maps.InfoWindow({
       content: info
-    })
-};
+    });
+}
 
 function infoWindowTemplate(comment, imageUrl, username) {
   return "<h6>"+ username +"</h6>" + comment + "<br><img src=" + imageUrl + ">";
-};
+}
 
 function setUserMarker(pos) {
   return new google.maps.Marker({
@@ -76,7 +76,7 @@ function setUserMarker(pos) {
         animation: google.maps.Animation.DROP,
         map: map //global map object
       });
-};
+}
 
 
 function setCircleRadius(pos) {
@@ -89,7 +89,7 @@ function setCircleRadius(pos) {
         strokeWeight: 0,
         map: map //global map object
       });
-};
+}
 
 
 // GEO NAV PARTY ==============
@@ -101,13 +101,13 @@ if(navigator.geolocation) {
     var pos = new google.maps.LatLng(position.coords.latitude,
      position.coords.longitude);
 
-    var currentLocation = setUserMarker(pos)
-    var circle = setCircleRadius(pos)
+    var currentLocation = setUserMarker(pos);
+    var circle = setCircleRadius(pos);
 
-    var longitudeMax = currentLocation.position.k + 0.000088;
-    var longitudeMin = currentLocation.position.k - 0.000088;
-    var latitudeMax = currentLocation.position.B + 0.000088;
-    var latitudeMin = currentLocation.position.B - 0.000088;
+    var longitudeMax = currentLocation.position.k + 0.000089;
+    var longitudeMin = currentLocation.position.k - 0.000089;
+    var latitudeMax = currentLocation.position.B + 0.000089;
+    var latitudeMin = currentLocation.position.B - 0.000089;
 
 
     $.ajax({
@@ -122,9 +122,6 @@ if(navigator.geolocation) {
     })
     .fail(function() {
       console.log("error");
-    })
-    .always(function() {
-      console.log("complete");
     });
 
 

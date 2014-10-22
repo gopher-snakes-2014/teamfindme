@@ -1,7 +1,7 @@
 class Note < ActiveRecord::Base
   belongs_to :user
   has_attached_file :image,
-  :default_url => "http://findicons.com/files/icons/575/pleasant/128/search.png",
+  :default_url => "http://www.hollandlift.com/wp-content/themes/hollandlift/assets/images/no_image.jpg",
   :s3_protocol => "https",
   :s3_host_name => "s3-us-west-2.amazonaws.com",
   :style => { :medium => "300x300>", :thumb => "100x100>" },
@@ -58,15 +58,25 @@ class Note < ActiveRecord::Base
     notes.each do |note|
       url << note.image.url
       username << note.user.username
-      user_id << note.user_id
       voters << note.voters
     end
-    url_username = [url, username, voters, user_id]
+    url_username = [url, username, voters]
   end
 
-  def self.add_vote(noteID, userID)
+  def self.add_voter(noteID, userID)
     note = Note.find(noteID)
-    note.update_attributes(voters: note.voters<<userID)
+    unless note.voters.include?(userID)
+      new_voters = note.voters<<userID
+      note.update_columns(voters: new_voters)
+    end
+  end
+
+  def self.remove_voter(noteID, userID)
+    note = Note.find(noteID)
+    if note.voters.include?(userID)
+      note.voters.delete(userID)
+      note.update_columns(voters: note.voters)
+    end
   end
 
 end
