@@ -4,6 +4,8 @@
   font-size: 1em;
   font-family: 'Montserrat', sans-serif;
   text-transform: capitalize;
+  border-top: 2px black;
+  border-bottom: 2px black;
 }
 
 .gm-style img {
