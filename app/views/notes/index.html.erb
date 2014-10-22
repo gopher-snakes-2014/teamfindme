@@ -5,11 +5,3 @@
 <%= render "sign_in" %>
 <%= render "new_note", locals: {note: @note} %>
 <%= render "show_all"  %>
-
-<% if flash[:error] %>
-    <div class="error">
-      <% flash[:error].each do |error| %>
-      <p><%= error %></p>
-      <% end %>
-    </div>
-<% end %>
