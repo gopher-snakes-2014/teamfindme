@@ -57,7 +57,9 @@ class NotesController < ApplicationController
   end
 
   def remove_vote
-
+    noteId = params[:noteId]
+    userId = params[:userId]
+    Note.remove_voter(noteId, userId)
     render nothing:true
   end
 
