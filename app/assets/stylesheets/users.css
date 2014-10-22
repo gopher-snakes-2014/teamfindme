@@ -36,8 +36,7 @@ p {
 
 .slick-slide img {
   height: 6.1em;
-  margin: 2.4em 3.3em;
-  /*z-index: -1;*/
+  margin: 2em 0 0px 6.7em;
   position: absolute;
 }
 
