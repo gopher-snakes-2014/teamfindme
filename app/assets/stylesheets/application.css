@@ -58,7 +58,9 @@ li.toggle-topbar.menu-icon {
 #myModalAbout {
   background-color: black;
   font-family: 'Montserrat', sans-serif;
+  text-align: center;
 }
+
 
 #myModalAll {
   text-align: center;
