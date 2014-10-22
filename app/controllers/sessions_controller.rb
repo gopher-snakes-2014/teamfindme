@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(@password)
       session[:current_user_id] = @user.id
+      session[:filter] = "showAll"
       redirect_to root_path
     else
       flash[:notice] = "Login Failed"
@@ -20,7 +21,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:current_user_id] = nil
+    session.clear()
     redirect_to root_path
   end
 
