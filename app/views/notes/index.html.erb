@@ -1,13 +1,14 @@
 <%= render "shared/nav" %>
 
 <% if flash[:error] %>
-<div class="panel callout radius">
+<div data-alert class="alert-box alert">
     <div class="error">
       <% flash[:error].each do |error| %>
       <p><%= error %></p>
       <% end %>
     </div>
-    </div>
+  <a href="#" class="close">&times;</a>
+</div>
 <% end %>
 
 
