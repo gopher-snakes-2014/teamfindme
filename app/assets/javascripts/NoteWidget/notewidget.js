@@ -10,7 +10,9 @@ Note.prototype = {
   },
 
   appendModalNote: function(notes, url, username, userId) {
+
     var voters = notes.voters;
+
     if (userId === null) {
       $(this.myModalAll).append(
         this.makeNoteTemplateNoLog(notes, url, username)
@@ -27,10 +29,10 @@ Note.prototype = {
   },
 
   makeNoteTemplate: function(note, url, username, userId) {
-    return "<form class=like><input type=hidden value="+note.id+"><input type=hidden value="+userId+"><a href=#><img src=/assets/like.png style=float:right></form><h4>" + note.comment + "</h4> <img src=" + url + "><h3>" + username + "</h3>";
+    return "<form class=like><input type=hidden value="+note.id+"><input type=hidden value="+userId+"><a href=#><img class=likesrc src=/assets/like.png style=float:right></form><h4>" + note.comment + "</h4> <img src=" + url + "><h3>" + username + "</h3>";
   },
   makeNoteTemplateVoted: function(note, url, username, userId){
-    return "<form class=liked><input type=hidden value="+note.id+"><input type=hidden value="+userId+"><a href=#><img src=/assets/liked.png style=float:right></form><h4>" + note.comment + "</h4> <img src=" + url + "><h3>" + username + "</h3>";
+    return "<form class=liked><input type=hidden value="+note.id+"><input type=hidden value="+userId+"><a href=#><img class=likedsrc src=/assets/liked.png style=float:right></form><h4>" + note.comment + "</h4> <img src=" + url + "><h3>" + username + "</h3>";
   },
   makeNoteTemplateNoLog: function(note, url, username){
     return "<h4 class='noteComment'>" + note.comment + "</h4> <img src=" + url + "><h3>" + username + "</h3>";
@@ -40,6 +42,9 @@ Note.prototype = {
 
 }; // prototype end
 
+var changeLike = function(source) {
+
+}
 
 
 

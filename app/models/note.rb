@@ -47,8 +47,8 @@ class Note < ActiveRecord::Base
   def self.remove_voter(noteID, userID)
     note = Note.find(noteID)
     if note.voters.include?(userID)
-      new_voters = note.voters.delete(userID)
-      note.update_columns(voters: new_voters)
+      note.voters.delete(userID)
+      note.update_columns(voters: note.voters)
     end
   end
 
