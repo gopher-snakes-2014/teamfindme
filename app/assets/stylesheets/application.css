@@ -33,7 +33,6 @@ h1{
 .logo {
   height: 1.5em;
   margin-bottom: 0.5em;
-
 }
 
 .gm-style {
@@ -68,9 +67,6 @@ li.toggle-topbar.menu-icon {
 .reveal-modal {
   background-color: black;
   color: #ECF5FD;
-/*  position: fixed;
-  max-height: 700px;
-  overflow: auto;*/
 }
 
 .expand {
@@ -131,10 +127,6 @@ hr {
 nav {
   background: #202931;
 }
-
-/*ul.title-area {
-  padding-bottom: 2em;
-}*/
 
 .nav-button {
   background-color: #202931;
@@ -702,8 +694,10 @@ table {
 
 .user-info{
   background-color: #3F4062;
-  height: 5em;
-  width: 100%;
+  width: 20em;
+  height: 100%;
+  float: right;
+  border-top: 3px solid black;
 }
 
 .profile-pic{
@@ -739,7 +733,6 @@ p {
 .slick-slide img {
   height: 6.1em;
   margin: 2.4em 3.3em;
-  /*z-index: -1;*/
   position: absolute;
 }
 
