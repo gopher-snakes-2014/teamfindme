@@ -91,6 +91,7 @@ function setCircleRadius(pos) {
       });
 };
 
+
 // GEO NAV PARTY ==============
 
 if(navigator.geolocation) {
