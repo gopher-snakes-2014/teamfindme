@@ -1,4 +1,16 @@
 <%= render "shared/nav" %>
+
+<% if flash[:error] %>
+<div class="panel callout radius">
+    <div class="error">
+      <% flash[:error].each do |error| %>
+      <p><%= error %></p>
+      <% end %>
+    </div>
+    </div>
+<% end %>
+
+
 <%= render "shared/map" %>
 <%= render "about" %>
 <%= render "sign_up", locals: {user: @user} %>
@@ -6,10 +18,4 @@
 <%= render "new_note", locals: {note: @note} %>
 <%= render "show_all"  %>
 
-<% if flash[:error] %>
-    <div class="error">
-      <% flash[:error].each do |error| %>
-      <p><%= error %></p>
-      <% end %>
-    </div>
-<% end %>
+
