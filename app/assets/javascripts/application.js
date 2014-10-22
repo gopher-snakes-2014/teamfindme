@@ -80,6 +80,7 @@ function setUserMarker(pos) {
       });
 };
 
+
 function setCircleRadius(pos) {
   return new google.maps.Circle({
         center: pos,
@@ -111,7 +112,7 @@ if(navigator.geolocation) {
 
 
     $.ajax({
-      url: '/notes/radius_search',
+      url: '/notes/1',
       type: 'get',
       data: {longitudeMax: longitudeMax, longitudeMin: longitudeMin, latitudeMax: latitudeMax, latitudeMin: latitudeMin },
     })
@@ -146,8 +147,8 @@ if(navigator.geolocation) {
           var userLatitude = marker.position.B;
 
           $.ajax({
-            url: "/notes/"+ note[0].id +"/edit" ,
-            type: 'GET',
+            url: "/notes/"+ note[0].id +"/" ,
+            type: 'PUT',
             data: {longitude: userLongitude, latitude: userLatitude}
           })
           .success(function() {

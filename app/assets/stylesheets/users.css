@@ -1,14 +1,12 @@
 .user-info{
   background-color: #3F4062;
-  height: 19%;
+  height: 5em;
   width: 100%;
 }
 
 .profile-pic{
   float: left;
-  height: 100%;
-  width: 10%;
-  margin: 2.2% 8%;
+  margin: 1em;
 }
 
 .user-name{
@@ -18,7 +16,33 @@
 
 .profile-pic img {
   border-radius: 50%;
-  height: 62%;
+  height: 3em;
 }
 
-.
+h1 {
+  font-size: 1em;
+  margin: 0.97em 0;
+}
+
+p {
+  font-size: 0.8em;
+  margin: 0;
+}
+
+.note_styling {
+  height: 12em;
+}
+
+.slick-slide img {
+  height: 6.1em;
+  margin: 2.4em 3.3em;
+  z-index: -1;
+  position: absolute;
+}
+
+.carousel {
+  text-align: center;
+  width: 100%;
+  margin: -9em 0;
+  background-color: #DCD5C8;
+}

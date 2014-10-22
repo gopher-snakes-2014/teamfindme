@@ -1,11 +1,11 @@
-<div class="carousel">
+
   <div class="center">
     <% @notes.each do |note| %>
     <div>
       <div class="note_styling">
-        <h5><%= note.comment %></h5>
-        <%= image_tag note.image.url %>
         <%= link_to 'Delete', note, method: :delete %>
+        <%= image_tag note.image.url %>
+        <p><%= note.comment %></p>
       </div>
     </div>
     <% end %>
