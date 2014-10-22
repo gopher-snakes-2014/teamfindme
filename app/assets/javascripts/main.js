@@ -20,6 +20,9 @@ $( document ).ready(function() {
   setSlickCarousel('.center');
 
   $('body').on('click', 'form.like', function(e){
+    item = $(this).children()[2]
+    item = $(item).children()[0]
+    $(item).attr('src', '/assets/liked.png')
     var note = $(this).children()[0].value
     var user = $(this).children()[1].value
     e.preventDefault();
@@ -28,11 +31,13 @@ $( document ).ready(function() {
       type: 'get',
       data: {noteId: note, userId: user}
     }).done(function(data){
-      $('.likesrc').attr('src', '/assets/liked.png')
-      $('.like').attr('class', 'liked')
+
     })
   })
   $('body').on('click', 'form.liked', function(e){
+    item = $(this).children()[2]
+    item = $(item).children()[0]
+    $(item).attr('src', '/assets/like.png')
     var note = $(this).children()[0].value
     var user = $(this).children()[1].value
     e.preventDefault();
@@ -41,8 +46,6 @@ $( document ).ready(function() {
       type: 'get',
       data: {noteId: note, userId: user}
     }).done(function(data){
-      $('.likedsrc').attr('src', '/assets/like.png')
-      $('.liked').attr('class', 'like')
     })
   })
 
