@@ -8,28 +8,17 @@
     <section class="top-bar-section">
       <ul class="right">
         <% if session[:current_user_id] == nil %>
-          <li><a href="#" class="nav-button button large" id="about" data-reveal-id="myModalAbout">About</a></li>
-          <li><a href="#" class="nav-button button large" id="signUp" data-reveal-id="myModalUp">Sign Up</a></li>
-          <li><a href="#" class="nav-button button large" id="signIn" data-reveal-id="myModalIn">Sign In</a></li>
+          <li><a href="#" class="nav-button" id="about" data-reveal-id="myModalAbout">About</a></li>
+          <li><a href="#" class="nav-button" id="signUp" data-reveal-id="myModalUp">Sign Up</a></li>
+          <li><a href="#" class="nav-button" id="signIn" data-reveal-id="myModalIn">Sign In</a></li>
         <% else %>
-          <li><a href="#" class="nav-button button large" id="about" data-reveal-id="myModalAbout">About</a></li>
-          <li><%= link_to :SignOut, sessions_path, :method => :delete, class: "nav-button button large" %></li>
-          <li><%= link_to :Profile, users_path, :method => :get, class: "nav-button button large", id: "viewProfile"%></li>
+          <li><a href="#" class="nav-button" id="about" data-reveal-id="myModalAbout">About</a></li>
+          <li><%= link_to :SignOut, sessions_path, :method => :delete, class: "nav-button" %></li>
+          <li><%= link_to :Profile, users_path, :method => :get, class: "nav-button", id: "viewProfile"%></li>
         <% end %>
       </ul>
       </section>
     </ul>
 
 </nav>
-<div class="row">
-  <dl class="sub-nav">
-    <% if session[:current_user_id] != nil %>
-    <div class="large-6 columns">
-      <a href="#" class="sub-nav-button button expand" id="leaveANote"><img src="http://i.imgur.com/SjBQb3X.png"></img> Leave a note</a>
-    </div>
-    <% end %>
-    <div class="large-6 columns">
-      <a href="#" class="sub-nav-button button expand" data-reveal-id="myModalAll" id="seeAllNotes"><img src="http://i.imgur.com/3bYi7Po.png"></img> See notes!</a>
-    </div>
-  </dl>
-</div>
+

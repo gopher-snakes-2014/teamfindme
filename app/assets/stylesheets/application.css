@@ -22,10 +22,6 @@ body {
   width: 100%;
 }
 
-h1{
- color: #ECF5FD;
-}
-
 .about {
   color: white;
 }
@@ -33,7 +29,6 @@ h1{
 .logo {
   height: 1.5em;
   margin-bottom: 0.5em;
-
 }
 
 .gm-style {
@@ -65,17 +60,27 @@ li.toggle-topbar.menu-icon {
   font-family: 'Montserrat', sans-serif;
 }
 
+#myModalAll {
+  text-align: center;
+  color: white;
+}
+
+#myModalAll img {
+  border: 2px white;
+}
+
 .reveal-modal {
   background-color: white;
   color: #ECF5FD;
-/*  position: fixed;
-  max-height: 700px;
-  overflow: auto;*/
 }
 
 .expand {
   background-color: #9ECEF6;
   color: #3F5262;
+}
+
+.like {
+  background-color: white;
 }
 
 label {
@@ -91,10 +96,6 @@ input {
   text-align: center;
 }
 
-.note_styling {
-  border: 1em solid #ECF5FD;
-}
-
 hr {
     display: block;
     margin-top: 0.5em;
@@ -107,14 +108,23 @@ hr {
 
 /*============================== Map CSS =============================*/
 
+.banner_header {
+  height: 5em;
+  background-color: #3F4062;
+}
+
 #map-canvas{
-  height: 60%;
+  height: 80%;
   padding: 0;
   font-size: 1em;
   font-family: 'Montserrat', sans-serif;
   text-transform: capitalize;
   border-top: 2px black;
   border-bottom: 2px black;
+}
+
+img {
+  max-width: 100%;
 }
 
 .gm-style img {
@@ -131,10 +141,6 @@ hr {
 nav {
   background: #202931;
 }
-
-/*ul.title-area {
-  padding-bottom: 2em;
-}*/
 
 .nav-button {
   background-color: #202931;
@@ -701,9 +707,14 @@ table {
 /*============================== Users CSS =============================*/
 
 .user-info{
-  background-color: #3F4062;
-  height: 5em;
-  width: 100%;
+  background-color: white;
+  width: 40%;
+  height: 80%;
+  float: right;
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+  border-left: 3px solid black;
+  overflow: auto;
 }
 
 .profile-pic{
@@ -711,9 +722,14 @@ table {
   margin: 1em;
 }
 
-.user-name{
+.user-name {
   float:left;
-  font-size: 1.5em;
+  font-size: 1em;
+}
+
+.user-name h1 {
+  color: white;
+  font-size: 2em;
 }
 
 .profile-pic img {
@@ -721,9 +737,8 @@ table {
   height: 3em;
 }
 
-h1 {
-  font-size: 1em;
-  margin: 0.97em 0;
+.username h1 {
+  color: white;
 }
 
 p {
@@ -734,12 +749,12 @@ p {
 .note_styling {
   height: 12em;
   background-color: white;
+  border: 1em solid #ECF5FD;
 }
 
 .slick-slide img {
   height: 6.1em;
   margin: 2.4em 3.3em;
-  /*z-index: -1;*/
   position: absolute;
 }
 
@@ -751,4 +766,29 @@ p {
 }
 .new-image img {
   height: 12em;
+}
+/*========================== DUPLICATE CSS =========================*/
+
+h1 {
+  font-size: 1em;
+  margin: 0.97em 0;
+}
+
+p {
+  font-size: 0.8em;
+  margin: 0;
+}
+
+.profile-icon {
+  float: right;
+  margin: 1.5em 9px 0 0;
+}
+
+.pin-count {
+  float: right;
+  margin: 0.4em 2.1em 0 0;
+}
+
+h2 {
+  color: #ECF5FD;
 }
