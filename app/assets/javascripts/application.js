@@ -117,7 +117,7 @@ if(navigator.geolocation) {
     .success(function(data) {
       placeInMarkers(data[0], data[1], data[2]);
       placeOutMarkers(data[3]);
-      noteWidget.addReadableNotes(data[0], data[1], data[2]);
+      noteWidget.addReadableNotes(data[0], data[1], data[2], data[5]);
     })
     .fail(function() {
       console.log("error");
