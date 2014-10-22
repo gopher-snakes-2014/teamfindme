@@ -89,3 +89,7 @@ hr {
     border-style: inset;
     border-width: 1px;
 }
+
+.new-image img {
+  height: 12em;
+}

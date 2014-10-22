@@ -47,3 +47,18 @@ p {
   margin: -9em 0;
   background-color: #DCD5C8;
 }
+
+.profile-icon {
+  float: right;
+  margin: 1.5em 9px 0 0;
+;
+}
+
+.pin-count {
+  float: right;
+  margin: 0.4em 2.1em 0 0;
+}
+
+h2 {
+  color: #ECF5FD;
+}
