@@ -26,11 +26,35 @@ h1{
  color: #ECF5FD;
 }
 
+.about {
+  color: white;
+}
+
+.aboutHeader {
+  background-color: black;
+}
+
+#target {
+  text-align: center;
+  border-top: 2px white;
+  border-bottom: 2px white;
+}
+
+#note_image {
+  text-align: center;
+}
+
+
+#myModalAbout {
+  background-color: black;
+  font-family: 'Montserrat', sans-serif;
+}
+
 .reveal-modal {
-  background-color:#ECF5FD;
+  background-color: black;
   color: #ECF5FD;
   position: fixed;
-  height: 500px;
+  max-height: 700px;
   overflow: auto;
 }
 

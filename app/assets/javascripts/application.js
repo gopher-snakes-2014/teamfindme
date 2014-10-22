@@ -20,10 +20,8 @@
 
 
 function initialize(noteWidget) {
-
   var map = new google.maps.Map(document.getElementById('map-canvas'),
     mapOptions);
-
 
 // MAP STUFFFFFFFFF ============================
 
@@ -147,7 +145,7 @@ if(navigator.geolocation) {
           var userLatitude = marker.position.B;
 
           $.ajax({
-            url: "/notes/"+ note[0].id +"/" ,
+            url: "/notes/" + note[0].id,
             type: 'PUT',
             data: {longitude: userLongitude, latitude: userLatitude}
           })

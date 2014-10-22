@@ -1,9 +1,7 @@
 <nav>
   <div class="row">
     <div class="large-3 columns">
-      <%= link_to '/' do %>
-        <%= image_tag "logo.png", class: "logo" %>
-      <% end %>
+      <a href="/" target="_top"><%= image_tag "logo.png", class: "logo" %></a>
     </div>
     <div class="large-9 columns">
       <ul class="button-group right">
@@ -12,6 +10,7 @@
         <li><a href="#" class="nav-button button [tiny small large]" id="signUp" data-reveal-id="myModalUp">Sign Up</a></li>
         <li><a href="#" class="nav-button button [tiny small large]" id="signIn" data-reveal-id="myModalIn">Sign In</a></li>
         <% else %>
+        <li><a href="#" class="nav-button button [tiny small large]" id="about" data-reveal-id="myModalAbout">About</a></li>
         <li><a href="#"><%= link_to :SignOut, sessions_path, :method => :delete, class: "nav-button button [tiny small large]" %></a></li>
         <li><a href="#"><%= link_to :Profile, users_path, :method => :get, class: "nav-button button [tiny small large]", id: "viewProfile"%></a></li>
         <% end %>

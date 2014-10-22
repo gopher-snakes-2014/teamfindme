@@ -31,12 +31,13 @@ p {
 
 .note_styling {
   height: 12em;
+  background-color: white;
 }
 
 .slick-slide img {
   height: 6.1em;
   margin: 2.4em 3.3em;
-  z-index: -1;
+  /*z-index: -1;*/
   position: absolute;
 }
 
