@@ -33,23 +33,23 @@ Note.prototype = {
 
   makeNoteTemplate: function(note, url, username, userId, voters) {
     if(url === "/images/original/missing.png") {
-      return "<div class='note_styling'><button class='tiny' id="+ note.id + ">View</button><div><form class='like'><input type='hidden' value="+note.id+"><input type='hidden' value="+userId+"><a href='#'><img class='likesrc' src='/assets/like.png' style='float:right'></form><h4 id='anne'>"+ username +"</h4><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
+      return "<div class='note_styling'><button class='tiny' id="+ note.id + ">View</button><div><form class='like'><h5>" + voters + " likes.</h5><input type='hidden' value="+note.id+"><input type='hidden' value="+userId+"><a href='#'><img class='likesrc' src='/assets/like.png' style='float:right'></form><h4 id='anne'>"+ username +"</h4><p>"+ note.comment +"</p></div></div>";
     } else {
-      return "<div class='note_styling'><button class='tiny' id="+ note.id + ">View</button><div><form class='like'><input type='hidden' value="+note.id+"><input type='hidden' value="+userId+"><a href='#'><img class='likesrc' src='/assets/like.png' style='float:right'></form><h4 id='anne'>"+ username +"</h4><img src="+ url +"><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
+      return "<div class='note_styling'><button class='tiny' id="+ note.id + ">View</button><div><form class='like'><h5>" + voters + " likes.</h5><input type='hidden' value="+note.id+"><input type='hidden' value="+userId+"><a href='#'><img class='likesrc' src='/assets/like.png' style='float:right'></form><h4 id='anne'>"+ username +"</h4><img src="+ url +"><p>"+ note.comment +"</p></div></div>";
     }
   },
   makeNoteTemplateVoted: function(note, url, username, userId, voters){
     if(url === "/images/original/missing.png") {
-    return "<div class=note_styling><button class='tiny' id="+ note.id + ">View</button><div><form class=liked><input type=hidden value="+note.id+"><input type=hidden value="+userId+"><a href=#><img class=likedsrc src=/assets/liked.png style=float:right></form><h4>"+ username +"</h4><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
+    return "<div class=note_styling><button class='tiny' id="+ note.id + ">View</button><div><form class=liked><h5>" + voters + " likes.</h5><input type=hidden value="+note.id+"><input type=hidden value="+userId+"><a href=#><img class=likedsrc src=/assets/liked.png style=float:right></form><h4>"+ username +"</h4><p>"+ note.comment +"</p></div></div>";
   } else {
-    return "<div class=note_styling><button class='tiny' id="+ note.id + ">View</button><div><form class=liked><input type=hidden value="+note.id+"><input type=hidden value="+userId+"><a href=#><img class=likedsrc src=/assets/liked.png style=float:right></form><h4>"+ username +"</h4><img src="+ url +"><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
+    return "<div class=note_styling><button class='tiny' id="+ note.id + ">View</button><div><form class=liked></p><h5>" + voters + " likes.</h5><input type=hidden value="+note.id+"><input type=hidden value="+userId+"><a href=#><img class=likedsrc src=/assets/liked.png style=float:right></form><h4>"+ username +"</h4><img src="+ url +"><p>"+ note.comment +"</div></div>";
   }
   },
   makeNoteTemplateNoLog: function(note, url, username, voters){
     if(url === "/images/original/missing.png") {
-    return "<div class=note_styling><button class='tiny' id="+ note.id + ">View</button><h4>"+ username +"</h4><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
+    return "<div class=note_styling><button class='tiny' id="+ note.id + ">View</button><h4>"+ username +"</h4><p>"+ note.comment +"</p><h5>" + voters + "</h5></div></div>";
   } else {
-    return "<div class=note_styling><button class='tiny' id="+ note.id + ">View</button><h4>"+ username +"</h4><img src="+ url +"><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
+    return "<div class=note_styling><button class='tiny' id="+ note.id + ">View</button><h4>"+ username +"</h4><img src="+ url +"><p>"+ note.comment +"</p><h5>" + voters + "</h5></div></div>";
   }
 
   }

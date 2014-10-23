@@ -31,6 +31,10 @@
    overflow: auto;
  }
 
+ .f-dropdown.content {
+   padding: 0;
+ }
+
  #map-canvas{
    height: 15em;
    padding: 0;
@@ -64,8 +68,9 @@
 }
 
 .note_styling {
-  height: 10em;
-  border-right: 1em solid #ECF5FD;
+  height: 12em;
+  border-right: 0.5em solid #ECF5FD;
+  border-left: 0.5em solid #ECF5FD;
   border-top: 1em solid #ECF5FD;
 }
 
@@ -77,6 +82,11 @@
 #wrapper {
   position: relative;
   overflow: auto;
+}
+
+.like h5 {
+  display: inline;
+  float: left;
 }
 
 #over_map {
@@ -106,25 +116,12 @@ img.likedsrc {
   position: absolute;
 }
 
-/*.carousel img {
-  width: 100%;
-  text-align: center;
-  height: auto;
-  display: block;
-  padding-top: 40px;
-  margin: 0;
-}*/
+h5 {
+    font-size: 0.83em;
+    margin: 1.67em 0;
+    float: left;
+}
 
-/*.carousel h4 {
-  display: block;
-  margin-top: 0;
-  font-size: 1em;
-}*/
-
-
-/*.carousel p {
-  display: block;
-}*/
 
 
 }
@@ -464,6 +461,8 @@ h3 {
 h5 {
     font-size: 0.83em;
     margin: 1.67em 0;
+    float: left;
+    display: inline-block;
 }
 
 h6 {
@@ -883,7 +882,8 @@ p {
 .note_styling {
   height: 12em;
   background-color: white;
-  border: 1em solid #ECF5FD;
+  border-right: 1em solid #ECF5FD;
+  border-top: 1em solid #ECF5FD;
 }
 
 .slick-slide img {
