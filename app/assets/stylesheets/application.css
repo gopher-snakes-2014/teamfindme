@@ -17,6 +17,19 @@
 
  */
 
+
+
+#wrapper {
+  position: relative;
+}
+
+#over_map {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  /*z-index: 99;*/
+}
+
 body {
   background-color:#DCD5C8;
   width: 100%;
@@ -58,7 +71,9 @@ li.toggle-topbar.menu-icon {
 #myModalAbout {
   background-color: black;
   font-family: 'Montserrat', sans-serif;
+  text-align: center;
 }
+
 
 #myModalAll {
   text-align: center;
@@ -114,13 +129,17 @@ hr {
 }
 
 #map-canvas{
-  height: 80%;
+  height: 28em;
   padding: 0;
   font-size: 1em;
   font-family: 'Montserrat', sans-serif;
   text-transform: capitalize;
   border-top: 2px black;
   border-bottom: 2px black;
+}
+
+.large.content {
+  width: 10em;
 }
 
 img {
@@ -709,12 +728,17 @@ table {
 .user-info{
   background-color: white;
   width: 40%;
-  height: 80%;
+  height: 28em;
   float: right;
   border-top: 3px solid black;
   border-bottom: 3px solid black;
   border-left: 3px solid black;
   overflow: auto;
+}
+
+.slick-slide img {
+  height: 50px;
+  width: auto;
 }
 
 .profile-pic{
@@ -756,6 +780,7 @@ p {
   height: 6.1em;
   margin: 2.4em 3.3em;
   position: absolute;
+  text-align: center;
 }
 
 .carousel {
@@ -764,6 +789,54 @@ p {
   margin: -9em 0;
   background-color: #DCD5C8;
 }
+
+.carousel button {
+  display: block;
+  float: right;
+}
+
+/*.carousel div {
+  float: left;
+}*/
+
+#anne {
+  margin: 0;
+}
+
+.carousel img {
+  width: auto;
+  text-align: center;
+  height: 3em;
+  display: block;
+  padding-top: 40px;
+  margin: 0;
+}
+
+.carousel h4 {
+  display: block;
+}
+
+.carousel p {
+  display: block;
+}
+
+img.likesrc {
+  height: 20px;
+  width: auto;
+  display: block;
+  padding: 0;
+  margin-left: 10px;
+}
+
+img.likedsrc {
+  height: 20px;
+  width: auto;
+  display: block;
+  padding: 0;
+  margin: 0;
+  margin-left: 10px;
+}
+
 .new-image img {
   height: 12em;
 }

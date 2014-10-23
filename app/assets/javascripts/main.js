@@ -15,18 +15,17 @@ $( document ).ready(function() {
 
   google.maps.event.addDomListener(window, 'load', initialize(noteWidget));
   $('#seeAllNotes').click(function(){
-    $('.center').fadeIn('slow')
+    $('.center').fadeIn('slow');
     setSlickCarousel('.center');
-  })
+  });
   // google.maps.event.addDomListener(window, 'load', initialize());
 
-
   $('body').on('click', 'form.like', function(e){
-    item = $(this).children()[2]
-    item = $(item).children()[0]
-    $(item).attr('src', '/assets/liked.png')
-    var note = $(this).children()[0].value
-    var user = $(this).children()[1].value
+    item = $(this).children()[2];
+    item = $(item).children()[0];
+    $(item).attr('src', '/assets/liked.png');
+    var note = $(this).children()[0].value;
+    var user = $(this).children()[1].value;
     e.preventDefault();
     $.ajax({
       url: '/vote/add',
@@ -34,22 +33,23 @@ $( document ).ready(function() {
       data: {noteId: note, userId: user}
     }).done(function(data){
 
-    })
-  })
+    });
+  });
+
   $('body').on('click', 'form.liked', function(e){
-    item = $(this).children()[2]
-    item = $(item).children()[0]
-    $(item).attr('src', '/assets/like.png')
-    var note = $(this).children()[0].value
-    var user = $(this).children()[1].value
+    item = $(this).children()[2];
+    item = $(item).children()[0];
+    $(item).attr('src', '/assets/like.png');
+    var note = $(this).children()[0].value;
+    var user = $(this).children()[1].value;
     e.preventDefault();
     $.ajax({
       url: '/vote/remove',
       type: 'get',
       data: {noteId: note, userId: user}
     }).done(function(data){
-    })
-  })
+    });
+  });
 
 }); // end document ready
 
