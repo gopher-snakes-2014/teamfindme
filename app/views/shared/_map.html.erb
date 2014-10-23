@@ -1,14 +1,22 @@
 <div id="wrapper">
-   <div id="map-canvas">
+ <div id="map-canvas">
 
-   </div>
-
-   <div id="over_map">
-    <a href="#" class="button tiny" data-dropdown="drop">Filter &raquo;</a>
-    <ul id="drop" class="large content f-dropdown" data-dropdown-content>
-      <li><a href="/?filter=showAll" target="_top">Show All</a></li>
-      <li><a href="/?filter=mostLiked" target="_top">Most Liked</a></li>
-      <li><a href="/?filter=mostRecent" target="_top">Most Recent</a></li>
-    </ul>
-   </div>
+ </div>
+ <div id="over_map">
+  <% if session[:filter] == 'showAll' %>
+  All Notes Displayed
+  <% elsif session[:filter] == 'mostLiked' %>
+  Most Liked Notes Displayed
+  <% else %>
+  Recent Notes Displayed
+  <% end %>
+  <% if session[:filter] != "user" %>
+  <a href="#" class="button tiny" id="filterBtn" data-dropdown="drop">Filter &raquo;</a>
+  <% end %>
+  <ul id="drop" class="large content f-dropdown" data-dropdown-content>
+    <li><a href="/?filter=showAll" target="_top">Show All</a></li>
+    <li><a href="/?filter=mostLiked" target="_top">Most Liked</a></li>
+    <li><a href="/?filter=mostRecent" target="_top">Most Recent</a></li>
+  </ul>
+</div>
 </div>
