@@ -14,7 +14,7 @@
         <% else %>
           <li><a href="#" class="nav-button" id="about" data-reveal-id="myModalAbout">About</a></li>
           <li><%= link_to :SignOut, sessions_path, :method => :delete, class: "nav-button" %></li>
-          <li><%= link_to :Profile, users_path, :method => :get, class: "nav-button", id: "viewProfile"%></li>
+          <li><%= link_to :Profile, user_path(current_user.id), :method => :get, class: "nav-button", id: "viewProfile"%></li>
         <% end %>
       </ul>
       </section>
