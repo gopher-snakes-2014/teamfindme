@@ -337,7 +337,10 @@ h3 {
 
 h5 {
     font-size: 0.83em;
-    margin: 1.67em 0;
+    margin:0;
+    float: left;
+    padding-top: 1.3em;
+    padding-left: 0.4em
 }
 
 h6 {
@@ -767,7 +770,7 @@ p {
 }
 
 .note_styling {
-  height: 12em;
+  height: 18em;
   background-color: white;
   border: 1em solid #ECF5FD;
 }
@@ -801,6 +804,7 @@ p {
 
 #anne {
   margin: 0;
+  width: 20px;
 }
 
 .carousel img {
@@ -870,4 +874,33 @@ p {
 
 h2 {
   color: #ECF5FD;
+}
+
+.thisNote .note_styling {
+  text-align: center;
+  border: none;
+  padding: 0;
+}
+
+.thisNote .note_styling img {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  text-align: center;
+}
+
+/*#myModalView {
+  height: auto;
+}*/
+
+.thisNote .note_styling button {
+  display: none;
+}
+
+.thisNote .note_styling .likedsrc {
+  display: none;
+}
+
+.thisNote .note_styling .likesrc {
+  display: none;
 }

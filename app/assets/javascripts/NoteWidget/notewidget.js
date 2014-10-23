@@ -33,23 +33,23 @@ Note.prototype = {
 
   makeNoteTemplate: function(note, url, username, userId, voters) {
     if(url === "/images/original/missing.png") {
-      return "<div class='note_styling'><a href='#' data-reveal-id='myModalView' class='tiny' id="+ note.id + ">View</a><div><form class='like'><input type='hidden' value="+note.id+"><input type='hidden' value="+userId+"><a href='#'><img class='likesrc' src='/assets/like.png' style='float:right'></form><h4 id='anne'>"+ username +"</h4><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
+      return "<div class='note_styling'><h5>likes: " + voters + "</h5><a href='#' data-reveal-id='myModalView' id="+ note.id + "><button class='tiny'>View</button></a><div><form class='like'><input type='hidden' value="+note.id+"><input type='hidden' value="+userId+"><a href='#'><img class='likesrc' src='/assets/like.png' style='float:right'></form><h4 id='anne'>"+ username +"</h4><p>"+ note.comment +"</p></div></div>";
     } else {
-      return "<div class='note_styling'><a href='#' data-reveal-id='myModalView' class='tiny' id="+ note.id + ">View</a><div><form class='like'><input type='hidden' value="+note.id+"><input type='hidden' value="+userId+"><a href='#'><img class='likesrc' src='/assets/like.png' style='float:right'></form><h4 id='anne'>"+ username +"</h4><img src="+ url +"><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
+      return "<div class='note_styling'><h5>likes: " + voters + "</h5><a href='#' data-reveal-id='myModalView' id="+ note.id + "><button class='tiny'>View</button></a><div><form class='like'><input type='hidden' value="+note.id+"><input type='hidden' value="+userId+"><a href='#'><img class='likesrc' src='/assets/like.png' style='float:right'></form><h4 id='anne'>"+ username +"</h4><img src="+ url +" class='modalImage'><p>"+ note.comment +"</p></div></div>";
     }
   },
   makeNoteTemplateVoted: function(note, url, username, userId, voters){
     if(url === "/images/original/missing.png") {
-    return "<div class=note_styling><a href='#' data-reveal-id='myModalView' class='tiny' id="+ note.id + ">View</a><div><form class=liked><input type=hidden value="+note.id+"><input type=hidden value="+userId+"><a href=#><img class=likedsrc src=/assets/liked.png style=float:right></form><h4>"+ username +"</h4><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
+    return "<div class=note_styling><h5>likes: " + voters + "</h5><a href='#' data-reveal-id='myModalView' id="+ note.id + "><button class='tiny'>View</button></a><div><form class=liked><input type=hidden value="+note.id+"><input type=hidden value="+userId+"><a href=#><img class=likedsrc src=/assets/liked.png style=float:right></form><h4>"+ username +"</h4><p>"+ note.comment +"</p></div></div>";
   } else {
-    return "<div class=note_styling><a href='#' data-reveal-id='myModalView' class='tiny' id="+ note.id + ">View</a><div><form class=liked><input type=hidden value="+note.id+"><input type=hidden value="+userId+"><a href=#><img class=likedsrc src=/assets/liked.png style=float:right></form><h4>"+ username +"</h4><img src="+ url +"><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
+    return "<div class=note_styling><h5>likes: " + voters + "</h5><a href='#' data-reveal-id='myModalView' id="+ note.id + "><button class='tiny' >View</button></a><div><form class=liked><input type=hidden value="+note.id+"><input type=hidden value="+userId+"><a href=#><img class=likedsrc src=/assets/liked.png style=float:right></form><h4>"+ username +"</h4><img src="+ url +" class='modalImage'><p>"+ note.comment +"</p></div></div>";
   }
   },
   makeNoteTemplateNoLog: function(note, url, username, voters){
     if(url === "/images/original/missing.png") {
-    return "<div class=note_styling><a href='#' data-reveal-id='myModalView' class='tiny' id="+ note.id + ">View</a><h4>"+ username +"</h4><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
+    return "<div class=note_styling><h5>likes: " + voters + "</h5><a href='#' data-reveal-id='myModalView' id="+ note.id + "><button class='tiny' >View</button></a><h4>"+ username +"</h4><p>"+ note.comment +"</p></div></div>";
   } else {
-    return "<div class=note_styling><a href='#' data-reveal-id='myModalView' class='tiny' id="+ note.id + ">View</a><h4>"+ username +"</h4><img src="+ url +"><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
+    return "<div class=note_styling><h5>likes: " + voters + "</h5><a href='#' data-reveal-id='myModalView' id="+ note.id + "><button class='tiny'>View</button></a><h4>"+ username +"</h4><img src="+ url +" class='modalImage'><p>"+ note.comment +"</p></div></div>";
   }
 
   }
