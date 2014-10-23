@@ -10,7 +10,6 @@ Note.prototype = {
   },
 
   appendCarouselNote: function(notes, url, username, userId) {
-
     var voters = notes.voters;
     if (userId === undefined || null) {
       $(this.carousel).append(
