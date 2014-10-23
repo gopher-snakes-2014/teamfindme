@@ -3,10 +3,12 @@
 <div class="user-info">
   <%= render "user_banner" %>
 </div>
+<% if flash[:error] %>
+  <p><%= flash[:error] %></p>
+<% end %>
 
 <%= render "shared/map" %>
 
 <div class="carousel">
   <%= render "shared/note_carousel" %>
 </div>
-
