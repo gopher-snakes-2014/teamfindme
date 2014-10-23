@@ -379,10 +379,15 @@ dfn {
  * Known issue: no IE 6/7 normalization.
  */
 
+.confirm {
+
+}
+
 hr {
     -moz-box-sizing: content-box;
     box-sizing: content-box;
-    height: 0;
+    background-color: black;
+    height: 1px;
 }
 
 /**
