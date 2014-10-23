@@ -1,5 +1,5 @@
 var Note = function() {
-  this.carousel = '#center';
+  this.carousel = '.center';
 };
 
 Note.prototype = {
