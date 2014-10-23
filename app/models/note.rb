@@ -1,7 +1,6 @@
 class Note < ActiveRecord::Base
   belongs_to :user
   has_attached_file :image,
-  :default_url => "http://www.hollandlift.com/wp-content/themes/hollandlift/assets/images/no_image.jpg",
   :s3_protocol => "https",
   :s3_host_name => "s3-us-west-2.amazonaws.com",
   :style => { :medium => "300x300>", :thumb => "100x100>" },
