@@ -60,7 +60,9 @@ function initialize(noteWidget) {
 
     if ($(buttonSelector).length > 0) {
       $(buttonSelector).on("click", function(){
-        infoWindow.open(map, marker);
+        note = $(this).parent()[0];
+        $('#currentNote').empty();
+        $(note).clone().appendTo('#currentNote').show();
     });
     }
 
