@@ -5,8 +5,8 @@
   <%= render "user_banner" %>
   <%= render "user_notes" %>
 </div>
+
+<%= render "shared/map" %>
 <% if flash[:error] %>
   <p><%= flash[:error] %></p>
 <% end %>
-
-<%= render "shared/map" %>
