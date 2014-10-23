@@ -21,13 +21,13 @@
 
 #wrapper {
   position: relative;
+  overflow: auto;
 }
 
 #over_map {
   position: absolute;
   top: 10px;
   left: 10px;
-  /*z-index: 99;*/
 }
 
 body {
@@ -75,14 +75,8 @@ li.toggle-topbar.menu-icon {
 }
 
 
-#myModalAll {
-  text-align: center;
-  color: white;
-  overflow: auto;
-}
-
-#myModalAll img {
-  border: 2px white;
+.profileNotes {
+  /*overflow: auto;*/
 }
 
 .reveal-modal {
@@ -336,10 +330,10 @@ h3 {
     margin: 1em 0;
 }
 
-h4 {
+/*h4 {
     font-size: 1em;
     margin: 1.33em 0;
-}
+}*/
 
 h5 {
     font-size: 0.83em;
@@ -726,8 +720,9 @@ table {
 
 /*============================== Users CSS =============================*/
 
-.user-info{
+.user-info {
   background-color: white;
+  text-align: center;
   width: 40%;
   height: 28em;
   float: right;
@@ -784,6 +779,10 @@ p {
   text-align: center;
 }
 
+.slick_track {
+  border-top: 3px solid black;
+}
+
 .carousel {
   text-align: center;
   width: 100%;
@@ -805,9 +804,9 @@ p {
 }
 
 .carousel img {
-  width: auto;
+  width: 100%;
   text-align: center;
-  height: 10em;
+  height: auto;
   display: block;
   padding-top: 40px;
   margin: 0;
@@ -815,6 +814,12 @@ p {
 
 .carousel h4 {
   display: block;
+  margin-top: 0;
+  font-size: 1em;
+}
+
+.slick_track {
+  height: auto;
 }
 
 .carousel p {
@@ -860,7 +865,7 @@ p {
 
 .pin-count {
   float: right;
-  margin: 0.4em 2.1em 0 0;
+  margin: 0.4em 0.4em 0 0;
 }
 
 h2 {
