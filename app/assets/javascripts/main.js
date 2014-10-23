@@ -14,16 +14,11 @@ $( document ).ready(function() {
   var noteWidget = new Note();
 
   google.maps.event.addDomListener(window, 'load', initialize(noteWidget));
+
   $('#seeAllNotes').click(function(){
-    $('.center').fadeIn('slow');
-    $('seeAllNotes').attr('id', 'closeAllNotes')
+    $('.center').fadeToggle('slow', 'linear');
     setSlickCarousel('.center');
   });
-  $('#closeAllNotes').click(function(){
-    $('.center').fadeOut('slow');
-    $('#closeAllNotes').attr('id', 'seeAllNotes' )
-    $('.center').unslick();
-  })
 
   $("#cancelImg").click(function(){
     $('#target').text("");
