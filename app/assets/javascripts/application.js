@@ -68,9 +68,10 @@ function infoWindowTemplate(comment, imageUrl, username) {
   if(imageUrl === "/images/original/missing.png") {
     return "<h5>"+ username +"</h6>" + comment + "</h5>";
   } else {
-    return "<h5>"+ username +"</h6>" + comment + "<br><img src=" + imageUrl + "</h5>";
+    return "<h5>"+ username +"</h6>" + comment + "<br><img src=" + imageUrl + "></h5>";
   }
 }
+// take this comment out after
 
 function setUserMarker(pos) {
   return new google.maps.Marker({
@@ -159,7 +160,7 @@ if(navigator.geolocation) {
           })
           .fail(function() {
             console.log("error");
-            $("#noCommentError").text("Note field can't be empty.")
+            $("#noCommentError").text("Note field can't be empty.");
           }); //end ajax request
 
         } //end updateNoteLocation function
