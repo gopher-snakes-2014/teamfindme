@@ -40,16 +40,16 @@ Note.prototype = {
   },
   makeNoteTemplateVoted: function(note, url, username, userId, voters){
     if(url === "/images/original/missing.png") {
-    return "<div class=note_styling><button class='tiny'>View</button><div><form class=liked><input type=hidden value="+note.id+"><input type=hidden value="+userId+"><a href=#><img class=likedsrc src=/assets/liked.png style=float:right></form><h4>"+ username +"</h4><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
+    return "<div class=note_styling><button class='tiny' id='carouselViewButton'>View</button><div><form class=liked><input type=hidden value="+note.id+"><input type=hidden value="+userId+"><a href=#><img class=likedsrc src=/assets/liked.png style=float:right></form><h4>"+ username +"</h4><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
   } else {
-    return "<div class=note_styling><button class='tiny'>View</button><div><form class=liked><input type=hidden value="+note.id+"><input type=hidden value="+userId+"><a href=#><img class=likedsrc src=/assets/liked.png style=float:right></form><h4>"+ username +"</h4><img src="+ url +"><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
+    return "<div class=note_styling><button class='tiny' id='carouselViewButton'>View</button><div><form class=liked><input type=hidden value="+note.id+"><input type=hidden value="+userId+"><a href=#><img class=likedsrc src=/assets/liked.png style=float:right></form><h4>"+ username +"</h4><img src="+ url +"><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
   }
   },
   makeNoteTemplateNoLog: function(note, url, username, voters){
     if(url === "/images/original/missing.png") {
-    return "<div class=note_styling><button class='tiny'>View</button><h4>"+ username +"</h4><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
+    return "<div class=note_styling><button class='tiny' id='carouselViewButton'>View</button><h4>"+ username +"</h4><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
   } else {
-    return "<div class=note_styling><button class='tiny'>View</button><h4>"+ username +"</h4><img src="+ url +"><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
+    return "<div class=note_styling><button class='tiny' id='carouselViewButton'>View</button><h4>"+ username +"</h4><img src="+ url +"><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
   }
 
   }

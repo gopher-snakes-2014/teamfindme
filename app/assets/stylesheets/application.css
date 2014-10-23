@@ -17,7 +17,10 @@
 
  */
 
-
+.slick_track {
+height: 300px;
+overflow: visible;
+}
 
 #wrapper {
   position: relative;
@@ -28,11 +31,6 @@
   position: absolute;
   top: 10px;
   left: 10px;
-}
-
-body {
-  background-color:#DCD5C8;
-  width: 100%;
 }
 
 .about {
@@ -282,6 +280,7 @@ textarea {
 
 body {
     margin: 0;
+    background-color: #DCD5C8;
 }
 
 /* ==========================================================================
@@ -772,9 +771,10 @@ p {
 }
 
 .note_styling {
-  height: 12em;
+  height: 100%;
   background-color: white;
   border: 1em solid #ECF5FD;
+  overflow: invisible;
 }
 
 .slick-slide img {
@@ -784,25 +784,23 @@ p {
   text-align: center;
 }
 
-.slick_track {
+/*.slick_track {
   border-top: 3px solid black;
-}
+}*/
 
 .carousel {
   text-align: center;
   width: 100%;
   margin: -9em 0;
   background-color: #DCD5C8;
+  overflow: visible;
+  z-index: 99;
 }
 
 .carousel button {
   display: block;
   float: right;
 }
-
-/*.carousel div {
-  float: left;
-}*/
 
 #anne {
   margin: 0;
@@ -823,12 +821,9 @@ p {
   font-size: 1em;
 }
 
-.slick_track {
-  height: auto;
-}
-
 .carousel p {
   display: block;
+  height: 100%;
 }
 
 img.likesrc {
