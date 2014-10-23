@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(@password)
       session[:current_user_id] = @user.id
-      session[:filter] = "showAll"
+      session[:filter] = "mostRecent"
       redirect_to root_path
     else
       flash[:notice] = "Login Failed"

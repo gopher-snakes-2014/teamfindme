@@ -6,6 +6,8 @@ class NotesController < ApplicationController
 
     if params[:filter]
       session[:filter] = params[:filter]
+    elsif session[:filter] == "user"
+      session[:filter] = "mostRecent"
     end
 
     render "index"
@@ -18,14 +20,8 @@ class NotesController < ApplicationController
 
   def create
     user = current_user
-    p user
-    p "=========================="
     new_note = user.notes.create(note_params)
-    p new_note
-    p "=========================="
     url = new_note.image.url
-    p url
-    p "=========================="
     username = new_note.user.username
     render :json => [new_note, url, username]
   end
@@ -45,18 +41,24 @@ class NotesController < ApplicationController
       searchType = "liked"
     elsif session[:filter] == "showAll" || session[:filter].nil?
       searchType = "all"
-    else
+    elsif session[:filter] == "mostRecent"
       searchType = "recent"
+    elsif session[:filter] == "user"
+      searchType = "user"
     end
-
-    notes = Note.notes_in_range(params, searchType)
+    userId = session[:current_user_id]
+    notes = Note.notes_in_range(params, searchType, userId)
     out_of_range = Note.notes_out_of_range(notes, searchType, params)
     info = Note.username_url(notes)
     url = info[0]
     username = info[1]
     voters = info[2]
-    userId = session[:current_user_id]
-    render :json => [notes, url, username, out_of_range, voters, userId]
+    user_notes = Note.user_notes(userId)
+    user_info = Note.username_url(user_notes)
+    user_url = user_info[0]
+    user_username = user_info[1]
+
+    render :json => [notes, url, username, out_of_range, voters, userId, user_notes, user_url, user_username]
 
   end
 

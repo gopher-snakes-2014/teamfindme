@@ -65,7 +65,11 @@ function newInfoWindow(info) {
 }
 
 function infoWindowTemplate(comment, imageUrl, username) {
-  return "<h6>"+ username +"</h6>" + comment + "<br><img src=" + imageUrl + ">";
+  if(imageUrl === "/images/original/missing.png") {
+    return "<h5>"+ username +"</h6>" + comment + "</h5>";
+  } else {
+    return "<h5>"+ username +"</h6>" + comment + "<br><img src=" + imageUrl + "</h5>";
+  }
 }
 
 function setUserMarker(pos) {

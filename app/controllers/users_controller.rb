@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       session[:current_user_id] = user.id
-      session[:filter] = "showAll"
+      session[:filter] = "mostRecent"
       redirect_to root_path
     else
       flash[:error] = user.errors.full_messages
@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     if params[:id] == current_user.id.to_s
       @user = current_user
       @notes = @user.notes
+      session[:filter] = "user"
     else
       flash[:error] = "You don't have access to that profile"
 

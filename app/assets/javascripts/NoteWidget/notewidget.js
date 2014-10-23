@@ -10,40 +10,55 @@ Note.prototype = {
   },
 
   appendCarouselNote: function(notes, url, username, userId) {
-    var votes = notes.voters.length;
-    if (userId === undefined || null) {
+    if(notes.voters.length === undefined){
+      var votes = "0"
+    } else {
+      var votes = notes.voters.length;
+    }
+    if (userId === undefined || userId === null) {
       $(this.carousel).append(
-        this.makeNoteTemplateNoLog(notes, url, username, notes.voters)
+        this.makeNoteTemplateNoLog(notes, url, username, votes)
         );
     } else if (notes.voters.indexOf(""+userId+"") >= 0){
       $(this.carousel).append(
-        this.makeNoteTemplateVoted(notes, url, username, userId, notes.voters)
+        this.makeNoteTemplateVoted(notes, url, username, userId, votes)
         );
     } else {
       $(this.carousel).append(
-        this.makeNoteTemplate( notes, url, username, userId, notes.voters)
+        this.makeNoteTemplate( notes, url, username, userId, votes)
         );
     }
   },
 
 
   makeNoteTemplate: function(note, url, username, userId, voters) {
-    return "<div class='note_styling'><button class='tiny'>View</button><div><form class='like'><input type='hidden' value="+note.id+"><input type='hidden' value="+userId+"><a href='#'><img class='likesrc' src='/assets/like.png' style='float:right'></form><h4 id='anne'>"+ username +"</h4><img src="+ url +"><p>"+ note.comment +"</p><h5>" + voters + "</h5></div></div>";
+    if(url === "/images/original/missing.png") {
+      return "<div class='note_styling'><button class='tiny'>View</button><div><form class='like'><input type='hidden' value="+note.id+"><input type='hidden' value="+userId+"><a href='#'><img class='likesrc' src='/assets/like.png' style='float:right'></form><h4 id='anne'>"+ username +"</h4><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
+    } else {
+      return "<div class='note_styling'><button class='tiny'>View</button><div><form class='like'><input type='hidden' value="+note.id+"><input type='hidden' value="+userId+"><a href='#'><img class='likesrc' src='/assets/like.png' style='float:right'></form><h4 id='anne'>"+ username +"</h4><img src="+ url +"><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
+    }
   },
   makeNoteTemplateVoted: function(note, url, username, userId, voters){
-    return "<div class=note_styling><div><button class='tiny'>View</button><form class=liked><input type=hidden value="+note.id+"><input type=hidden value="+userId+"><a href=#><img class=likedsrc src=/assets/liked.png style=float:right></form><h4>"+ username +"</h4 id='anne'><img src="+ url +"><p>"+ note.comment +"</p><h5>" + voters + "</h5></div></div>";
+    if(url === "/images/original/missing.png") {
+    return "<div class=note_styling><button class='tiny'>View</button><div><form class=liked><input type=hidden value="+note.id+"><input type=hidden value="+userId+"><a href=#><img class=likedsrc src=/assets/liked.png style=float:right></form><h4>"+ username +"</h4><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
+  } else {
+    return "<div class=note_styling><button class='tiny'>View</button><div><form class=liked><input type=hidden value="+note.id+"><input type=hidden value="+userId+"><a href=#><img class=likedsrc src=/assets/liked.png style=float:right></form><h4>"+ username +"</h4><img src="+ url +"><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
+  }
   },
   makeNoteTemplateNoLog: function(note, url, username, voters){
-    return "<div class=note_styling><button class='tiny'>View</button><h4>"+ username +"</h4 id='anne'><img src="+ url +"><p>"+ note.comment +"</p><h5>" + voters + "</h5></div></div>";
+    if(url === "/images/original/missing.png") {
+    return "<div class=note_styling><button class='tiny'>View</button><h4>"+ username +"</h4><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
+  } else {
+    return "<div class=note_styling><button class='tiny'>View</button><h4>"+ username +"</h4><img src="+ url +"><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
+  }
+
   }
 
 
 
 }; // prototype end
 
-var changeLike = function(source) {
 
-}
 
 
 
