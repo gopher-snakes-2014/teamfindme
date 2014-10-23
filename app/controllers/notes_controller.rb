@@ -18,8 +18,14 @@ class NotesController < ApplicationController
 
   def create
     user = current_user
+    p user
+    p "=========================="
     new_note = user.notes.create(note_params)
+    p new_note
+    p "=========================="
     url = new_note.image.url
+    p url
+    p "=========================="
     username = new_note.user.username
     render :json => [new_note, url, username]
   end
