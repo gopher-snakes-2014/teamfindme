@@ -153,8 +153,7 @@ if(navigator.geolocation) {
             $("#noteForm")[0].reset();
             $("#myModalNote").foundation('reveal', 'close');
             addInfoWindow(marker, note[0], note[1], note[2]);
-            noteWidget.addReadableNotes([note[0]], [note[1]], [note[2]], data.id)
-
+            // noteWidget.addReadableNotes([note[0]], [note[1]], [note[2]], data.id)
             console.log("success");
           })
           .fail(function() {
