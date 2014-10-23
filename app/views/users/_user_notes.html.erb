@@ -1,0 +1,10 @@
+<div id="myModalAll">
+  <% @notes.each do |note| %>
+    <h3><%= note.comment %></h3>
+      <% if note.image.url != "/images/original/missing.png" %>
+        <%= image_tag note.image.url %>
+      <% end %>
+      <%= link_to "Delete", note, :method => :delete, :confirm => "Are you sure ?"%>
+      <h6>Posted: <%= note.created_at %><h6>
+  <% end %>
+</div>
