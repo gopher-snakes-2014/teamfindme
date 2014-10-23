@@ -3,6 +3,8 @@
 
  </div>
  <div id="over_map">
+  <% if session[:filter] != "user" %>
+  <a href="#" class="button tiny" id="filterBtn" data-dropdown="drop">Filter &raquo;</a>
   <% if session[:filter] == 'showAll' %>
   All Notes Displayed
   <% elsif session[:filter] == 'mostLiked' %>
@@ -10,8 +12,6 @@
   <% else %>
   Recent Notes Displayed
   <% end %>
-  <% if session[:filter] != "user" %>
-  <a href="#" class="button tiny" id="filterBtn" data-dropdown="drop">Filter &raquo;</a>
   <% end %>
   <ul id="drop" class="large content f-dropdown" data-dropdown-content>
     <li><a href="/?filter=showAll" target="_top">Show All</a></li>
