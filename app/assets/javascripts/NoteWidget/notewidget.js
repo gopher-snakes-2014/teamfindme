@@ -28,13 +28,13 @@ Note.prototype = {
 
 
   makeNoteTemplate: function(note, url, username, userId, voters) {
-    return "<div class='note_styling'><div><form class='like'><input type='hidden' value="+note.id+"><input type='hidden' value="+userId+"><a href='#'><img class='likesrc' src='/assets/like.png' style='float:right'></form><h4 id='anne'>"+ username +"</h4><img src="+ url +"><p>"+ note.comment +"</p><h5>" + voters + "</h5></div></div>";
+    return "<div class='note_styling'><button class='tiny'>View</button><div><form class='like'><input type='hidden' value="+note.id+"><input type='hidden' value="+userId+"><a href='#'><img class='likesrc' src='/assets/like.png' style='float:right'></form><h4 id='anne'>"+ username +"</h4><img src="+ url +"><p>"+ note.comment +"</p><h5>" + voters + "</h5></div></div>";
   },
   makeNoteTemplateVoted: function(note, url, username, userId, voters){
-    return "<div class=note_styling><div><form class=liked><input type=hidden value="+note.id+"><input type=hidden value="+userId+"><a href=#><img class=likedsrc src=/assets/liked.png style=float:right></form><h4>"+ username +"</h4><img src="+ url +"><p>"+ note.comment +"</p><h5>" + voters + "</h5></div></div>";
+    return "<div class=note_styling><div><button class='tiny'>View</button><form class=liked><input type=hidden value="+note.id+"><input type=hidden value="+userId+"><a href=#><img class=likedsrc src=/assets/liked.png style=float:right></form><h4>"+ username +"</h4><img src="+ url +"><p>"+ note.comment +"</p><h5>" + voters + "</h5></div></div>";
   },
   makeNoteTemplateNoLog: function(note, url, username, voters){
-    return "<div class=note_styling><h4>"+ username +"</h4><img src="+ url +"><p>"+ note.comment +"</p><h5>" + voters + "</h5></div></div>";
+    return "<div class=note_styling><button class='tiny'>View</button><h4>"+ username +"</h4><img src="+ url +"><p>"+ note.comment +"</p><h5>" + voters + "</h5></div></div>";
   }
 
 
