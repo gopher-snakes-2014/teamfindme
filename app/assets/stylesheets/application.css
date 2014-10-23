@@ -16,8 +16,63 @@
  *= require foundation_and_overrides
 
  */
+ @media (max-width : 600px) {
 
+ .user-info {
+   background-color: white;
+   text-align: center;
+   width: 100%;
+   height: 10em;
+   position: fixed;
+   bottom: 0;
+   border-top: 3px solid black;
+   border-bottom: 3px solid black;
+   border-left: 3px solid black;
+   overflow: auto;
+ }
 
+ #map-canvas{
+   height: 15em;
+   padding: 0;
+   width: 100%
+   font-size: 1em;
+   font-family: 'Montserrat', sans-serif;
+   text-transform: capitalize;
+   border-top: 2px black;
+   border-bottom: 2px black;
+ }
+
+ .logo {
+   height: 1.5em;
+   margin-bottom: 0.5em;
+ }
+
+ .sub-nav {
+  margin: 0;
+ }
+
+ .button {
+  margin: 0;
+ }
+
+ button {
+  margin: 0;
+ }
+
+.carousel {
+  text-align: center;
+}
+
+.note_styling {
+  height: 10em;
+  border-right: 1em solid #ECF5FD;
+  border-top: 1em solid #ECF5FD;
+}
+
+.carousel button {
+  display: block;
+  float: right;
+}
 
 #wrapper {
   position: relative;
@@ -30,9 +85,80 @@
   left: 10px;
 }
 
+img.likesrc {
+  height: 20px;
+  width: auto;
+  display: block;
+  padding: 0;
+  margin-left: 10px;
+  float: left;
+  position: absolute;
+}
+
+img.likedsrc {
+  height: 20px;
+  width: auto;
+  display: block;
+  padding: 0;
+  margin: 0;
+  margin-left: 10px;
+  float: left;
+  position: absolute;
+}
+
+/*.carousel img {
+  width: 100%;
+  text-align: center;
+  height: auto;
+  display: block;
+  padding-top: 40px;
+  margin: 0;
+}*/
+
+/*.carousel h4 {
+  display: block;
+  margin-top: 0;
+  font-size: 1em;
+}*/
+
+
+/*.carousel p {
+  display: block;
+}*/
+
+
+}
+
+@media (min-width : 600px) {
+
+.user-info {
+  background-color: white;
+  text-align: center;
+  width: 40%;
+  height: 28em;
+  float: right;
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+  border-left: 3px solid black;
+  overflow: auto;
+}
+
+#wrapper {
+  position: relative;
+  overflow: auto;
+}
+
+#over_map {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+
 body {
   background-color:#DCD5C8;
   width: 100%;
+  margin: 1em;
 }
 
 .about {
@@ -720,18 +846,6 @@ table {
 
 /*============================== Users CSS =============================*/
 
-.user-info {
-  background-color: white;
-  text-align: center;
-  width: 40%;
-  height: 28em;
-  float: right;
-  border-top: 3px solid black;
-  border-bottom: 3px solid black;
-  border-left: 3px solid black;
-  overflow: auto;
-}
-
 .slick-slide img {
   height: 50px;
   width: auto;
@@ -795,14 +909,6 @@ p {
   float: right;
 }
 
-/*.carousel div {
-  float: left;
-}*/
-
-#anne {
-  margin: 0;
-}
-
 .carousel img {
   width: 100%;
   text-align: center;
@@ -818,12 +924,17 @@ p {
   font-size: 1em;
 }
 
-.slick_track {
-  height: auto;
-}
 
 .carousel p {
   display: block;
+}
+
+#anne {
+  margin: 0;
+}
+
+.slick_track {
+  height: auto;
 }
 
 img.likesrc {
@@ -871,3 +982,7 @@ p {
 h2 {
   color: #ECF5FD;
 }
+}
+
+
+

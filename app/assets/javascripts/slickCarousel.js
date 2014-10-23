@@ -15,7 +15,7 @@ $(selector).slick({
       }
     },
     {
-      breakpoint: 480,
+      breakpoint: 600,
       settings: {
         arrows: false,
         centerMode: true,
