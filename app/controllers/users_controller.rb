@@ -18,8 +18,20 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
-    @notes = @user.notes
+    p "================START ========="
+    p params[:id]
+    p current_user
+    p current_user.id
+    p "===========END ========"
+    if params[:id] == current_user.id.to_s
+      @user = current_user
+      @notes = @user.notes
+    else
+      flash[:error] = "You don't have access to that profile"
+      # @user = current_user
+      # @notes = @user.notes
+      redirect_to current_user
+    end
   end
 
   def user_params
