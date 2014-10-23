@@ -16,8 +16,19 @@ $( document ).ready(function() {
   google.maps.event.addDomListener(window, 'load', initialize(noteWidget));
   $('#seeAllNotes').click(function(){
     $('.center').fadeIn('slow');
+    $('seeAllNotes').attr('id', 'closeAllNotes')
     setSlickCarousel('.center');
   });
+  $('#closeAllNotes').click(function(){
+    $('.center').fadeOut('slow');
+    $('#closeAllNotes').attr('id', 'seeAllNotes' )
+    $('.center').unslick();
+  })
+
+  $("#cancelImg").click(function(){
+    $('#target').text("");
+    $('#noteForm')[0].reset();
+  })
 
   // google.maps.event.addDomListener(window, 'load', initialize());
 

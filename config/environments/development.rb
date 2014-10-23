@@ -40,6 +40,7 @@ Rails.application.configure do
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
+    p config.paperclip_defaults
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
