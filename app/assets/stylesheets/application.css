@@ -78,6 +78,7 @@ li.toggle-topbar.menu-icon {
 #myModalAll {
   text-align: center;
   color: white;
+  overflow: auto;
 }
 
 #myModalAll img {
