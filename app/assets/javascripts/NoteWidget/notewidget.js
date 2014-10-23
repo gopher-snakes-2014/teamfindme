@@ -58,9 +58,7 @@ Note.prototype = {
 
 }; // prototype end
 
-var changeLike = function(source) {
 
-}
 
 
 
