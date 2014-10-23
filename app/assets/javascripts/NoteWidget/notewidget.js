@@ -51,6 +51,7 @@ Note.prototype = {
   } else {
     return "<div class=note_styling><h4>"+ username +"</h4><img src="+ url +"><p>"+ note.comment +"</p><h5>likes: " + voters + "</h5></div></div>";
   }
+
   }
 
 
