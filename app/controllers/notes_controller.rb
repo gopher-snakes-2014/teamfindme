@@ -18,8 +18,14 @@ class NotesController < ApplicationController
 
   def create
     user = current_user
+    p user
+    p "=========================="
     new_note = user.notes.create(note_params)
+    p new_note
+    p "=========================="
     url = new_note.image.url
+    p url
+    p "=========================="
     username = new_note.user.username
     render :json => [new_note, url, username]
   end
@@ -27,7 +33,7 @@ class NotesController < ApplicationController
   def update
     note = Note.find(params[:id])
     note.update_attributes(longitude: params[:longitude], latitude: params[:latitude])
-    render nothing:true
+    render :json => current_user
   end
 
   def edit

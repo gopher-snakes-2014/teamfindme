@@ -17,8 +17,6 @@
 //= require slick/slick
 //= require_tree .
 
-
-
 function initialize(noteWidget) {
   var map = new google.maps.Map(document.getElementById('map-canvas'),
     mapOptions);
@@ -104,10 +102,10 @@ if(navigator.geolocation) {
     var currentLocation = setUserMarker(pos);
     var circle = setCircleRadius(pos);
 
-    var longitudeMax = currentLocation.position.k + 0.000089;
-    var longitudeMin = currentLocation.position.k - 0.000089;
-    var latitudeMax = currentLocation.position.B + 0.000089;
-    var latitudeMin = currentLocation.position.B - 0.000089;
+    var longitudeMax = currentLocation.position.k + 0.000090;
+    var longitudeMin = currentLocation.position.k - 0.000090;
+    var latitudeMax = currentLocation.position.B + 0.000090;
+    var latitudeMin = currentLocation.position.B - 0.000090;
 
 
     $.ajax({
@@ -147,10 +145,12 @@ if(navigator.geolocation) {
             type: 'PUT',
             data: {longitude: userLongitude, latitude: userLatitude}
           })
-          .success(function() {
+          .success(function(data) {
             $("#noteForm")[0].reset();
             $("#myModalNote").foundation('reveal', 'close');
             addInfoWindow(marker, note[0], note[1], note[2]);
+            noteWidget.addReadableNotes([note[0]], [note[1]], [note[2]], data.id)
+
             console.log("success");
           })
           .fail(function() {
