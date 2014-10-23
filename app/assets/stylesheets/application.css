@@ -336,10 +336,10 @@ h3 {
     margin: 1em 0;
 }
 
-h4 {
+/*h4 {
     font-size: 1em;
     margin: 1.33em 0;
-}
+}*/
 
 h5 {
     font-size: 0.83em;
@@ -784,6 +784,10 @@ p {
   text-align: center;
 }
 
+.slick_track {
+  border-top: 3px solid black;
+}
+
 .carousel {
   text-align: center;
   width: 100%;
@@ -805,9 +809,9 @@ p {
 }
 
 .carousel img {
-  width: auto;
+  width: 100%;
   text-align: center;
-  height: 10em;
+  height: auto;
   display: block;
   padding-top: 40px;
   margin: 0;
@@ -815,7 +819,11 @@ p {
 
 .carousel h4 {
   display: block;
+  margin-top: 0;
+  font-size: 1em;
 }
+
+
 
 .carousel p {
   display: block;
