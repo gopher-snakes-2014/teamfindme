@@ -39,27 +39,26 @@ class NotesController < ApplicationController
 
     if session[:filter] == "mostLiked"
       searchType = "liked"
-    elsif session[:filter] == "showAll" || session[:filter].nil?
+    elsif session[:filter] == "showAll"
       searchType = "all"
-    elsif session[:filter] == "mostRecent"
-      searchType = "recent"
     elsif session[:filter] == "user"
       searchType = "user"
+    else
+      searchType = "recent"
     end
+
+    p searchType
     userId = session[:current_user_id]
     notes = Note.notes_in_range(params, searchType, userId)
+
     out_of_range = Note.notes_out_of_range(notes, searchType, params)
     info = Note.username_url(notes)
     url = info[0]
     username = info[1]
     voters = info[2]
     user_notes = Note.user_notes(userId)
-    user_info = Note.username_url(user_notes)
-    user_url = user_info[0]
-    user_username = user_info[1]
 
-    render :json => [notes, url, username, out_of_range, voters, userId, user_notes, user_url, user_username]
-
+    render :json => [notes, url, username, out_of_range, voters, userId]
   end
 
 

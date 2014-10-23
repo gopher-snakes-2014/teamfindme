@@ -58,7 +58,7 @@ class Note < ActiveRecord::Base
     url = []
     username = []
     voters = []
-    user_id = []
+    # user_id = []
     notes.each do |note|
       url << note.image.url
       username << note.user.username
