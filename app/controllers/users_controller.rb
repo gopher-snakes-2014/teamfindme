@@ -1,8 +1,4 @@
 class UsersController < ApplicationController
-  def index
-    @user = current_user
-    @notes = @user.notes
-  end
 
   def new
     @user = User.new
@@ -19,6 +15,11 @@ class UsersController < ApplicationController
       flash[:error] = user.errors.full_messages
       redirect_to root_path
     end
+  end
+
+  def show
+    @user = current_user
+    @notes = @user.notes
   end
 
   def user_params
