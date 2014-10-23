@@ -27,7 +27,7 @@ class NotesController < ApplicationController
   def update
     note = Note.find(params[:id])
     note.update_attributes(longitude: params[:longitude], latitude: params[:latitude])
-    render nothing:true
+    render :json => current_user
   end
 
   def edit
