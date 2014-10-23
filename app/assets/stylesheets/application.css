@@ -789,6 +789,54 @@ p {
   margin: -9em 0;
   background-color: #DCD5C8;
 }
+
+.carousel button {
+  display: block;
+  float: right;
+}
+
+/*.carousel div {
+  float: left;
+}*/
+
+#anne {
+  margin: 0;
+}
+
+.carousel img {
+  width: auto;
+  text-align: center;
+  height: 3em;
+  display: block;
+  padding-top: 40px;
+  margin: 0;
+}
+
+.carousel h4 {
+  display: block;
+}
+
+.carousel p {
+  display: block;
+}
+
+img.likesrc {
+  height: 20px;
+  width: auto;
+  display: block;
+  padding: 0;
+  margin-left: 10px;
+}
+
+img.likedsrc {
+  height: 20px;
+  width: auto;
+  display: block;
+  padding: 0;
+  margin: 0;
+  margin-left: 10px;
+}
+
 .new-image img {
   height: 12em;
 }
