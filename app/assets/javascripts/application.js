@@ -145,10 +145,12 @@ if(navigator.geolocation) {
             type: 'PUT',
             data: {longitude: userLongitude, latitude: userLatitude}
           })
-          .success(function() {
+          .success(function(data) {
             $("#noteForm")[0].reset();
             $("#myModalNote").foundation('reveal', 'close');
             addInfoWindow(marker, note[0], note[1], note[2]);
+            noteWidget.addReadableNotes([note[0]], [note[1]], [note[2]], data.id)
+
             console.log("success");
           })
           .fail(function() {

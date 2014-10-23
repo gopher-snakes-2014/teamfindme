@@ -18,6 +18,7 @@ $( document ).ready(function() {
     $('.center').fadeIn('slow');
     setSlickCarousel('.center');
   });
+
   // google.maps.event.addDomListener(window, 'load', initialize());
 
   $('body').on('click', 'form.like', function(e){
