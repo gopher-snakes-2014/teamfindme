@@ -1,6 +1,11 @@
 $( document ).ready(function() {
   console.log( "ready!" );
 
+
+  $('.note_styling').on('click', function (){
+    console.log("You clicked a thing.");
+  });
+
   if(/iP(hone|ad)/.test(window.navigator.userAgent)) {
     var elements = document.querySelectorAll('button');
     var emptyFunction = function() {};

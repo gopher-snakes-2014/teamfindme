@@ -21,9 +21,7 @@ function initialize(noteWidget) {
   var map = new google.maps.Map(document.getElementById('map-canvas'),
     mapOptions);
 
-  $('.note_styling').on('click', function (){
-    console.log("You clicked a thing.");
-  });
+
 
 // MAP STUFFFFFFFFF ============================
 
