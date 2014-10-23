@@ -24,7 +24,6 @@ function initialize(noteWidget) {
 // MAP STUFFFFFFFFF ============================
 
   function placeInMarkers(inNotes, imageUrls, noteUsernames) {
-
     for (var i = 0; i < inNotes.length; i++) {
       current_marker = setExistingMarker(inNotes[i], inIcon); //global icon
       addInfoWindow(current_marker, inNotes[i], imageUrls[i], noteUsernames[i]);
@@ -56,7 +55,16 @@ function initialize(noteWidget) {
     google.maps.event.addListener(marker, 'click', function () {
       infoWindow.open(map, marker); //global map object
     });
-  }
+
+    var buttonSelector = "#"+ note.id;
+
+    if ($(buttonSelector).length > 0) {
+      $(buttonSelector).on("click", function(){
+        infoWindow.open(map, marker);
+    });
+    }
+
+  };
 
 function newInfoWindow(info) {
   return new google.maps.InfoWindow({
@@ -118,9 +126,10 @@ if(navigator.geolocation) {
       data: {longitudeMax: longitudeMax, longitudeMin: longitudeMin, latitudeMax: latitudeMax, latitudeMin: latitudeMin },
     })
     .success(function(data) {
+      console.log("success");
+      noteWidget.addReadableNotes(data[0], data[1], data[2], data[5]);
       placeInMarkers(data[0], data[1], data[2]);
       placeOutMarkers(data[3]);
-      noteWidget.addReadableNotes(data[0], data[1], data[2], data[5]);
     })
     .fail(function() {
       console.log("error");
@@ -152,8 +161,8 @@ if(navigator.geolocation) {
           .success(function(data) {
             $("#noteForm")[0].reset();
             $("#myModalNote").foundation('reveal', 'close');
-            addInfoWindow(marker, note[0], note[1], note[2]);
             noteWidget.addReadableNotes([note[0]], [note[1]], [note[2]], data.id);
+            addInfoWindow(marker, note[0], note[1], note[2]);
             $("#noCommentError").text("");
             console.log("success");
           })
