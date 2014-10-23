@@ -20,7 +20,6 @@ var mapStyle =
 var mapOptions = {
   zoom: 19,
   styles: mapStyle,
-  scrollwheel: false,
   disableDefaultUI: true
 };
 
