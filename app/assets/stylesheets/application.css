@@ -17,6 +17,8 @@
 
  */
 
+
+
 #wrapper {
   position: relative;
 }
@@ -734,6 +736,11 @@ table {
   overflow: auto;
 }
 
+.slick-slide img {
+  height: 50px;
+  width: auto;
+}
+
 .profile-pic{
   float: left;
   margin: 1em;
@@ -773,6 +780,7 @@ p {
   height: 6.1em;
   margin: 2.4em 3.3em;
   position: absolute;
+  text-align: center;
 }
 
 .carousel {

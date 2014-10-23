@@ -17,11 +17,13 @@
 //= require slick/slick
 //= require_tree .
 
-
-
 function initialize(noteWidget) {
   var map = new google.maps.Map(document.getElementById('map-canvas'),
     mapOptions);
+
+  $('.note_styling').on('click', function (){
+    console.log("You clicked a thing.");
+  });
 
 // MAP STUFFFFFFFFF ============================
 
@@ -104,10 +106,10 @@ if(navigator.geolocation) {
     var currentLocation = setUserMarker(pos);
     var circle = setCircleRadius(pos);
 
-    var longitudeMax = currentLocation.position.k + 0.000089;
-    var longitudeMin = currentLocation.position.k - 0.000089;
-    var latitudeMax = currentLocation.position.B + 0.000089;
-    var latitudeMin = currentLocation.position.B - 0.000089;
+    var longitudeMax = currentLocation.position.k + 0.000090;
+    var longitudeMin = currentLocation.position.k - 0.000090;
+    var latitudeMax = currentLocation.position.B + 0.000090;
+    var latitudeMin = currentLocation.position.B - 0.000090;
 
 
     $.ajax({
