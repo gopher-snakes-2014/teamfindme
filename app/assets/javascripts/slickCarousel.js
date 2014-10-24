@@ -6,7 +6,7 @@ $(selector).slick({
   slidesToShow: 3,
   responsive: [
     {
-      breakpoint: 768,
+      breakpoint: 1000,
       settings: {
         arrows: false,
         centerMode: true,
