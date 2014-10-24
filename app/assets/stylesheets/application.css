@@ -65,19 +65,8 @@
 
 .carousel {
   text-align: center;
+  border-bottom: 1em solid #ECF5FD;
 }
-
-.note_styling {
-  height: 12em;
-  border-right: 0.5em solid #ECF5FD;
-  border-left: 0.5em solid #ECF5FD;
-  border-top: 1em solid #ECF5FD;
-}
-
-/*.carousel button {
-  display: block;
-  float: right;
-}*/
 
 #wrapper {
   position: relative;
@@ -95,27 +84,6 @@
   left: 10px;
 }
 
-/*img.likesrc {
-  height: 20px;
-  width: auto;
-  display: block;
-  padding: 0;
-  margin-left: 10px;
-  float: left;
-  position: absolute;
-}
-
-img.likedsrc {
-  height: 20px;
-  width: auto;
-  display: block;
-  padding: 0;
-  margin: 0;
-  margin-left: 10px;
-  float: left;
-  position: absolute;
-}*/
-
 h5 {
     font-size: 0.83em;
     margin: 1.67em 0;
@@ -125,37 +93,6 @@ h5 {
 .note_styling button {
   display: none;
 }
-
-/*.thisNote .note_styling button {
-  display: none;
-}
-
-.thisNote .note_styling .likedsrc {
-  display: none;
-}
-
-.thisNote .note_styling .likesrc {
-  display: none;
-}
-
-.thisNote {
-  text-align: center;
-  overflow: auto;
-  color: black;
-  height: auto;
-  border: none;
-}
-
-.liked {
-  width: 100%;
-}*/
-
-/*.thisNote img {
-  padding: 2em;
-  width: 100%;
-  height: auto;
-}
-*/
 
 }
 
@@ -234,12 +171,6 @@ li.toggle-topbar.menu-icon {
 .profileNotes img{
   width: 18em;
 }
-
-/*.profileNotes h3{
-  text-align: center;
-  margin-right: auto;
-  margin-left: auto;
-}*/
 
 .reveal-modal {
   background-color: white;
@@ -923,8 +854,10 @@ p {
 .note_styling {
   height: 18em;
   background-color: white;
-  border-right: 1em solid #ECF5FD;
+  border-right: 0.5em solid #ECF5FD;
+  border-left: 0.5em solid #ECF5FD;
   border-top: 1em solid #ECF5FD;
+  border-bottom: 1em solid #ECF5FD;
 }
 
 .slick-slide img {
@@ -1031,10 +964,6 @@ h2 {
 
 .note_styling button {
   display: none;
-}
-
-.note_styling {
-  text-align: center;
 }
 
 img.modalImage {
