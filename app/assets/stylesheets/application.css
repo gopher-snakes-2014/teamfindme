@@ -38,7 +38,7 @@
  #map-canvas{
    height: 15em;
    padding: 0;
-   width: 100%
+   width: 100%;
    font-size: 1em;
    font-family: 'Montserrat', sans-serif;
    text-transform: capitalize;
@@ -65,18 +65,7 @@
 
 .carousel {
   text-align: center;
-}
-
-.note_styling {
-  height: 12em;
-  border-right: 0.5em solid #ECF5FD;
-  border-left: 0.5em solid #ECF5FD;
-  border-top: 1em solid #ECF5FD;
-}
-
-.carousel button {
-  display: block;
-  float: right;
+  border-bottom: 1em solid #ECF5FD;
 }
 
 #wrapper {
@@ -95,34 +84,15 @@
   left: 10px;
 }
 
-img.likesrc {
-  height: 20px;
-  width: auto;
-  display: block;
-  padding: 0;
-  margin-left: 10px;
-  float: left;
-  position: absolute;
-}
-
-img.likedsrc {
-  height: 20px;
-  width: auto;
-  display: block;
-  padding: 0;
-  margin: 0;
-  margin-left: 10px;
-  float: left;
-  position: absolute;
-}
-
 h5 {
     font-size: 0.83em;
     margin: 1.67em 0;
     float: left;
 }
 
-
+.note_styling button {
+  display: none;
+}
 
 }
 
@@ -198,8 +168,8 @@ li.toggle-topbar.menu-icon {
 }
 
 
-.profileNotes {
-  /*overflow: auto;*/
+.profileNotes img{
+  width: 18em;
 }
 
 .reveal-modal {
@@ -451,6 +421,7 @@ h2 {
 h3 {
     font-size: 1.17em;
     margin: 1em 0;
+    text-align: center;
 }
 
 /*h4 {
@@ -460,16 +431,10 @@ h3 {
 
 h5 {
     font-size: 0.83em;
-<<<<<<< HEAD
     margin:0;
     float: left;
     padding-top: 1.3em;
     padding-left: 0.4em
-=======
-    margin: 1.67em 0;
-    float: left;
-    display: inline-block;
->>>>>>> 1b6bd3fcacbd4a9e06382253a7929701d83befaa
 }
 
 h6 {
@@ -852,10 +817,10 @@ table {
 
 /*============================== Users CSS =============================*/
 
-.slick-slide img {
+/*.slick-slide img {
   height: 50px;
   width: auto;
-}
+}*/
 
 .profile-pic{
   float: left;
@@ -889,8 +854,10 @@ p {
 .note_styling {
   height: 18em;
   background-color: white;
-  border-right: 1em solid #ECF5FD;
+  border-right: 0.5em solid #ECF5FD;
+  border-left: 0.5em solid #ECF5FD;
   border-top: 1em solid #ECF5FD;
+  border-bottom: 1em solid #ECF5FD;
 }
 
 .slick-slide img {
@@ -904,28 +871,32 @@ p {
   border-top: 3px solid black;
 }
 
-.carousel {
+/*.carousel {
   text-align: center;
   width: 100%;
-  margin: -9em 0;
+  margin:0;
   background-color: #DCD5C8;
-}
+}*/
 
 .carousel button {
   display: block;
   float: right;
 }
 
-#anne {
+/*#anne {
   margin: 0;
   width: 20px;
+}*/
+
+.center {
+  padding-bottom: 0;
 }
 
 .carousel img {
-  width: 100%;
+  width: 200px;
   text-align: center;
   height: auto;
-  display: block;
+  /*display: block;*/
   padding-top: 40px;
   margin: 0;
 }
@@ -939,10 +910,6 @@ p {
 
 .carousel p {
   display: block;
-}
-
-#anne {
-  margin: 0;
 }
 
 .slick_track {
@@ -994,9 +961,20 @@ p {
 h2 {
   color: #ECF5FD;
 }
-<<<<<<< HEAD
 
-.thisNote .note_styling {
+.note_styling button {
+  display: none;
+}
+
+img.modalImage {
+  margin-left: 15%;
+}
+
+.modalImage {
+  text-align: center;
+}
+
+/*.thisNote .note_styling {
   text-align: center;
   border: none;
   padding: 0;
@@ -1009,10 +987,6 @@ h2 {
   text-align: center;
 }
 
-/*#myModalView {
-  height: auto;
-}*/
-
 .thisNote .note_styling button {
   display: none;
 }
@@ -1024,9 +998,17 @@ h2 {
 .thisNote .note_styling .likesrc {
   display: none;
 }
-=======
+
+.thisNote {
+  text-align: center;
+  overflow: auto;
+  color: black;
 }
 
+.thisNote img {
+  padding: 2em;
+  width: 100%;
+  height: auto;
+}*/
 
-
->>>>>>> 1b6bd3fcacbd4a9e06382253a7929701d83befaa
+}

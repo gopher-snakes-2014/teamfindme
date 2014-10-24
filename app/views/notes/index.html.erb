@@ -1,13 +1,11 @@
 <%= render "shared/nav" %>
 <%= render "shared/sub_nav" %>
-<%= render "shared/map" %>
 <%= render "shared/about" %>
 <%= render "sign_up", locals: {user: @user} %>
 <%= render "sign_in" %>
 <%= render "new_note", locals: {note: @note} %>
 <%= render "view_note" %>
-
-
 <div class="carousel">
 <%= render "shared/note_carousel"  %>
 </div>
+<%= render "shared/map" %>

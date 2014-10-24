@@ -26,7 +26,7 @@ function initialize(noteWidget) {
   function placeInMarkers(inNotes, imageUrls, noteUsernames) {
     for (var i = 0; i < inNotes.length; i++) {
       current_marker = setExistingMarker(inNotes[i], inIcon); //global icon
-      addInfoWindow(current_marker, inNotes[i], imageUrls[i], noteUsernames[i]);
+      // addInfoWindow(current_marker, inNotes[i], imageUrls[i], noteUsernames[i]);
     }
   }
 
@@ -47,40 +47,40 @@ function initialize(noteWidget) {
   }
 
 
-  function addInfoWindow(marker, note, imageUrl, username) {
-    var info = infoWindowTemplate(note.comment, imageUrl, username);
+  // function addInfoWindow(marker, note, imageUrl, username) {
+  //   var info = infoWindowTemplate(note.comment, imageUrl, username);
 
-    var infoWindow = newInfoWindow(info);
+  //   // var infoWindow = newInfoWindow(info);
 
-    google.maps.event.addListener(marker, 'click', function () {
-      infoWindow.open(map, marker); //global map object
-    });
+  //   // google.maps.event.addListener(marker, 'click', function () {
+  //   //   infoWindow.open(map, marker); //global map object
+  //   // });
 
-    var buttonSelector = "#"+ note.id;
+  //   var buttonSelector = "#"+ note.id;
 
-    if ($(buttonSelector).length > 0) {
-      $(buttonSelector).on("click", function(){
-        note = $(this).parent()[0];
-        $('#currentNote').empty();
-        $(note).clone().appendTo('#currentNote').show();
-    });
-    }
+  //   if ($(buttonSelector).length > 0) {
+  //     $(buttonSelector).on("click", function(){
+  //       note = $(this).parent()[0];
+  //       $('#currentNote').empty();
+  //       $(note).clone().appendTo('#currentNote').show();
+  //   });
+  //   }
 
-  };
+  // };
 
-function newInfoWindow(info) {
-  return new google.maps.InfoWindow({
-      content: info
-    });
-}
+// function newInfoWindow(info) {
+//   return new google.maps.InfoWindow({
+//       content: info
+//     });
+// }
 
-function infoWindowTemplate(comment, imageUrl, username) {
-  if(imageUrl === "/images/original/missing.png") {
-    return "<h5>"+ username +"</h6>" + comment + "</h5>";
-  } else {
-    return "<h5>"+ username +"</h6>" + comment + "<br><img src=" + imageUrl + "></h5>";
-  }
-}
+// function infoWindowTemplate(comment, imageUrl, username) {
+//   if(imageUrl === "/images/original/missing.png") {
+//     return "<h5>"+ username +"</h6>" + comment + "</h5>";
+//   } else {
+//     return "<h5>"+ username +"</h6>" + comment + "<br><img src=" + imageUrl + "></h5>";
+//   }
+// }
 // take this comment out after
 
 function setUserMarker(pos) {
@@ -165,7 +165,7 @@ if(navigator.geolocation) {
             $("#noteForm")[0].reset();
             $("#myModalNote").foundation('reveal', 'close');
             noteWidget.addReadableNotes([note[0]], [note[1]], [note[2]], data.id);
-            addInfoWindow(marker, note[0], note[1], note[2]);
+            // addInfoWindow(marker, note[0], note[1], note[2]);
             $("#noCommentError").text("");
             console.log("success");
           })
