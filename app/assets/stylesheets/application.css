@@ -794,7 +794,6 @@ p {
   margin: -9em 0;
   background-color: #DCD5C8;
   overflow: visible;
-  z-index: 99;
 }
 
 .carousel button {
